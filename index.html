@@ -28,8 +28,8 @@
             </div>
             <div>
                 <div>
-                    <p>By Ingredient</p>
-                    <select id="format-input" class="form-input w-100">
+                    <p id = "meal-ingredient-header">By Ingredient</p>
+                    <select id="meal-ingredient-list">
                         <option value="" disabled selected>Select a format...</option>
                          <option value="">text</option>
                         <option value="">text</option>
@@ -38,8 +38,8 @@
                     </select>
                 </div>
                 <div>
-                    <p>By Diet</p>
-                    <select id="format-input" class="form-input w-100">
+                <p id = "meal-diet-header">By Diet</p>
+                    <select id = "meal-diet-list">
                         <option value="" disabled selected>Select a format...</option>
                          <option value="">text</option>
                         <option value="">text</option>
@@ -48,8 +48,8 @@
                     </select>
                 </div>
                 <div>
-                    <p>By Allergy</p>
-                    <select id="format-input" class="form-input w-100">
+                    <p id = "meal-allergy-header">By Allergy</p>
+                    <select id = "meal-allergy-list">
                         <option value="" disabled selected>Select a format...</option>
                          <option value="">text</option>
                         <option value="">text</option>
@@ -73,8 +73,8 @@
             </div>
             <div>
                 <div>
-                    <p>By Ingredient</p>
-                    <select id="format-input" class="form-input w-100">
+                    <p id = "cocktail-ingredient-header">By Ingredient</p>
+                    <select id="cocktail-ingredient-dropdown">
                         <option value="" disabled selected>Select a format...</option>
                          <option value="">text</option>
                         <option value="">text</option>
@@ -83,8 +83,8 @@
                     </select>
                 </div>
                 <div>
-                    <p>By Diet</p>
-                    <select id="format-input" class="form-input w-100">
+                    <p id = "cocktail-diet-header">By Diet</p>
+                    <select id="cocktail-diet-dropdown">
                         <option value="" disabled selected>Select a format...</option>
                          <option value="">text</option>
                         <option value="">text</option>
@@ -93,10 +93,10 @@
                     </select>
                 </div>
                 <div>
-                    <p>By Allergy</p>
-                    <select id="format-input" class="form-input w-100">
+                    <p id = "cocktail-allergy-header">By Allergy</p>
+                    <select id="cocktail-allergy-dropdown">
                         <option value="" disabled selected>Select a format...</option>
-                         <option value="">text</option>
+                        <option value="">text</option>
                         <option value="">text</option>
                         <option value="">text</option>
                         <option value="">text</option>
@@ -108,6 +108,86 @@
             </div>
     </section>
 </section>
+<!-- end - choose meal section -->
+
+<!-- start - show recommended meals-->
+<section>
+    <section id = "recommend-meal-section">
+        <h2>Recommended Meal</h2>
+            <div>
+                <h3>Must Choose One</h3>
+            </div>
+            <div>
+                <ul id="meal-option-list">   <!--connect to event listener-->
+                    <!--iterate through with var i = 0-->
+                    <li class = "meal"></li> 
+                    <li class = "meal"></li>
+                    <li class = "meal"></li>
+                </ul>
+            </div>     
+    </section>
+    <section id = "recommend-cocktail-section">
+        <h2>Recommended Cocktail</h2>
+            <div>
+                <h3>Must Choose One</h3>
+            </div>
+            <div>
+                <ul id="cocktail-option-list">  <!--connect to event listener-->
+                    <li class = "cocktail"></li> 
+                    <li class = "cocktail"></li>
+                    <li class = "cocktail"></li>
+                </ul>
+            </div>     
+    </section>  
+</section>
+<!-- end - show recommended meals-->
+
+<!-- start - show recipe -->
+<section>
+    <section>
+        <h2 id = "meal-recipe-text"></h2>
+            <div>
+                <p>List Recipe Here</p>
+            </div>
+    </section>
+    <section>
+        <h2 id = "cocktail-recipe-text"></h2>
+            <div>
+                <p>List Cocktail Here</p>
+            </div>
+    </section>
+</section>
+
+<!-- end - show recipe -->
+
+<!-- start - show saved recipes -->
+<section id = "all-saved-recipes-section">
+    <ul id = "all-saved-recipes-list">
+        <li class = "all-saved-recipes-list-item">saved recipe 1</li>
+        <li class = "all-saved-recipes-list-item">saved recipe 2</li>
+        <li class = "all-saved-recipes-list-item">saved recipe 3</li>
+    </ul>
+</section>
+<!-- end - show saved recipes -->
+
+<!-- start - click into recipe -->
+<section id = "display-saved-recipe-section">
+   <h3 id = "display-saved-recipe-title">Saved Recipe that User Clicked Back Into</h3>
+   <p id = "display-saved-recipe">recipe here... likely need to add more elements</p>
+</section>
+<!-- end - show saved recipes -->
+
+<!-- start - show reviews-->
+<section id = "review-section">
+    <h3 id = "review-header">Show Reviews</h3>
+    <ul id = "list reviews">
+        <li class = "review-recipe">review 1 </li>
+        <li class = "review-recipe"> review 2</li>
+        <li class = "review-recipe">review 3</li>
+    </ul>
+ </section>
+ <!-- end - show saved recipes -->
+
 
 
 <script src="./assets/js/script.js"></script>
