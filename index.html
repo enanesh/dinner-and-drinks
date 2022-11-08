@@ -26,8 +26,8 @@
         <h2>Choose Meal</h2>
             <div>
                 <div>
-                    <p id = "">By Category</p>
-                    <select id="category-input">
+                    <p id = "meal-category-header">By Category</p>
+                    <select id="meal-category-dropdown">
                         <option value="" disabled selected>Select a format...</option>
                         <option value="">text</option>
                         <option value="">text</option>
@@ -36,8 +36,8 @@
                     </select>
                 </div>
                 <div>
-                <p id = "">By Cuisine</p>
-                    <select id = "cuisine-input">
+                <p id = "meal-cuisine-header">By Cuisine</p>
+                    <select id = "meal-cuisine-dropdown">
                         <option value="" disabled selected>Select a format...</option>
                         <option value="">text</option>
                         <option value="">text</option>
@@ -52,46 +52,39 @@
     </section>
 
     <section>
-        <h2>Choose Cocktail</h2>
-            <div>
-                <input id="cocktail-search-by-name" class="search-by-name" type="text" placeholder="Search By Name"/>
-            </div>
-             <div>
-                <p> OR </p>
-            </div>
+      <h2>Choose Cocktail</h2>
             <div>
                 <div>
-                    <p id = "cocktail-ingredient-header">By Ingredient</p>
+                    <p id = "cocktail-category-header">By Category</p>
+                    <select id="cocktail-category-dropdown">
+                        <option value="" disabled selected>Select a format...</option>
+                        <option value=""></option>
+                        <option value="">text</option>
+                        <option value="">text</option>
+                        <option value="">text</option>
+                    </select>
+                </div>
+                <div>
+                    <p id = "cocktail-ingredient-header">By Main Ingredient</p>
                     <select id="cocktail-ingredient-dropdown">
                         <option value="" disabled selected>Select a format...</option>
-                        <option value="">text</option>
+                        <option value=""></option>
                         <option value="">text</option>
                         <option value="">text</option>
                         <option value="">text</option>
                     </select>
                 </div>
                 <div>
-                    <p id = "cocktail-diet-header">By Diet</p>
-                    <select id="cocktail-diet-dropdown">
+                    <p id = "cocktail-alcoholic-header">By Alcohol Content</p>
+                    <select id="cocktail-alcoholic-dropdown">
                         <option value="" disabled selected>Select a format...</option>
-                        <option value="">text</option>
-                        <option value="">text</option>
-                        <option value="">text</option>
-                        <option value="">text</option>
+                        <option value="Alcoholic">Alcoholic</option>
+                        <option value="Non alcoholic">Non alcoholic</option>
+                        <option value="Optional alcohol">Optional alcohol</option>
                     </select>
                 </div>
                 <div>
-                    <p id = "cocktail-allergy-header">By Allergy</p>
-                    <select id="cocktail-allergy-dropdown">
-                        <option value="" disabled selected>Select a format...</option>
-                        <option value="">text</option>
-                        <option value="">text</option>
-                        <option value="">text</option>
-                        <option value="">text</option>
-                    </select>
-                </div>
-                <div>
-                    <button class="drinks-search-button">Search</button>
+                    <button id="drinks-search-button">Search</button>
                 </div>
             </div>
     </section>
