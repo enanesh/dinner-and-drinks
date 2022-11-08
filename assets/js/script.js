@@ -68,8 +68,12 @@ var cocktailApiUrlArray = [
 ]
 
 var mealSearchBtnEl = document.getElementById("meal-search-button");
-var categoryInputEl = document.getElementById("category-input");
-var cuisineInputEl = document.getElementById("cuisine-input");
+var cocktailSearchBtnEl = document.getElementById("drinks-search-button");
+var mealCategoryInputEl = document.getElementById("meal-category-dropdown");
+var mealCuisineInputEl = document.getElementById("meal-cuisine-dropdown");
+var cocktailCategoryInputEl = document.getElementById("cocktail-category-dropdown");
+var cocktailIngredientInputEl = document.getElementById("cocktail-ingredient-dropdown");
+var cocktailAlcoholInputEl = document.getElementById("cocktail-alcoholic-dropdown");
 
 var mealsArray = [];
 var cocktailsArray = [];
@@ -105,32 +109,32 @@ function storeCocktails() {
 }
 
 function mealSearch() {
-  if (!categoryInputEl.value && !cuisineInputEl.value) {
+  if (!mealCategoryInputEl.value && !mealCuisineInputEl.value) {
     var randomSearch = Math.floor(Math.random() * mealsArray.length);
     console.log(mealsArray[randomSearch])
-  } else if (categoryInputEl.value && !cuisineInputEl.value) {
+  } else if (mealCategoryInputEl.value && !mealCuisineInputEl.value) {
     var categoryArray = [];
     for (i = 0; i < mealsArray.length; i++) {
-      if (mealsArray[i].strCategory.includes(categoryInputEl.value)) {
+      if (mealsArray[i].strCategory.includes(mealCategoryInputEl.value)) {
         categoryArray.push(mealsArray[i]);
       }
     }
     var categorySearch = Math.floor(Math.random() * categoryArray.length);
     console.log(categoryArray[categorySearch]);
-  } else if (!categoryInputEl.value && cuisineInputEl.value) {
+  } else if (!mealCategoryInputEl.value && mealCuisineInputEl.value) {
     var cuisineArray = [];
     for (i = 0; i < mealsArray.length; i++) {
-      if (mealsArray[i].strArea.includes(cuisineInputEl.value)) {
+      if (mealsArray[i].strArea.includes(mealCuisineInputEl.value)) {
         cuisineArray.push(mealsArray[i]);
       }
     }
     var cuisineSearch = Math.floor(Math.random() * cuisineArray.length);
     console.log(cuisineArray[cuisineSearch]);
-  } else if (categoryInputEl.value && cuisineInputEl.value) {
+  } else if (mealCategoryInputEl.value && mealCuisineInputEl.value) {
     var categoryCuisineArray = [];
     for (i = 0; i < mealsArray.length; i++) {
-      if (mealsArray[i].strCategory.includes(categoryInputEl.value) && 
-      mealsArray[i].strArea.includes(cuisineInputEl.value)) {
+      if (mealsArray[i].strCategory.includes(mealCategoryInputEl.value) &&
+        mealsArray[i].strArea.includes(mealCuisineInputEl.value)) {
         categoryCuisineArray.push(mealsArray[i]);
       }
     }
@@ -139,6 +143,82 @@ function mealSearch() {
   }
 }
 mealSearchBtnEl.addEventListener("click", mealSearch);
+
+function cocktailSearch() {
+  if (!cocktailCategoryInputEl && !cocktailIngredientInputEl && !cocktailAlcoholInputEl) {
+    var randomSearch = Math.floor(Math.random() * cocktailsArray.length);
+    console.log(cocktailsArray[randomSearch])
+  } else if (cocktailCategoryInputEl && !cocktailIngredientInputEl && !cocktailAlcoholInputEl) {
+    var categoryArray = [];
+    for (i = 0; i < cocktailsArray.length; i++) {
+      if (cocktailsArray[i].strCategory.includes(cocktailCategoryInputEl.value)) {
+        categoryArray.push(cocktailsArray[i]);
+      }
+    }
+    var categorySearch = Math.floor(Math.random() * categoryArray.length);
+    console.log(categoryArray[categorySearch]);
+  } else if (!cocktailCategoryInputEl && cocktailIngredientInputEl && !cocktailAlcoholInputEl) {
+    var ingredientArray = [];
+    for (i = 0; i < cocktailsArray.length; i++) {
+      if (cocktailsArray[i].strIngredient1.includes(cocktailIngredientInputEl.value)) {
+        ingredientArray.push(cocktailsArray[i]);
+      }
+    }
+    var ingredientSearch = Math.floor(Math.random() * ingredientArray.length);
+    console.log(ingredientArray[ingredientSearch]);
+  } else if (!cocktailCategoryInputEl && !cocktailIngredientInputEl && cocktailAlcoholInputEl) {
+    var alcoholArray = [];
+    for (i = 0; i < cocktailsArray.length; i++) {
+      if (cocktailsArray[i].strAlcoholic.includes(cocktailAlcoholInputEl.value)) {
+        alcoholArray.push(cocktailsArray[i]);
+      }
+    }
+    var alcoholSearch = Math.floor(Math.random() * alcoholArray.length);
+    console.log(alcoholArray[alcoholSearch]);
+  } else if (cocktailCategoryInputEl && cocktailIngredientInputEl && !cocktailAlcoholInputEl) {
+    var categoryIngredientArray = [];
+    for (i = 0; i < cocktailsArray.length; i++) {
+      if (cocktailsArray[i].strCategory.includes(cocktailCategoryInputEl.value) &&
+        cocktailsArray[i].strIngredient1.includes(cocktailIngredientInputEl.value)) {
+        categoryIngredientArray.push(cocktailsArray[i]);
+      }
+    }
+    var categoryIngredientSearch = Math.floor(Math.random() * categoryIngredientArray.length);
+    console.log(categoryIngredientArray[categoryIngredientSearch]);
+  } else if (cocktailCategoryInputEl && !cocktailIngredientInputEl && cocktailAlcoholInputEl) {
+    var categoryAlcoholArray = [];
+    for (i = 0; i < cocktailsArray.length; i++) {
+      if (cocktailsArray[i].strCategory.includes(cocktailCategoryInputEl.value) &&
+        cocktailsArray[i].strAlcoholic.includes(cocktailAlcoholInputEl.value)) {
+        categoryAlcoholArray.push(cocktailsArray[i]);
+      }
+    }
+    var categoryAlcoholSearch = Math.floor(Math.random() * categoryAlcoholArray.length);
+    console.log(categoryAlcoholArray[categoryAlcoholSearch]);
+  } else if (!cocktailCategoryInputEl && cocktailIngredientInputEl && cocktailAlcoholInputEl) {
+    var ingredientAlcoholArray = [];
+    for (i = 0; i < cocktailsArray.length; i++) {
+      if (cocktailsArray[i].strIngredient1.includes(cocktailIngredientInputEl.value) &&
+        cocktailsArray[i].strAlcoholic.includes(cocktailAlcoholInputEl.value)) {
+        ingredientAlcoholArray.push(cocktailsArray[i]);
+      }
+    }
+    var ingredientAlcoholSearch = Math.floor(Math.random() * ingredientAlcoholArray.length);
+    console.log(ingredientAlcoholArray[ingredientAlcoholSearch]);
+  } else if (cocktailCategoryInputEl && cocktailIngredientInputEl && cocktailAlcoholInputEl) {
+    var allFiltersArray = [];
+    for (i = 0; i < cocktailsArray.length; i++) {
+      if (cocktailsArray[i].strCategory.includes(cocktailCategoryInputEl.value) &&
+        cocktailsArray[i].strIngredient1.includes(cocktailIngredientInputEl.value) &&
+        cocktailsArray[i].strAlcoholic.includes(cocktailAlcoholInputEl.value)) {
+        allFiltersArray.push(cocktailsArray[i]);
+      }
+    }
+    var allFiltersSearch = Math.floor(Math.random() * allFiltersArray.length);
+    console.log(allFiltersArray[allFiltersSearch]);
+  }
+}
+cocktailSearchBtnEl.addEventListener("click", cocktailSearch)
 
 storeMeals();
 storeCocktails();
