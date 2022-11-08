@@ -50,6 +50,10 @@ var cocktailApiUrlArray = [
   "https://thecocktaildb.com/api/json/v1/1/search.php?f=z"
 ]
 
+var mealSearchBtnEl = document.getElementById("meal-search-button");
+var categoryInputEl = document.getElementById("category-input");
+var cuisineInputEl = document.getElementById("cuisine-input");
+
 var mealsArray = [];
 var cocktailsArray = [];
 
@@ -82,6 +86,42 @@ function storeCocktails() {
   }
   console.log(cocktailsArray);
 }
+
+function mealSearch() {
+  if (!categoryInputEl.value && !cuisineInputEl.value) {
+    var randomSearch = Math.floor(Math.random() * mealsArray.length);
+    console.log(mealsArray[randomSearch])
+  } else if (categoryInputEl.value && !cuisineInputEl.value) {
+    var categoryArray = [];
+    for (i = 0; i < mealsArray.length; i++) {
+      if (mealsArray[i].strCategory.includes(categoryInputEl.value)) {
+        categoryArray.push(mealsArray[i]);
+      }
+    }
+    var categorySearch = Math.floor(Math.random() * categoryArray.length);
+    console.log(categoryArray[categorySearch]);
+  } else if (!categoryInputEl.value && cuisineInputEl.value) {
+    var cuisineArray = [];
+    for (i = 0; i < mealsArray.length; i++) {
+      if (mealsArray[i].strArea.includes(cuisineInputEl.value)) {
+        cuisineArray.push(mealsArray[i]);
+      }
+    }
+    var cuisineSearch = Math.floor(Math.random() * cuisineArray.length);
+    console.log(cuisineArray[cuisineSearch]);
+  } else if (categoryInputEl.value && cuisineInputEl.value) {
+    var categoryCuisineArray = [];
+    for (i = 0; i < mealsArray.length; i++) {
+      if (mealsArray[i].strCategory.includes(categoryInputEl.value) && 
+      mealsArray[i].strArea.includes(cuisineInputEl.value)) {
+        categoryCuisineArray.push(mealsArray[i]);
+      }
+    }
+    var categoryCuisineSearch = Math.floor(Math.random() * categoryCuisineArray.length);
+    console.log(categoryCuisineArray[categoryCuisineSearch])
+  }
+}
+mealSearchBtnEl.addEventListener("click", mealSearch);
 
 storeMeals();
 storeCocktails();
