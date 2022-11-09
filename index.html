@@ -4,26 +4,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Dinner And Drinks</title>
   <link rel="stylesheet" href="./assets/css/style.css" />
  <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
 </head>
 
-<body>
-    <header>
-        <button class = "">Saved Recipes</button>
-        <h1 class="text-3xl font-bold underline">Dinner & Drinks</h1>
-        <button class = "">Tried & Tested</button>
+<body >
+
+  <!--NAV BAR-->
+    <header class="min-h-full">
+         <nav class="bg-blue-800">
+          <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"> 
+            <div class="flex h-16 items-center justify-between">
+             <!--this space is for the icon-->
+            <a class = "bg-pink-500 text-white px-3 py-2 rounded-md text-sm font-medium">Saved Recipes</a>
+            <h1 class="text-3xl font-bold underline">Dinner & Drinks</h1>
+            <a class = "bg-pink-500 text-white px-3 py-2 rounded-md text-sm font-medium">Tried & Tested</a>
+          
+            </div>  
+            </div>
+        </nav>
       </header>
 
 
-<!-- start choose meal section -->
-<section>
+<!-- START CHOICE MEAL  -->
 
-    <section>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6 p-6 justify-content:center ">
 
-        <h2>Choose Meal</h2>
+ <section class ="container">
+
+        <h2 class="pt-4 text-2xl ">Choose Meal</h2>
             <div>
                 <div>
                     <p id = "category-input">By Category</p>
@@ -50,9 +60,13 @@
                 </div>
             </div>
     </section>
+    
 
-    <section>
-        <h2>Choose Cocktail</h2>
+
+    <!--COCKTAIL SECTION-->
+
+    <section class ="container">
+        <h2 class=" pt-4 text-2xl" >Choose Cocktail</h2>
             <div>
                 <input id="cocktail-search-by-name" class="search-by-name" type="text" placeholder="Search By Name"/>
             </div>
@@ -93,9 +107,13 @@
                 <div>
                     <button class="drinks-search-button">Search</button>
                 </div>
+
+
             </div>
     </section>
 </section>
+
+</div>
 <!-- end - choose meal section -->
 
 <!-- start - show recommended meals-->
@@ -147,6 +165,21 @@
 </section>
 
 <!-- end - show recipe -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- start - show saved recipes -->
 <section id = "all-saved-recipes-section">
