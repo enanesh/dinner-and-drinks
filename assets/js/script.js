@@ -68,21 +68,23 @@ var cocktailApiUrlArray = [
 ]
 
 var mealSearchBtnEl = document.getElementById("meal-search-button");
-var cocktailSearchBtnEl = document.getElementById("drinks-search-button");
+var cocktailSearchBtnEl = document.getElementById("cocktail-search-button");
 var mealCategoryInputEl = document.getElementById("meal-category-dropdown");
 var mealCuisineInputEl = document.getElementById("meal-cuisine-dropdown");
 var cocktailCategoryInputEl = document.getElementById("cocktail-category-dropdown");
 var cocktailIngredientInputEl = document.getElementById("cocktail-ingredient-dropdown");
 var cocktailAlcoholInputEl = document.getElementById("cocktail-alcoholic-dropdown");
 var mealNameText = document.getElementById("meal-name-text");
-var mealIngredientsText = document.getElementById("meal-ingredients-text");
+var mealIngredientsText = document.getElementById("meal-ingredients-list");
 var mealRecipeText = document.getElementById("meal-recipe-text");
 var mealImageEl = document.getElementById("meal-image");
+var mealErrorText = document.getElementById("meal-error-text");
 var cocktailNameText = document.getElementById("cocktail-name-text");
 var cocktailIngredientsText = document.getElementById("cocktail-ingredients-list");
 var cocktailGlassText = document.getElementById("cocktail-glass-text");
 var cocktailRecipeText = document.getElementById("cocktail-recipe-text");
 var cocktailImageEl = document.getElementById("cocktail-image");
+var cocktailErrorText = document.getElementById("cocktail-error-text");
 
 var mealsArray = [];
 var cocktailsArray = [];
@@ -243,7 +245,52 @@ cocktailSearchBtnEl.addEventListener("click", cocktailSearch)
 
 function displayMealResult(ev) {
   console.log(ev);
+  if (ev === undefined) {
+    mealErrorText.textContent = "Sorry, no meals match your filters, please try again.";
+  } else {
+    mealErrorText.textContent = "";
+  }
   // hide the search page, show the search results
+  mealNameText.textContent = ev.strMeal;
+
+  var ingredientList = [];
+  ingredientList.push(ev.strIngredient1, ev.strIngredient2, ev.strIngredient3,
+    ev.strIngredient4, ev.strIngredient5, ev.strIngredient6, ev.strIngredient7,
+    ev.strIngredient8, ev.strIngredient9, ev.strIngredient10, ev.strIngredient11,
+    ev.strIngredient12, ev.strIngredient13, ev.strIngredient14, ev.strIngredient15,
+    ev.strIngredient16, ev.strIngredient17, ev.strIngredient18, ev.strIngredient19,
+    ev.strIngredient20);
+  var measurementList = [];
+  measurementList.push(ev.strMeasure1, ev.strMeasure2, ev.strMeasure3,
+    ev.strMeasure4, ev.strMeasure5, ev.strMeasure6, ev.strMeasure7,
+    ev.strMeasure8, ev.strMeasure9, ev.strMeasure10, ev.strMeasure11,
+    ev.strMeasure12, ev.strMeasure13, ev.strMeasure14, ev.strMeasure15,
+    ev.strMeasure16, ev.strMeasure17, ev.strMeasure18, ev.strMeasure19,
+    ev.strMeasure20);
+
+  if (mealRecipeText.textContent === "") {
+    for (i = 0; i < ingredientList.length; i++) {
+      if (![ingredientList[i], measurementList[i]].includes("") &&
+        ![ingredientList[i], measurementList[i]].includes(null)) {
+        var listItem = document.createElement("li");
+        listItem.textContent = ingredientList[i] + ": " + measurementList[i];
+        mealIngredientsText.appendChild(listItem);
+      }
+    }
+  } else if (mealRecipeText.textContent !== "") {
+    mealIngredientsText.innerHTML = "";
+    for (i = 0; i < ingredientList.length; i++) {
+      if (![ingredientList[i], measurementList[i]].includes("") &&
+        ![ingredientList[i], measurementList[i]].includes(null)) {
+        var listItem = document.createElement("li");
+        listItem.textContent = ingredientList[i] + ": " + measurementList[i];
+        mealIngredientsText.appendChild(listItem);
+      }
+    }
+  }
+  mealRecipeText.textContent = ev.strInstructions;
+  mealImageEl.src = ev.strMealThumb;
+  mealImageEl.alt = ev.strMeal;
 }
 
 function displayCocktailResult(ev) {
@@ -281,7 +328,7 @@ var mealCuisineArrayURL = ["https://www.themealdb.com/api/json/v1/1/list.php?a=l
 
 var cocktailCategoryArrayURL = ["https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list"];
 var cocktailAlcoholicArrayURL = ["https://www.thecocktaildb.com/api/json/v1/1/list.php?a=list"];
-var cocktailIngredientArrayURL = ["https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list"]; 
+var cocktailIngredientArrayURL = ["https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list"];
 
 
 
@@ -295,50 +342,46 @@ cocktailCategoryOptions();
 cocktailIngredientOptions();
 cocktailAlcoholOptions();
 
-async function categoryOptions (){
-    for (var i=0; i < mealCategoryArrayURL.length; i++){
-        const res = await fetch(mealCategoryArrayURL[i])
-        const data = await res.json();
-          for (var n = 0; n < data.meals.length; n++) {
-            categoryArray.push(data.meals[n]);
-            
-          }
+async function categoryOptions() {
+  for (var i = 0; i < mealCategoryArrayURL.length; i++) {
+    const res = await fetch(mealCategoryArrayURL[i])
+    const data = await res.json();
+    for (var n = 0; n < data.meals.length; n++) {
+      categoryArray.push(data.meals[n]);
+
     }
-    printCategory(categoryArray);
+  }
+  printCategory(categoryArray);
 }
 
 
-async function cuisineOptions (){
-  for (var i=0; i < mealCuisineArrayURL.length; i++){
-      const res = await fetch(mealCuisineArrayURL[i])
-      const data = await res.json();
-        for (var n = 0; n < data.meals.length; n++) {
-          cuisineArray.push(data.meals[n]);
-          
-        }
+async function cuisineOptions() {
+  for (var i = 0; i < mealCuisineArrayURL.length; i++) {
+    const res = await fetch(mealCuisineArrayURL[i])
+    const data = await res.json();
+    for (var n = 0; n < data.meals.length; n++) {
+      cuisineArray.push(data.meals[n]);
+
+    }
   }
   printCuisine(cuisineArray);
 }
 
-function printCategory(array){
-  console.log(array)
-  console.log(array.length)
-  for(var i = 0; i < categoryArray.length; i++){
-    console.log(categoryArray[i])
+function printCategory(array) {
+  for (var i = 0; i < categoryArray.length; i++) {
+    
 
     var categoryListEl = document.createElement("option");
     var textnode = document.createTextNode(categoryArray[i].strCategory);
     categoryListEl.appendChild(textnode)
     mealCategoryInputEl.appendChild(categoryListEl)
   }
- 
+
 }
 
-function printCuisine(array){
-  console.log(array)
-  console.log(array.length)
-  for(var i = 0; i < cuisineArray.length; i++){
-    console.log(cuisineArray[i])
+function printCuisine(array) {
+  for (var i = 0; i < cuisineArray.length; i++) {
+    
 
     var cuisineListEl = document.createElement("option");
     //add option value
@@ -349,22 +392,19 @@ function printCuisine(array){
 }
 
 async function cocktailAlcoholOptions() {
-  for (var i=0; i < cocktailAlcoholicArrayURL.length; i++){
-      const res = await fetch(cocktailAlcoholicArrayURL[i])
-      const data = await res.json();
-        for (var n = 0; n < data.drinks.length; n++) {
-          cocktailAlcoholArray.push(data.drinks[n]);
-        }
+  for (var i = 0; i < cocktailAlcoholicArrayURL.length; i++) {
+    const res = await fetch(cocktailAlcoholicArrayURL[i])
+    const data = await res.json();
+    for (var n = 0; n < data.drinks.length; n++) {
+      cocktailAlcoholArray.push(data.drinks[n]);
+    }
   }
   printCocktailAlc(cocktailAlcoholArray);
 }
 
 
-function printCocktailAlc(array){
-  console.log(array)
-  console.log(array.length)
-  for(var i = 0; i < cocktailAlcoholArray.length; i++){
-    console.log(cocktailAlcoholArray[i])
+function printCocktailAlc(array) {
+  for (var i = 0; i < cocktailAlcoholArray.length; i++) {
 
     var cocktailAlcEl = document.createElement("option");
     //add option value
@@ -377,23 +417,20 @@ function printCocktailAlc(array){
 
 
 
-async function cocktailCategoryOptions (){
-  for (var i=0; i < cocktailCategoryArrayURL.length; i++){
-      const res = await fetch(cocktailCategoryArrayURL[i])
-      const data = await res.json();
-        for (var n = 0; n < data.drinks.length; n++) {
-          cocktailCategoryArray.push(data.drinks[n]);
-          
-        }
+async function cocktailCategoryOptions() {
+  for (var i = 0; i < cocktailCategoryArrayURL.length; i++) {
+    const res = await fetch(cocktailCategoryArrayURL[i])
+    const data = await res.json();
+    for (var n = 0; n < data.drinks.length; n++) {
+      cocktailCategoryArray.push(data.drinks[n]);
+
+    }
   }
   printCocktailCategory(cocktailCategoryArray);
 }
 
-function printCocktailCategory(array){
-  console.log(array)
-  console.log(array.length)
-  for(var i = 0; i < cocktailCategoryArray.length; i++){
-    console.log(cocktailCategoryArray[i])
+function printCocktailCategory(array) {
+  for (var i = 0; i < cocktailCategoryArray.length; i++) {
 
     var cocktailCatEl = document.createElement("option");
     //add option value
@@ -407,23 +444,20 @@ function printCocktailCategory(array){
 
 
 
-async function cocktailIngredientOptions(){
-  for (var i=0; i < cocktailIngredientArrayURL.length; i++){
-      const res = await fetch(cocktailIngredientArrayURL[i])
-      const data = await res.json();
-        for (var n = 0; n < data.drinks.length; n++) {
-          cocktailIngredientArray.push(data.drinks[n]);
-          
-        }
+async function cocktailIngredientOptions() {
+  for (var i = 0; i < cocktailIngredientArrayURL.length; i++) {
+    const res = await fetch(cocktailIngredientArrayURL[i])
+    const data = await res.json();
+    for (var n = 0; n < data.drinks.length; n++) {
+      cocktailIngredientArray.push(data.drinks[n]);
+
+    }
   }
   printCocktailIngredient(cocktailIngredientArray);
 }
 
-function printCocktailIngredient(array){
-  console.log(array)
-  console.log(array.length)
-  for(var i = 0; i < cocktailIngredientArray.length; i++){
-    console.log(cocktailIngredientArray[i])
+function printCocktailIngredient(array) {
+  for (var i = 0; i < cocktailIngredientArray.length; i++) {
 
     var cocktailIngredEl = document.createElement("option");
     //add option value
