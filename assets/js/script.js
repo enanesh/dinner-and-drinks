@@ -74,6 +74,15 @@ var mealCuisineInputEl = document.getElementById("meal-cuisine-dropdown");
 var cocktailCategoryInputEl = document.getElementById("cocktail-category-dropdown");
 var cocktailIngredientInputEl = document.getElementById("cocktail-ingredient-dropdown");
 var cocktailAlcoholInputEl = document.getElementById("cocktail-alcoholic-dropdown");
+var mealNameText = document.getElementById("meal-name-text");
+var mealIngredientsText = document.getElementById("meal-ingredients-text");
+var mealRecipeText = document.getElementById("meal-recipe-text");
+var mealImageEl = document.getElementById("meal-image");
+var cocktailNameText = document.getElementById("cocktail-name-text");
+var cocktailIngredientsText = document.getElementById("cocktail-ingredients-list");
+var cocktailGlassText = document.getElementById("cocktail-glass-text");
+var cocktailRecipeText = document.getElementById("cocktail-recipe-text");
+var cocktailImageEl = document.getElementById("cocktail-image");
 
 var mealsArray = [];
 var cocktailsArray = [];
@@ -305,7 +314,7 @@ function printCategory(array){
   for(var i = 0; i < categoryArray.length; i++){
     console.log(categoryArray[i])
 
-    var categoryListEl = document.createElement("li");
+    var categoryListEl = document.createElement("option");
     var textnode = document.createTextNode(categoryArray[i].strCategory);
     categoryListEl.appendChild(textnode)
     mealCategoryInputEl.appendChild(categoryListEl)
