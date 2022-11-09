@@ -241,7 +241,6 @@ storeCocktails();
 
 var categoryArray = [];
 var cuisineArray = [];
-var categoryEl = document.getElementById("category-list");
 var mealCategoryArrayURL = ["https://www.themealdb.com/api/json/v1/1/list.php?c=list"];
 var mealCuisineArrayURL = ["https://www.themealdb.com/api/json/v1/1/list.php?a=list"];
 
