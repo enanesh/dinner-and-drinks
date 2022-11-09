@@ -11,11 +11,7 @@
       integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
       crossorigin="anonymous"
     ></script>
-
-    <link href="./assets/css/style.css" rel="stylesheet">
-
-
-   <!-- <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />  -->
+   <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" /> 
 
 
 </head>
@@ -27,7 +23,7 @@
          <nav class="bg-blue-800 ">
           <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"> 
             <div class="flex h-16 items-center justify-between">
-             <!--this space is for the icon-->
+             <!--this space is for the icon(LOGO)-->
             <a class = "bg-pink-500 text-white px-6 py-2 rounded-md text-sm font-medium">Saved Recipes</a>
             <h1 class="text-3xl font-bold underline">Dinner & Drinks</h1>
             <a class = "bg-pink-500 text-white px-3 py-2 rounded-md text-sm font-medium">Tried & Tested</a>
@@ -43,12 +39,13 @@
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 p-6 justify-content:center ">
 
  <section class ="container">
+        <h2 class="h2">Choose Meal</h2>
 
-        <h2 class="hola">Choose Meal</h2>
+
             <div>
-                <div> 
-                    <p id ="category-input" class="text-center "  >By Category</p>
-                    <select id="meal-ingredient-list" class="flex-col items-center">
+                <div  class="container-menu"> 
+                    <p id ="category-input" class="">By Category</p>
+                    <select id="meal-ingredient-list" class="">
                         <option value="" disabled selected>Select a format...</option>
                         <option value="">text</option>
                         <option value="">text</option>
@@ -57,6 +54,9 @@
                     </select>
                 </div>
                 <div>
+
+
+
                 <p id ="meal-cuisine-header">By Cuisine</p>
                     <select id = "meal-cuisine-dropdown">
                         <option value="" disabled selected>Select a format...</option>
@@ -70,7 +70,7 @@
 
                 <div class="justify-center">
 
-                    <button class="btn ">SEARCH</button>
+                    <button class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ">SEARCH</button>
  
 
                 </div>
@@ -83,7 +83,7 @@
     <!--COCKTAIL SECTION-->
 
     <section class ="container">
-        <h2 class="" >Choose Cocktail</h2>
+        <h2 class="h2" >Choose Cocktail</h2>
             <div>
                 <input id="cocktail-search-by-name" class="search-by-name" type="text" placeholder="Search By Name"/>
             </div>
@@ -135,7 +135,9 @@
                     </select>
                 </div>
                 <div>
-                    <button class="btn">SEARCH</button>
+
+
+                    <button class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">SEARCH</button>
 
                 </div>
 
@@ -229,7 +231,7 @@
 
 
 
-<!-- <script src="https://cdn.tailwindcss.com"></script> -->
+<script src="https://cdn.tailwindcss.com"></script>
 <script src="./assets/js/script.js"></script>
 
 </body>
