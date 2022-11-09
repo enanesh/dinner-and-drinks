@@ -242,9 +242,9 @@ storeCocktails();
 var categoryArray = [];
 var cuisineArray = [];
 var categoryEl = document.getElementById("category-list");
-var cuisineEl =  document.getElementById("cuisine-list");
 var mealCategoryArrayURL = ["https://www.themealdb.com/api/json/v1/1/list.php?c=list"];
 var mealCuisineArrayURL = ["https://www.themealdb.com/api/json/v1/1/list.php?a=list"];
+
 
 
 
@@ -287,7 +287,7 @@ function printCategory(array){
     var categoryListEl = document.createElement("li");
     var textnode = document.createTextNode(categoryArray[i].strCategory);
     categoryListEl.appendChild(textnode)
-    categoryEl.appendChild(categoryListEl)
+    mealCategoryInputEl.appendChild(categoryListEl)
   }
  
 }
@@ -302,6 +302,6 @@ function printCuisine(array){
     //add option value
     var textnode = document.createTextNode(cuisineArray[i].strArea);
     cuisineListEl.appendChild(textnode)
-    cuisineEl.appendChild(cuisineListEl)
+    mealCuisineInputEl.appendChild(cuisineListEl)
   }
 }
