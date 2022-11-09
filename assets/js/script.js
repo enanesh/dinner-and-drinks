@@ -223,3 +223,84 @@ cocktailSearchBtnEl.addEventListener("click", cocktailSearch)
 storeMeals();
 storeCocktails();
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var categoryArray = [];
+var cuisineArray = [];
+var mealCategoryArrayURL = ["https://www.themealdb.com/api/json/v1/1/list.php?c=list"];
+var mealCuisineArrayURL = ["https://www.themealdb.com/api/json/v1/1/list.php?a=list"];
+
+
+
+
+
+
+categoryOptions();
+cuisineOptions();
+
+async function categoryOptions (){
+    for (var i=0; i < mealCategoryArrayURL.length; i++){
+        const res = await fetch(mealCategoryArrayURL[i])
+        const data = await res.json();
+          for (var n = 0; n < data.meals.length; n++) {
+            categoryArray.push(data.meals[n]);
+            
+          }
+    }
+    printCategory(categoryArray);
+}
+
+
+async function cuisineOptions (){
+  for (var i=0; i < mealCuisineArrayURL.length; i++){
+      const res = await fetch(mealCuisineArrayURL[i])
+      const data = await res.json();
+        for (var n = 0; n < data.meals.length; n++) {
+          cuisineArray.push(data.meals[n]);
+          
+        }
+  }
+  printCuisine(cuisineArray);
+}
+
+function printCategory(array){
+  console.log(array)
+  console.log(array.length)
+  for(var i = 0; i < categoryArray.length; i++){
+    console.log(categoryArray[i])
+
+    var categoryListEl = document.createElement("li");
+    var textnode = document.createTextNode(categoryArray[i].strCategory);
+    categoryListEl.appendChild(textnode)
+    mealCategoryInputEl.appendChild(categoryListEl)
+  }
+ 
+}
+
+function printCuisine(array){
+  console.log(array)
+  console.log(array.length)
+  for(var i = 0; i < cuisineArray.length; i++){
+    console.log(cuisineArray[i])
+
+    var cuisineListEl = document.createElement("option");
+    //add option value
+    var textnode = document.createTextNode(cuisineArray[i].strArea);
+    cuisineListEl.appendChild(textnode)
+    mealCuisineInputEl.appendChild(cuisineListEl)
+  }
+}
