@@ -238,11 +238,19 @@ storeCocktails();
 
 
 
+var cocktailCategoryArray = [];
+var cocktailIngredientArray = [];
+var cocktailAlcoholArray = [];
 
 var categoryArray = [];
 var cuisineArray = [];
+
 var mealCategoryArrayURL = ["https://www.themealdb.com/api/json/v1/1/list.php?c=list"];
 var mealCuisineArrayURL = ["https://www.themealdb.com/api/json/v1/1/list.php?a=list"];
+
+var cocktailCategoryArrayURL = ["https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list"];
+var cocktailAlcoholicArrayURL = ["https://www.thecocktaildb.com/api/json/v1/1/list.php?a=list"];
+var cocktailIngredientArrayURL = ["https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list"]; 
 
 
 
@@ -251,6 +259,10 @@ var mealCuisineArrayURL = ["https://www.themealdb.com/api/json/v1/1/list.php?a=l
 
 categoryOptions();
 cuisineOptions();
+
+cocktailCategoryOptions();
+cocktailIngredientOptions();
+cocktailAlcoholOptions();
 
 async function categoryOptions (){
     for (var i=0; i < mealCategoryArrayURL.length; i++){
@@ -283,7 +295,7 @@ function printCategory(array){
   for(var i = 0; i < categoryArray.length; i++){
     console.log(categoryArray[i])
 
-    var categoryListEl = document.createElement("li");
+    var categoryListEl = document.createElement("option");
     var textnode = document.createTextNode(categoryArray[i].strCategory);
     categoryListEl.appendChild(textnode)
     mealCategoryInputEl.appendChild(categoryListEl)
@@ -304,3 +316,91 @@ function printCuisine(array){
     mealCuisineInputEl.appendChild(cuisineListEl)
   }
 }
+
+async function cocktailAlcoholOptions() {
+  for (var i=0; i < cocktailAlcoholicArrayURL.length; i++){
+      const res = await fetch(cocktailAlcoholicArrayURL[i])
+      const data = await res.json();
+        for (var n = 0; n < data.drinks.length; n++) {
+          cocktailAlcoholArray.push(data.drinks[n]);
+        }
+  }
+  printCocktailAlc(cocktailAlcoholArray);
+}
+
+
+function printCocktailAlc(array){
+  console.log(array)
+  console.log(array.length)
+  for(var i = 0; i < cocktailAlcoholArray.length; i++){
+    console.log(cocktailAlcoholArray[i])
+
+    var cocktailAlcEl = document.createElement("option");
+    //add option value
+    var textnode = document.createTextNode(cocktailAlcoholArray[i].strAlcoholic);
+    cocktailAlcEl.appendChild(textnode)
+    cocktailAlcoholInputEl.appendChild(cocktailAlcEl)
+  }
+}
+
+
+
+
+async function cocktailCategoryOptions (){
+  for (var i=0; i < cocktailCategoryArrayURL.length; i++){
+      const res = await fetch(cocktailCategoryArrayURL[i])
+      const data = await res.json();
+        for (var n = 0; n < data.drinks.length; n++) {
+          cocktailCategoryArray.push(data.drinks[n]);
+          
+        }
+  }
+  printCocktailCategory(cocktailCategoryArray);
+}
+
+function printCocktailCategory(array){
+  console.log(array)
+  console.log(array.length)
+  for(var i = 0; i < cocktailCategoryArray.length; i++){
+    console.log(cocktailCategoryArray[i])
+
+    var cocktailCatEl = document.createElement("option");
+    //add option value
+    var textnode = document.createTextNode(cocktailCategoryArray[i].strCategory);
+    cocktailCatEl.appendChild(textnode)
+    cocktailCategoryInputEl.appendChild(cocktailCatEl)
+  }
+}
+
+
+
+
+
+async function cocktailIngredientOptions(){
+  for (var i=0; i < cocktailIngredientArrayURL.length; i++){
+      const res = await fetch(cocktailIngredientArrayURL[i])
+      const data = await res.json();
+        for (var n = 0; n < data.drinks.length; n++) {
+          cocktailIngredientArray.push(data.drinks[n]);
+          
+        }
+  }
+  printCocktailIngredient(cocktailIngredientArray);
+}
+
+function printCocktailIngredient(array){
+  console.log(array)
+  console.log(array.length)
+  for(var i = 0; i < cocktailIngredientArray.length; i++){
+    console.log(cocktailIngredientArray[i])
+
+    var cocktailIngredEl = document.createElement("option");
+    //add option value
+    var textnode = document.createTextNode(cocktailIngredientArray[i].strIngredient1);
+    cocktailIngredEl.appendChild(textnode)
+    cocktailIngredientInputEl.appendChild(cocktailIngredEl)
+  }
+}
+
+
+
