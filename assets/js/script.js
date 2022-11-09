@@ -268,7 +268,9 @@ function displayMealResult(ev) {
     ev.strMeasure16, ev.strMeasure17, ev.strMeasure18, ev.strMeasure19,
     ev.strMeasure20);
 
-  if (mealRecipeText.textContent === "") {
+    if (mealRecipeText.textContent !== "") {
+      mealIngredientsText.innerHTML = "";
+    }
     for (i = 0; i < ingredientList.length; i++) {
       if (![ingredientList[i], measurementList[i]].includes("") &&
         ![ingredientList[i], measurementList[i]].includes(null)) {
@@ -277,17 +279,6 @@ function displayMealResult(ev) {
         mealIngredientsText.appendChild(listItem);
       }
     }
-  } else if (mealRecipeText.textContent !== "") {
-    mealIngredientsText.innerHTML = "";
-    for (i = 0; i < ingredientList.length; i++) {
-      if (![ingredientList[i], measurementList[i]].includes("") &&
-        ![ingredientList[i], measurementList[i]].includes(null)) {
-        var listItem = document.createElement("li");
-        listItem.textContent = ingredientList[i] + ": " + measurementList[i];
-        mealIngredientsText.appendChild(listItem);
-      }
-    }
-  }
   mealRecipeText.textContent = ev.strInstructions;
   mealImageEl.src = ev.strMealThumb;
   mealImageEl.alt = ev.strMeal;
@@ -295,7 +286,40 @@ function displayMealResult(ev) {
 
 function displayCocktailResult(ev) {
   console.log(ev);
+  if (ev === undefined) {
+    cocktailErrorText.textContent = "Sorry, no meals match your filters, please try again.";
+  } else {
+    cocktailErrorText.textContent = "";
+  }
   // hide the search page, show the search results
+  cocktailNameText.textContent = ev.strDrink;
+
+  var ingredientList = [];
+  ingredientList.push(ev.strIngredient1, ev.strIngredient2, ev.strIngredient3,
+    ev.strIngredient4, ev.strIngredient5, ev.strIngredient6, ev.strIngredient7,
+    ev.strIngredient8, ev.strIngredient9, ev.strIngredient10, ev.strIngredient11,
+    ev.strIngredient12, ev.strIngredient13, ev.strIngredient14, ev.strIngredient15);
+  var measurementList = [];
+  measurementList.push(ev.strMeasure1, ev.strMeasure2, ev.strMeasure3,
+    ev.strMeasure4, ev.strMeasure5, ev.strMeasure6, ev.strMeasure7,
+    ev.strMeasure8, ev.strMeasure9, ev.strMeasure10, ev.strMeasure11,
+    ev.strMeasure12, ev.strMeasure13, ev.strMeasure14, ev.strMeasure15);
+
+  if (cocktailRecipeText.textContent !== "") {
+    cocktailIngredientsText.innerHTML = "";
+  }
+  for (i = 0; i < ingredientList.length; i++) {
+    if (![ingredientList[i], measurementList[i]].includes("") &&
+      ![ingredientList[i], measurementList[i]].includes(null)) {
+      var listItem = document.createElement("li");
+      listItem.textContent = ingredientList[i] + ": " + measurementList[i];
+      cocktailIngredientsText.appendChild(listItem);
+    }
+  }
+  cocktailRecipeText.textContent = ev.strInstructions;
+  cocktailGlassText.textContent = "Glass: " + ev.strGlass;
+  cocktailImageEl.src = ev.strDrinkThumb;
+  cocktailImageEl.alt = ev.strDrink;
 }
 
 storeMeals();
@@ -369,7 +393,7 @@ async function cuisineOptions() {
 
 function printCategory(array) {
   for (var i = 0; i < categoryArray.length; i++) {
-    
+
 
     var categoryListEl = document.createElement("option");
     var textnode = document.createTextNode(categoryArray[i].strCategory);
@@ -381,7 +405,7 @@ function printCategory(array) {
 
 function printCuisine(array) {
   for (var i = 0; i < cuisineArray.length; i++) {
-    
+
 
     var cuisineListEl = document.createElement("option");
     //add option value
