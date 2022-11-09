@@ -111,7 +111,8 @@ function storeCocktails() {
 function mealSearch() {
   if (!mealCategoryInputEl.value && !mealCuisineInputEl.value) {
     var randomSearch = Math.floor(Math.random() * mealsArray.length);
-    console.log(mealsArray[randomSearch])
+    var mealResult = (mealsArray[randomSearch]);
+    displayMealResult(mealResult);
   } else if (mealCategoryInputEl.value && !mealCuisineInputEl.value) {
     var categoryArray = [];
     for (i = 0; i < mealsArray.length; i++) {
@@ -120,7 +121,8 @@ function mealSearch() {
       }
     }
     var categorySearch = Math.floor(Math.random() * categoryArray.length);
-    console.log(categoryArray[categorySearch]);
+    var mealResult = (categoryArray[categorySearch]);
+    displayMealResult(mealResult);
   } else if (!mealCategoryInputEl.value && mealCuisineInputEl.value) {
     var cuisineArray = [];
     for (i = 0; i < mealsArray.length; i++) {
@@ -129,7 +131,8 @@ function mealSearch() {
       }
     }
     var cuisineSearch = Math.floor(Math.random() * cuisineArray.length);
-    console.log(cuisineArray[cuisineSearch]);
+    var mealResult = (cuisineArray[cuisineSearch]);
+    displayMealResult(mealResult);
   } else if (mealCategoryInputEl.value && mealCuisineInputEl.value) {
     var categoryCuisineArray = [];
     for (i = 0; i < mealsArray.length; i++) {
@@ -139,7 +142,8 @@ function mealSearch() {
       }
     }
     var categoryCuisineSearch = Math.floor(Math.random() * categoryCuisineArray.length);
-    console.log(categoryCuisineArray[categoryCuisineSearch])
+    var mealResult = (categoryCuisineArray[categoryCuisineSearch]);
+    displayMealResult(mealResult);
   }
 }
 mealSearchBtnEl.addEventListener("click", mealSearch);
@@ -147,7 +151,8 @@ mealSearchBtnEl.addEventListener("click", mealSearch);
 function cocktailSearch() {
   if (!cocktailCategoryInputEl && !cocktailIngredientInputEl && !cocktailAlcoholInputEl) {
     var randomSearch = Math.floor(Math.random() * cocktailsArray.length);
-    console.log(cocktailsArray[randomSearch])
+    var cocktailResult = (cocktailsArray[randomSearch])
+    displayCocktailResult(cocktailResult);
   } else if (cocktailCategoryInputEl && !cocktailIngredientInputEl && !cocktailAlcoholInputEl) {
     var categoryArray = [];
     for (i = 0; i < cocktailsArray.length; i++) {
@@ -156,7 +161,8 @@ function cocktailSearch() {
       }
     }
     var categorySearch = Math.floor(Math.random() * categoryArray.length);
-    console.log(categoryArray[categorySearch]);
+    var cocktailResult = (categoryArray[categorySearch]);
+    displayCocktailResult(cocktailResult);
   } else if (!cocktailCategoryInputEl && cocktailIngredientInputEl && !cocktailAlcoholInputEl) {
     var ingredientArray = [];
     for (i = 0; i < cocktailsArray.length; i++) {
@@ -165,7 +171,8 @@ function cocktailSearch() {
       }
     }
     var ingredientSearch = Math.floor(Math.random() * ingredientArray.length);
-    console.log(ingredientArray[ingredientSearch]);
+    var cocktailResult = (ingredientArray[ingredientSearch]);
+    displayCocktailResult(cocktailResult);
   } else if (!cocktailCategoryInputEl && !cocktailIngredientInputEl && cocktailAlcoholInputEl) {
     var alcoholArray = [];
     for (i = 0; i < cocktailsArray.length; i++) {
@@ -174,7 +181,8 @@ function cocktailSearch() {
       }
     }
     var alcoholSearch = Math.floor(Math.random() * alcoholArray.length);
-    console.log(alcoholArray[alcoholSearch]);
+    var cocktailResult = (alcoholArray[alcoholSearch]);
+    displayCocktailResult(cocktailResult);
   } else if (cocktailCategoryInputEl && cocktailIngredientInputEl && !cocktailAlcoholInputEl) {
     var categoryIngredientArray = [];
     for (i = 0; i < cocktailsArray.length; i++) {
@@ -184,7 +192,8 @@ function cocktailSearch() {
       }
     }
     var categoryIngredientSearch = Math.floor(Math.random() * categoryIngredientArray.length);
-    console.log(categoryIngredientArray[categoryIngredientSearch]);
+    var cocktailResult = (categoryIngredientArray[categoryIngredientSearch]);
+    displayCocktailResult(cocktailResult);
   } else if (cocktailCategoryInputEl && !cocktailIngredientInputEl && cocktailAlcoholInputEl) {
     var categoryAlcoholArray = [];
     for (i = 0; i < cocktailsArray.length; i++) {
@@ -194,7 +203,8 @@ function cocktailSearch() {
       }
     }
     var categoryAlcoholSearch = Math.floor(Math.random() * categoryAlcoholArray.length);
-    console.log(categoryAlcoholArray[categoryAlcoholSearch]);
+    var cocktailResult = (categoryAlcoholArray[categoryAlcoholSearch]);
+    displayCocktailResult(cocktailResult);
   } else if (!cocktailCategoryInputEl && cocktailIngredientInputEl && cocktailAlcoholInputEl) {
     var ingredientAlcoholArray = [];
     for (i = 0; i < cocktailsArray.length; i++) {
@@ -204,7 +214,8 @@ function cocktailSearch() {
       }
     }
     var ingredientAlcoholSearch = Math.floor(Math.random() * ingredientAlcoholArray.length);
-    console.log(ingredientAlcoholArray[ingredientAlcoholSearch]);
+    var cocktailResult = (ingredientAlcoholArray[ingredientAlcoholSearch]);
+    displayCocktailResult(cocktailResult);
   } else if (cocktailCategoryInputEl && cocktailIngredientInputEl && cocktailAlcoholInputEl) {
     var allFiltersArray = [];
     for (i = 0; i < cocktailsArray.length; i++) {
@@ -215,10 +226,21 @@ function cocktailSearch() {
       }
     }
     var allFiltersSearch = Math.floor(Math.random() * allFiltersArray.length);
-    console.log(allFiltersArray[allFiltersSearch]);
+    var cocktailResult = (allFiltersArray[allFiltersSearch]);
+    displayCocktailResult(cocktailResult);
   }
 }
 cocktailSearchBtnEl.addEventListener("click", cocktailSearch)
+
+function displayMealResult(ev) {
+  console.log(ev);
+  // hide the search page, show the search results
+}
+
+function displayCocktailResult(ev) {
+  console.log(ev);
+  // hide the search page, show the search results
+}
 
 storeMeals();
 storeCocktails();
