@@ -16,19 +16,19 @@
 <body>
 
   <!--NAV BAR-->
-  <header class="min-h-full">
-    <nav class="bg-blue-800">
-      <div class="mx-auto max-w-10xl px-4 sm:px-6 lg:px-8">
-        <div class="flex h-16 items-center justify-between">
-          <!--this space is for the icon (logo)-->
-          <a class="bg-pink-500 text-white px-3 py-2 rounded-md text-sm font-medium">Saved Recipes</a>
-          <h1 class="text-3xl font-bold underline">Dinner & Drinks</h1>
-          <a class="bg-pink-500 text-white px-3 py-2 rounded-md text-sm font-medium">Tried & Tested</a>
 
-        </div>
-      </div>
-    </nav>
-  </header>
+    <header class="min-h-full">
+         <nav class="bg-blue-800">
+          <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"> 
+            <div class="flex h-16 items-center justify-between">
+             <!--this space is for the icon-->
+            <button id = "pinned-recipes" class = "bg-pink-500 text-white px-3 py-2 rounded-md text-sm font-medium">Pinned Recipes</button>
+            <h1 class="text-3xl font-bold underline">Dinner & Drinks</h1>
+          
+            </div>  
+            </div>
+        </nav>
+      </header>
 
 
   <!-- START CHOICE MEAL  -->
@@ -71,6 +71,7 @@
           <p id="meal-error-text"></p>
         </div>
       </div>
+
     </section>
 
 
@@ -78,7 +79,9 @@
 
     <!--COCKTAIL SECTION-->
 
+
     <!--Rigth container frame-1-->
+
     <section class="container">
       <h2 class="h2">Choose Cocktail</h2>
       <div>
@@ -118,11 +121,10 @@
           <p id="cocktail-error-text"></p>
         </div>
       </div>
+
     </section>
   </div>
   <!--END SHOW MEAL SECTION -->
-
-
 
 
 
@@ -136,7 +138,10 @@
       <ul id="meal-ingredients-list" class="list-disc list-disc list-inside indent-20px" ></ul>
       <p id="meal-recipe-text" class="recipe-inst"></p>
       <img id="meal-image" src="" alt=""  class="recipe-img">
+      <button id = "pin-to-save-meal">Pin Meal</button>
       </div>
+
+
     </section>
 
 
@@ -148,6 +153,7 @@
       <p id="cocktail-glass-text" class="recipe-inst"></p>
       <p id="cocktail-recipe-text" class="recipe-glass"></p>
       <img id="cocktail-image" src="" alt="" class="recipe-img">
+       <button id = "pin-to-save-cocktail">Pin Cocktail</button>
       </div>    
     </section>
   </section>
@@ -156,34 +162,25 @@
 
 
 
-  <!-- START - SHOW SAVED RECIPES -->
-  <section id="all-saved-recipes-section">
-    <ul id="all-saved-recipes-list" >
-      <li class="all-saved-recipes-list-item">saved recipe 1</li>
-      <li class="all-saved-recipes-list-item">saved recipe 2</li>
-      <li class="all-saved-recipes-list-item">saved recipe 3</li>
+  <!-- start - show saved recipes -->
+<section id = "display-pinned-recipes-section">
+    <ul id = "list-all-pinned-recipes">
     </ul>
-  </section>
-  <!-- END - SHOW SAVED RECIPES -->
+</section>
+<!-- end - show saved recipes -->
 
-  <!-- START - CLICK INTO RECIPE -->
-  <section id="display-saved-recipe-section">
-    <h3 id="display-saved-recipe-title">Saved Recipe that User Clicked Back Into</h3>
-    <p id="display-saved-recipe">recipe here... likely need to add more elements</p>
-  </section>
-  <!-- END - SHOW SAVED RECIPES -->
+<!-- start - click into recipe -->
+<section id = "display-saved-recipe-section">
+   <h3 id = "display-saved-recipe-title">Saved Recipe that User Clicked Back Into</h3>
+   <p id = "display-saved-recipe">recipe here... likely need to add more elements</p>
+</section>
+<!-- end - show saved recipes -->
 
 
-  <!-- START - SHOW REVIEWS-->
-  <section id="review-section">
-    <h3 id="review-header">Show Reviews</h3>
-    <ul id="list reviews">
-      <li class="review-recipe">review 1 </li>
-      <li class="review-recipe"> review 2</li>
-      <li class="review-recipe">review 3</li>
-    </ul>
-  </section>
-  <!-- END - SHOW SAVED RECIPES  -->
+      <h2 id="meal-name-text"></h2>
+      <ul id="meal-ingredients-list"></ul>
+      <p id="meal-recipe-text"></p>
+      <img id="meal-image" src="" alt="">
 
 
 

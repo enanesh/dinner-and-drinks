@@ -74,6 +74,11 @@ var mealCuisineInputEl = document.getElementById("meal-cuisine-dropdown");
 var cocktailCategoryInputEl = document.getElementById("cocktail-category-dropdown");
 var cocktailIngredientInputEl = document.getElementById("cocktail-ingredient-dropdown");
 var cocktailAlcoholInputEl = document.getElementById("cocktail-alcoholic-dropdown");
+var pinnedRecipesEl = document.getElementById("pinned-recipes");
+var pinToSaveRecipeEl = document.getElementById("pin-to-save-meal");
+var pinToSaveCocktailEl = document.getElementById("pin-to-save-cocktail");
+var listPinnedRecipesEl = document.getElementById("list-all-pinned-recipes")
+var recipeNameForArrayStorage = document.querySelector(".name-for-array")
 var mealNameText = document.getElementById("meal-name-text");
 var mealIngredientsText = document.getElementById("meal-ingredients-list");
 var mealRecipeText = document.getElementById("meal-recipe-text");
@@ -85,6 +90,8 @@ var cocktailGlassText = document.getElementById("cocktail-glass-text");
 var cocktailRecipeText = document.getElementById("cocktail-recipe-text");
 var cocktailImageEl = document.getElementById("cocktail-image");
 var cocktailErrorText = document.getElementById("cocktail-error-text");
+
+var pinnedRecipeArray = JSON.parse(localStorage.getItem("pinned-recipes"))||[];
 
 var mealsArray = [];
 var cocktailsArray = [];
@@ -101,7 +108,7 @@ function storeMeals() {
         }
       })
   }
-  console.log(mealsArray);
+  //console.log(mealsArray);
 }
 
 function storeCocktails() {
@@ -116,14 +123,16 @@ function storeCocktails() {
         }
       })
   }
-  console.log(cocktailsArray);
+  //console.log(cocktailsArray);
 }
 
 function mealSearch() {
   if (!mealCategoryInputEl.value && !mealCuisineInputEl.value) {
     var randomSearch = Math.floor(Math.random() * mealsArray.length);
+
     var mealResult = (mealsArray[randomSearch]);
     displayMealResult(mealResult);
+
   } else if (mealCategoryInputEl.value && !mealCuisineInputEl.value) {
     var categoryArray = [];
     for (i = 0; i < mealsArray.length; i++) {
@@ -132,8 +141,10 @@ function mealSearch() {
       }
     }
     var categorySearch = Math.floor(Math.random() * categoryArray.length);
+
     var mealResult = (categoryArray[categorySearch]);
     displayMealResult(mealResult);
+
   } else if (!mealCategoryInputEl.value && mealCuisineInputEl.value) {
     var cuisineArray = [];
     for (i = 0; i < mealsArray.length; i++) {
@@ -141,9 +152,11 @@ function mealSearch() {
         cuisineArray.push(mealsArray[i]);
       }
     }
+
     var cuisineSearch = Math.floor(Math.random() * cuisineArray.length);
     var mealResult = (cuisineArray[cuisineSearch]);
     displayMealResult(mealResult);
+
   } else if (mealCategoryInputEl.value && mealCuisineInputEl.value) {
     var categoryCuisineArray = [];
     for (i = 0; i < mealsArray.length; i++) {
@@ -153,6 +166,7 @@ function mealSearch() {
       }
     }
     var categoryCuisineSearch = Math.floor(Math.random() * categoryCuisineArray.length);
+    //(categoryCuisineArray[categoryCuisineSearch])
     var mealResult = (categoryCuisineArray[categoryCuisineSearch]);
     displayMealResult(mealResult);
   }
@@ -162,8 +176,10 @@ mealSearchBtnEl.addEventListener("click", mealSearch);
 function cocktailSearch() {
   if (!cocktailCategoryInputEl && !cocktailIngredientInputEl && !cocktailAlcoholInputEl) {
     var randomSearch = Math.floor(Math.random() * cocktailsArray.length);
+
     var cocktailResult = (cocktailsArray[randomSearch])
     displayCocktailResult(cocktailResult);
+
   } else if (cocktailCategoryInputEl && !cocktailIngredientInputEl && !cocktailAlcoholInputEl) {
     var categoryArray = [];
     for (i = 0; i < cocktailsArray.length; i++) {
@@ -182,8 +198,10 @@ function cocktailSearch() {
       }
     }
     var ingredientSearch = Math.floor(Math.random() * ingredientArray.length);
+
     var cocktailResult = (ingredientArray[ingredientSearch]);
     displayCocktailResult(cocktailResult);
+
   } else if (!cocktailCategoryInputEl && !cocktailIngredientInputEl && cocktailAlcoholInputEl) {
     var alcoholArray = [];
     for (i = 0; i < cocktailsArray.length; i++) {
@@ -194,6 +212,7 @@ function cocktailSearch() {
     var alcoholSearch = Math.floor(Math.random() * alcoholArray.length);
     var cocktailResult = (alcoholArray[alcoholSearch]);
     displayCocktailResult(cocktailResult);
+
   } else if (cocktailCategoryInputEl && cocktailIngredientInputEl && !cocktailAlcoholInputEl) {
     var categoryIngredientArray = [];
     for (i = 0; i < cocktailsArray.length; i++) {
@@ -203,6 +222,7 @@ function cocktailSearch() {
       }
     }
     var categoryIngredientSearch = Math.floor(Math.random() * categoryIngredientArray.length);
+    //console.log(categoryIngredientArray[categoryIngredientSearch]);
     var cocktailResult = (categoryIngredientArray[categoryIngredientSearch]);
     displayCocktailResult(cocktailResult);
   } else if (cocktailCategoryInputEl && !cocktailIngredientInputEl && cocktailAlcoholInputEl) {
@@ -227,6 +247,7 @@ function cocktailSearch() {
     var ingredientAlcoholSearch = Math.floor(Math.random() * ingredientAlcoholArray.length);
     var cocktailResult = (ingredientAlcoholArray[ingredientAlcoholSearch]);
     displayCocktailResult(cocktailResult);
+
   } else if (cocktailCategoryInputEl && cocktailIngredientInputEl && cocktailAlcoholInputEl) {
     var allFiltersArray = [];
     for (i = 0; i < cocktailsArray.length; i++) {
@@ -237,8 +258,10 @@ function cocktailSearch() {
       }
     }
     var allFiltersSearch = Math.floor(Math.random() * allFiltersArray.length);
+
     var cocktailResult = (allFiltersArray[allFiltersSearch]);
     displayCocktailResult(cocktailResult);
+
   }
 }
 cocktailSearchBtnEl.addEventListener("click", cocktailSearch)
@@ -294,7 +317,9 @@ function displayCocktailResult(ev) {
 
   
   // hide the search page, show the search results
-  cocktailNameText.textContent = ev.strDrink;
+  
+  
+  Text.textContent = ev.strDrink;
 
   var ingredientList = [];
   ingredientList.push(ev.strIngredient1, ev.strIngredient2, ev.strIngredient3,
@@ -329,18 +354,8 @@ storeCocktails();
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+storeMeals();
+storeCocktails();
 
 var cocktailCategoryArray = [];
 var cocktailIngredientArray = [];
@@ -355,11 +370,6 @@ var mealCuisineArrayURL = ["https://www.themealdb.com/api/json/v1/1/list.php?a=l
 var cocktailCategoryArrayURL = ["https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list"];
 var cocktailAlcoholicArrayURL = ["https://www.thecocktaildb.com/api/json/v1/1/list.php?a=list"];
 var cocktailIngredientArrayURL = ["https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list"];
-
-
-
-
-
 
 categoryOptions();
 cuisineOptions();
@@ -381,6 +391,16 @@ async function categoryOptions() {
 }
 
 
+async function cuisineOptions (){
+  for (var i=0; i < mealCuisineArrayURL.length; i++){
+      const res = await fetch(mealCuisineArrayURL[i])
+      const data = await res.json();
+        for (var n = 0; n < data.meals.length; n++) {
+          cuisineArray.push(data.meals[n]);
+          
+        }
+
+
 async function cuisineOptions() {
   for (var i = 0; i < mealCuisineArrayURL.length; i++) {
     const res = await fetch(mealCuisineArrayURL[i])
@@ -389,12 +409,18 @@ async function cuisineOptions() {
       cuisineArray.push(data.meals[n]);
 
     }
+
   }
   printCuisine(cuisineArray);
 }
 
+function printCategory(array){
+  for(var i = 0; i < categoryArray.length; i++){
+    //console.log(categoryArray[i])
+
 function printCategory(array) {
   for (var i = 0; i < categoryArray.length; i++) {
+
 
 
     var categoryListEl = document.createElement("option");
@@ -405,9 +431,13 @@ function printCategory(array) {
 
 }
 
+
+function printCuisine(array){
+  for(var i = 0; i < cuisineArray.length; i++){
+    //console.log(cuisineArray[i])
+
 function printCuisine(array) {
   for (var i = 0; i < cuisineArray.length; i++) {
-
 
     var cuisineListEl = document.createElement("option");
     //add option value
@@ -429,8 +459,14 @@ async function cocktailAlcoholOptions() {
 }
 
 
+function printCocktailAlc(array){
+  for(var i = 0; i < cocktailAlcoholArray.length; i++){
+    //console.log(cocktailAlcoholArray[i])
+
+
 function printCocktailAlc(array) {
   for (var i = 0; i < cocktailAlcoholArray.length; i++) {
+
 
     var cocktailAlcEl = document.createElement("option");
     //add option value
@@ -439,6 +475,15 @@ function printCocktailAlc(array) {
     cocktailAlcoholInputEl.appendChild(cocktailAlcEl)
   }
 }
+
+async function cocktailCategoryOptions (){
+  for (var i=0; i < cocktailCategoryArrayURL.length; i++){
+      const res = await fetch(cocktailCategoryArrayURL[i])
+      const data = await res.json();
+        for (var n = 0; n < data.drinks.length; n++) {
+          cocktailCategoryArray.push(data.drinks[n]);
+          
+        }
 
 
 
@@ -451,12 +496,19 @@ async function cocktailCategoryOptions() {
       cocktailCategoryArray.push(data.drinks[n]);
 
     }
+
   }
   printCocktailCategory(cocktailCategoryArray);
 }
 
+
+function printCocktailCategory(array){
+  for(var i = 0; i < cocktailCategoryArray.length; i++){
+    //console.log(cocktailCategoryArray[i])
+
 function printCocktailCategory(array) {
   for (var i = 0; i < cocktailCategoryArray.length; i++) {
+
 
     var cocktailCatEl = document.createElement("option");
     //add option value
@@ -465,6 +517,15 @@ function printCocktailCategory(array) {
     cocktailCategoryInputEl.appendChild(cocktailCatEl)
   }
 }
+
+async function cocktailIngredientOptions(){
+  for (var i=0; i < cocktailIngredientArrayURL.length; i++){
+      const res = await fetch(cocktailIngredientArrayURL[i])
+      const data = await res.json();
+        for (var n = 0; n < data.drinks.length; n++) {
+          cocktailIngredientArray.push(data.drinks[n]);
+          
+        }
 
 
 
@@ -478,9 +539,15 @@ async function cocktailIngredientOptions() {
       cocktailIngredientArray.push(data.drinks[n]);
 
     }
+
   }
   printCocktailIngredient(cocktailIngredientArray);
 }
+
+
+function printCocktailIngredient(array){
+  for(var i = 0; i < cocktailIngredientArray.length; i++){
+    //(cocktailIngredientArray[i])
 
 function printCocktailIngredient(array) {
   for (var i = 0; i < cocktailIngredientArray.length; i++) {
@@ -494,4 +561,74 @@ function printCocktailIngredient(array) {
 }
 
 
+pinnedRecipesEl.addEventListener("click", function(event){
+  event.preventDefault();
+  printPinnedRecipes();
+  //console.log("clicked on pinned recipes buttons")
+})
 
+
+function printPinnedRecipes(){
+  //hide all other elements
+  //show pinned element
+  //console.log(pinnedRecipeArray.length)
+ // console.log(pinnedRecipeArray)
+  
+  if (pinnedRecipeArray.length >= 1){
+    for (var i=0; i<pinnedRecipeArray.length ; i++){
+     //console.log(pinnedRecipeArray[i]);
+     var singlePinnedEl = document.createElement("li");
+     var textnode = document.createTextNode(pinnedRecipeArray[i])
+     console.log(textnode)
+     singlePinnedEl.appendChild(textnode);
+     listPinnedRecipesEl.appendChild(singlePinnedEl);
+     }
+  }
+  else{
+    //create module to alert no elements 
+    //in meantime...
+    alert("No Saved Recipes");
+  }  
+}
+
+
+//listen for button click when user wants to pin a specific recipe
+pinToSaveRecipeEl.addEventListener("click", function(event){
+  event.preventDefault();
+  //console.log("button press meal")
+  storePinnedMeal();
+})
+
+pinToSaveCocktailEl.addEventListener("click", function(event){
+  event.preventDefault();
+  //console.log("button press cocktail")
+  storePinnedCocktail();
+})
+
+
+function storePinnedMeal(){
+  //jquery setup right now.  need to change to vanilla js
+  var recipeName = mealNameText.textContent;
+  //console.log (recipeName)
+  pinnedRecipeArray.push(recipeName);
+  localStorage.setItem("pinned-recipes",JSON.stringify(pinnedRecipeArray));
+}
+
+
+function storePinnedCocktail(){
+  //jquery setup right now.  need to change to vanilla js
+  var recipeName = cocktailNameText.textContent;
+  //console.log (recipeName)
+  pinnedRecipeArray.push(recipeName);
+  localStorage.setItem("pinned-recipes",JSON.stringify(pinnedRecipeArray));
+}
+
+
+//if we want to add an option for users to remove local storage pins
+//function removeItem(){
+ // for (var i = 0; i < pinnedRecipeArray.length; i++){
+
+   // pinnedRecipeArray.remove(i);
+ // }
+
+//}
