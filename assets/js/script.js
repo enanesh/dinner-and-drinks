@@ -366,15 +366,6 @@ async function categoryOptions() {
 }
 
 
-async function cuisineOptions (){
-  for (var i=0; i < mealCuisineArrayURL.length; i++){
-      const res = await fetch(mealCuisineArrayURL[i])
-      const data = await res.json();
-        for (var n = 0; n < data.meals.length; n++) {
-          cuisineArray.push(data.meals[n]);
-          
-        }
-
 
 async function cuisineOptions() {
   for (var i = 0; i < mealCuisineArrayURL.length; i++) {
@@ -389,15 +380,9 @@ async function cuisineOptions() {
   printCuisine(cuisineArray);
 }
 
-function printCategory(array){
-  for(var i = 0; i < categoryArray.length; i++){
-    //console.log(categoryArray[i])
 
 function printCategory(array) {
   for (var i = 0; i < categoryArray.length; i++) {
-
-
-
     var categoryListEl = document.createElement("option");
     var textnode = document.createTextNode(categoryArray[i].strCategory);
     categoryListEl.appendChild(textnode)
@@ -405,11 +390,6 @@ function printCategory(array) {
   }
 
 }
-
-
-function printCuisine(array){
-  for(var i = 0; i < cuisineArray.length; i++){
-    //console.log(cuisineArray[i])
 
 function printCuisine(array) {
   for (var i = 0; i < cuisineArray.length; i++) {
@@ -433,12 +413,6 @@ async function cocktailAlcoholOptions() {
   printCocktailAlc(cocktailAlcoholArray);
 }
 
-
-function printCocktailAlc(array){
-  for(var i = 0; i < cocktailAlcoholArray.length; i++){
-    //console.log(cocktailAlcoholArray[i])
-
-
 function printCocktailAlc(array) {
   for (var i = 0; i < cocktailAlcoholArray.length; i++) {
 
@@ -450,18 +424,6 @@ function printCocktailAlc(array) {
     cocktailAlcoholInputEl.appendChild(cocktailAlcEl)
   }
 }
-
-async function cocktailCategoryOptions (){
-  for (var i=0; i < cocktailCategoryArrayURL.length; i++){
-      const res = await fetch(cocktailCategoryArrayURL[i])
-      const data = await res.json();
-        for (var n = 0; n < data.drinks.length; n++) {
-          cocktailCategoryArray.push(data.drinks[n]);
-          
-        }
-
-
-
 
 async function cocktailCategoryOptions() {
   for (var i = 0; i < cocktailCategoryArrayURL.length; i++) {
@@ -476,11 +438,6 @@ async function cocktailCategoryOptions() {
   printCocktailCategory(cocktailCategoryArray);
 }
 
-
-function printCocktailCategory(array){
-  for(var i = 0; i < cocktailCategoryArray.length; i++){
-    //console.log(cocktailCategoryArray[i])
-
 function printCocktailCategory(array) {
   for (var i = 0; i < cocktailCategoryArray.length; i++) {
 
@@ -492,19 +449,6 @@ function printCocktailCategory(array) {
     cocktailCategoryInputEl.appendChild(cocktailCatEl)
   }
 }
-
-async function cocktailIngredientOptions(){
-  for (var i=0; i < cocktailIngredientArrayURL.length; i++){
-      const res = await fetch(cocktailIngredientArrayURL[i])
-      const data = await res.json();
-        for (var n = 0; n < data.drinks.length; n++) {
-          cocktailIngredientArray.push(data.drinks[n]);
-          
-        }
-
-
-
-
 
 async function cocktailIngredientOptions() {
   for (var i = 0; i < cocktailIngredientArrayURL.length; i++) {
@@ -519,10 +463,6 @@ async function cocktailIngredientOptions() {
   printCocktailIngredient(cocktailIngredientArray);
 }
 
-
-function printCocktailIngredient(array){
-  for(var i = 0; i < cocktailIngredientArray.length; i++){
-    //(cocktailIngredientArray[i])
 
 function printCocktailIngredient(array) {
   for (var i = 0; i < cocktailIngredientArray.length; i++) {
