@@ -18,9 +18,9 @@
   <!--NAV BAR-->
   <header class="min-h-full">
     <nav class="bg-blue-800">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-10xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 items-center justify-between">
-          <!--this space is for the icon-->
+          <!--this space is for the icon (logo)-->
           <a class="bg-pink-500 text-white px-3 py-2 rounded-md text-sm font-medium">Saved Recipes</a>
           <h1 class="text-3xl font-bold underline">Dinner & Drinks</h1>
           <a class="bg-pink-500 text-white px-3 py-2 rounded-md text-sm font-medium">Tried & Tested</a>
@@ -33,28 +33,28 @@
 
   <!-- START CHOICE MEAL  -->
 
+
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-9 p-12 justify-content:center ">
 
-
-    <section class="container">
+    <!--Left container frame-1-->
+    <section class="container ">
       <h2 class="h2">Choose Meal</h2>
       <div>
 
-
+        <!-- Dropdown left container Frame-1 -->
         <div class="container-menu">
 
+          <!--Dropdown left container op-1 Frame-1 -->  
           <p id="meal-category-header" class=" ">By Category</p>
 
           <select id="meal-category-dropdown" class="relative inline-block text-left ">
+
             <option value="" disabled selected> Select a format...</option>
           </select>
         </div>
 
 
-
-        
-
-
+        <!--Dropdown left container op-1 Frame-1 -->  
         <div class="container-menu">
           <p id="meal-cuisine-header">By Cuisine</p>
           <select id="meal-cuisine-dropdown">
@@ -64,7 +64,7 @@
         <div>
 
 
-
+          <!--Button left container Frame-1 -->  
           <button id="meal-search-button" class="btn text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Search</button>
         </div>
         <div>
@@ -78,20 +78,22 @@
 
     <!--COCKTAIL SECTION-->
 
-    <section class="container ">
+    <!--Rigth container frame-1-->
+    <section class="container">
       <h2 class="h2">Choose Cocktail</h2>
       <div>
 
-
+    <!-- Dropdown rigth container Frame-1 -->    
         <div class="container-menu">
         
-            
+     <!--Dropdown rigth container op-1 Frame-1 -->       
           <p id="cocktail-category-header">By Category</p>
           <select id="cocktail-category-dropdown">
             <option value="" disabled selected>Select a format...</option>
           </select>
         </div>
 
+     <!--Dropdown rigth container op-2 Frame-1 --> 
 
         <div class="container-menu">
           <p id="cocktail-ingredient-header">By Main Ingredient</p>
@@ -100,13 +102,15 @@
           </select>
         </div>
 
-
+    <!--Dropdown rigth container op-2 Frame-1 -->    
         <div class="container-menu">
           <p id="cocktail-alcoholic-header">By Alcohol Content</p>
           <select id="cocktail-alcoholic-dropdown">
             <option value="" disabled selected>Select a format...</option>
           </select>
         </div>
+
+     <!--Button rigth container Frame-1 -->     
         <div>
           <button id="cocktail-search-button" class="btn text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Search</button>
         </div>
@@ -116,47 +120,61 @@
       </div>
     </section>
   </div>
-  <!-- end - choose meal section -->
+  <!--END SHOW MEAL SECTION -->
 
-  <!-- start - show recipe -->
-  <section>
-    <section>
 
-      <h2 id="meal-name-text"></h2>
-      <ul id="meal-ingredients-list"></ul>
-      <p id="meal-recipe-text"></p>
-      <img id="meal-image" src="" alt="">
+
+
+
+  <!-- START - SHOW RECIPE -->
+  <section class="grid grid-cols-1 sm:grid-cols-2 gap-9 p-12 justify-content:center">
+    
+    <!--FOOD-->
+    <section class="container">
+      <div class="container-recipe">
+      <h2 id="meal-name-text" class="recipe-tittle"></h2>
+      <ul id="meal-ingredients-list" class="list-disc list-disc list-inside indent-20px" ></ul>
+      <p id="meal-recipe-text" class="recipe-inst"></p>
+      <img id="meal-image" src="" alt=""  class="recipe-img">
+      </div>
     </section>
-    <section>
-      <h2 id="cocktail-name-text"></h2>
-      <ul id="cocktail-ingredients-list"></ul>
-      <p id="cocktail-glass-text"></p>
-      <p id="cocktail-recipe-text"></p>
-      <img id="cocktail-image" src="" alt="">
 
+
+    <!--DRINKS-->
+    <section class="container">
+      <div class="container-recipe">
+      <h2 id="cocktail-name-text" class="recipe-tittle"></h2>
+      <ul id="cocktail-ingredients-list" class="list-disc list-disc list-inside indent-20px"></ul>
+      <p id="cocktail-glass-text" class="recipe-inst"></p>
+      <p id="cocktail-recipe-text" class="recipe-glass"></p>
+      <img id="cocktail-image" src="" alt="" class="recipe-img">
+      </div>    
     </section>
   </section>
 
-  <!-- end - show recipe -->
+  <!-- END - SHOW RECIPE -->
 
-  <!-- start - show saved recipes -->
+
+
+  <!-- START - SHOW SAVED RECIPES -->
   <section id="all-saved-recipes-section">
-    <ul id="all-saved-recipes-list">
+    <ul id="all-saved-recipes-list" >
       <li class="all-saved-recipes-list-item">saved recipe 1</li>
       <li class="all-saved-recipes-list-item">saved recipe 2</li>
       <li class="all-saved-recipes-list-item">saved recipe 3</li>
     </ul>
   </section>
-  <!-- end - show saved recipes -->
+  <!-- END - SHOW SAVED RECIPES -->
 
-  <!-- start - click into recipe -->
+  <!-- START - CLICK INTO RECIPE -->
   <section id="display-saved-recipe-section">
     <h3 id="display-saved-recipe-title">Saved Recipe that User Clicked Back Into</h3>
     <p id="display-saved-recipe">recipe here... likely need to add more elements</p>
   </section>
-  <!-- end - show saved recipes -->
+  <!-- END - SHOW SAVED RECIPES -->
 
-  <!-- start - show reviews-->
+
+  <!-- START - SHOW REVIEWS-->
   <section id="review-section">
     <h3 id="review-header">Show Reviews</h3>
     <ul id="list reviews">
@@ -165,7 +183,7 @@
       <li class="review-recipe">review 3</li>
     </ul>
   </section>
-  <!-- end - show saved recipes -->
+  <!-- END - SHOW SAVED RECIPES  -->
 
 
 
