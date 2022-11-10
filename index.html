@@ -33,25 +33,39 @@
 
   <!-- START CHOICE MEAL  -->
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 p-6 justify-content:center ">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-9 p-12 justify-content:center ">
+
 
     <section class="container">
-      <h2 class="pt-4 text-2xl ">Choose Meal</h2>
+      <h2 class="h2">Choose Meal</h2>
       <div>
-        <div>
-          <p id="meal-category-header">By Category</p>
-          <select id="meal-category-dropdown">
-            <option value="" disabled selected>Select a format...</option>
+
+
+        <div class="container-menu">
+
+          <p id="meal-category-header" class=" ">By Category</p>
+
+          <select id="meal-category-dropdown" class="relative inline-block text-left ">
+            <option value="" disabled selected> Select a format...</option>
           </select>
         </div>
-        <div>
+
+
+
+        
+
+
+        <div class="container-menu">
           <p id="meal-cuisine-header">By Cuisine</p>
           <select id="meal-cuisine-dropdown">
             <option value="" disabled selected>Select a format...</option>
           </select>
         </div>
         <div>
-          <button id="meal-search-button">Search</button>
+
+
+
+          <button id="meal-search-button" class="btn text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Search</button>
         </div>
         <div>
           <p id="meal-error-text"></p>
@@ -64,29 +78,37 @@
 
     <!--COCKTAIL SECTION-->
 
-    <section class="container">
-      <h2 class=" pt-4 text-2xl">Choose Cocktail</h2>
+    <section class="container ">
+      <h2 class="h2">Choose Cocktail</h2>
       <div>
-        <div>
+
+
+        <div class="container-menu">
+        
+            
           <p id="cocktail-category-header">By Category</p>
           <select id="cocktail-category-dropdown">
             <option value="" disabled selected>Select a format...</option>
           </select>
         </div>
-        <div>
+
+
+        <div class="container-menu">
           <p id="cocktail-ingredient-header">By Main Ingredient</p>
-          <select id="cocktail-ingredient-dropdown">
-            <option value="" disabled selected>Select a format...</option>
+          <select id="cocktail-ingredient-dropdown" class="dropdown">
+            <option class="" value="" disabled selected>Select a format...</option>
           </select>
         </div>
-        <div>
+
+
+        <div class="container-menu">
           <p id="cocktail-alcoholic-header">By Alcohol Content</p>
           <select id="cocktail-alcoholic-dropdown">
             <option value="" disabled selected>Select a format...</option>
           </select>
         </div>
         <div>
-          <button id="cocktail-search-button">Search</button>
+          <button id="cocktail-search-button" class="btn text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Search</button>
         </div>
         <div>
           <p id="cocktail-error-text"></p>

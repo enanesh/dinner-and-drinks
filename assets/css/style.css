@@ -1,21 +1,37 @@
 .container{
 
-  border: red solid 7px;
+  border: red solid 4px;
   border-radius: 7px;
   
   
 }
 
 .h2{
-
   font-size: 30px;
   text-align: center;
   padding-top:15px ;
 }
 
 .container-menu{
-
+    display: flex;
+    justify-content: space-around;
     border: green solid 4px;
-    margin: 30px;;  
+    border-radius: 7px;
+    margin: 30px;
+    padding:20px;  
+    align-items: flex-end;
+
+}
+
+.btn{
+  margin-left: 250px;
+ 
+}
+
+.dropdown{
+  
+  justify-items: end;
+ 
+  
 
 }
