@@ -6,17 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dinner And Drinks</title>
   <link rel="stylesheet" href="./assets/css/style.css" />
-  <script
-      src="https://code.jquery.com/jquery-3.5.1.min.js"
-      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-      crossorigin="anonymous"
-    ></script>
- <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
+
 </head>
 
-<body >
+<body>
 
   <!--NAV BAR-->
+
     <header class="min-h-full">
          <nav class="bg-blue-800">
           <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"> 
@@ -60,8 +60,51 @@
                     <button id="meal-search-button">Search</button>
                 </div>
             </div>
+
+  <header class="min-h-full">
+    <nav class="bg-blue-800">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+          <!--this space is for the icon-->
+          <a class="bg-pink-500 text-white px-3 py-2 rounded-md text-sm font-medium">Saved Recipes</a>
+          <h1 class="text-3xl font-bold underline">Dinner & Drinks</h1>
+          <a class="bg-pink-500 text-white px-3 py-2 rounded-md text-sm font-medium">Tried & Tested</a>
+
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+  <!-- START CHOICE MEAL  -->
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 p-6 justify-content:center ">
+
+    <section class="container">
+      <h2 class="pt-4 text-2xl ">Choose Meal</h2>
+      <div>
+        <div>
+          <p id="meal-category-header">By Category</p>
+          <select id="meal-category-dropdown">
+            <option value="" disabled selected>Select a format...</option>
+          </select>
+        </div>
+        <div>
+          <p id="meal-cuisine-header">By Cuisine</p>
+          <select id="meal-cuisine-dropdown">
+            <option value="" disabled selected>Select a format...</option>
+          </select>
+        </div>
+        <div>
+          <button id="meal-search-button">Search</button>
+        </div>
+        <div>
+          <p id="meal-error-text"></p>
+        </div>
+      </div>
+
     </section>
-    
+
 
 
 
@@ -96,55 +139,52 @@
 
 
             </div>
+
+    <section class="container">
+      <h2 class=" pt-4 text-2xl">Choose Cocktail</h2>
+      <div>
+        <div>
+          <p id="cocktail-category-header">By Category</p>
+          <select id="cocktail-category-dropdown">
+            <option value="" disabled selected>Select a format...</option>
+          </select>
+        </div>
+        <div>
+          <p id="cocktail-ingredient-header">By Main Ingredient</p>
+          <select id="cocktail-ingredient-dropdown">
+            <option value="" disabled selected>Select a format...</option>
+          </select>
+        </div>
+        <div>
+          <p id="cocktail-alcoholic-header">By Alcohol Content</p>
+          <select id="cocktail-alcoholic-dropdown">
+            <option value="" disabled selected>Select a format...</option>
+          </select>
+        </div>
+        <div>
+          <button id="cocktail-search-button">Search</button>
+        </div>
+        <div>
+          <p id="cocktail-error-text"></p>
+        </div>
+      </div>
+
     </section>
-</section>
+  </div>
+  <!-- end - choose meal section -->
 
-</div>
-<!-- end - choose meal section -->
-
-<!-- start - show recommended meals-->
-<section>
-    <section id = "recommend-meal-section">
-        <h2>Recommended Meal</h2>
-            <div>
-                <h3>Must Choose One</h3>
-            </div>
-            <div>
-                <ul id="meal-option-list">   <!--connect to event listener-->
-                    <!--iterate through with var i = 0-->
-                    <li class = "meal"></li> 
-                    <li class = "meal"></li>
-                    <li class = "meal"></li>
-                </ul>
-            </div>     
-    </section>
-    <section id = "recommend-cocktail-section">
-        <h2>Recommended Cocktail</h2>
-            <div>
-                <h3>Must Choose One</h3>
-            </div>
-            <div>
-                <ul id="cocktail-option-list">  <!--connect to event listener-->
-                    <li class = "cocktail"></li> 
-                    <li class = "cocktail"></li>
-                    <li class = "cocktail"></li>
-                </ul>
-            </div>     
-    </section>  
-</section>
-<!-- end - show recommended meals-->
-
-<!-- start - show recipe -->
-<section>
+  <!-- start - show recipe -->
+  <section>
     <section>
-        <h2 id="meal-name-text">Arrabiata</h2>
+
+        <h2 id="meal-name-text"> <!-- placeholder name for testing: Arrabiata --> </h2>
         <ul id="meal-ingredients-list"></ul>
         <p id="meal-recipe-text"></p>
         <img  id="meal-image" src="" alt="">
         <button id = "pin-to-save-meal">Pin Meal</button>
     </section>
     <section>
-        <h2 id="cocktail-name-text">Gin And Tonic</h2>
+        <h2 id="cocktail-name-text"> <!-- placeholder name for testing: Gin And Tonic --> </h2>
         <ul id="cocktail-ingredients-list"></ul>
         <p id="cocktail-glass-text"></p>
         <p id="cocktail-recipe-text"></p>
@@ -175,8 +215,56 @@
 <!-- end - show saved recipes -->
 
 
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="./assets/js/script.js"></script>
+      <h2 id="meal-name-text"></h2>
+      <ul id="meal-ingredients-list"></ul>
+      <p id="meal-recipe-text"></p>
+      <img id="meal-image" src="" alt="">
+    </section>
+    <section>
+      <h2 id="cocktail-name-text"></h2>
+      <ul id="cocktail-ingredients-list"></ul>
+      <p id="cocktail-glass-text"></p>
+      <p id="cocktail-recipe-text"></p>
+      <img id="cocktail-image" src="" alt="">
+
+    </section>
+  </section>
+
+  <!-- end - show recipe -->
+
+  <!-- start - show saved recipes -->
+  <section id="all-saved-recipes-section">
+    <ul id="all-saved-recipes-list">
+      <li class="all-saved-recipes-list-item">saved recipe 1</li>
+      <li class="all-saved-recipes-list-item">saved recipe 2</li>
+      <li class="all-saved-recipes-list-item">saved recipe 3</li>
+    </ul>
+  </section>
+  <!-- end - show saved recipes -->
+
+  <!-- start - click into recipe -->
+  <section id="display-saved-recipe-section">
+    <h3 id="display-saved-recipe-title">Saved Recipe that User Clicked Back Into</h3>
+    <p id="display-saved-recipe">recipe here... likely need to add more elements</p>
+  </section>
+  <!-- end - show saved recipes -->
+
+  <!-- start - show reviews-->
+  <section id="review-section">
+    <h3 id="review-header">Show Reviews</h3>
+    <ul id="list reviews">
+      <li class="review-recipe">review 1 </li>
+      <li class="review-recipe"> review 2</li>
+      <li class="review-recipe">review 3</li>
+    </ul>
+  </section>
+  <!-- end - show saved recipes -->
+
+
+
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="./assets/js/script.js"></script>
 
 </body>
 
