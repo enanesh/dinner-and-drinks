@@ -22,9 +22,8 @@
           <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"> 
             <div class="flex h-16 items-center justify-between">
              <!--this space is for the icon-->
-            <a class = "bg-pink-500 text-white px-3 py-2 rounded-md text-sm font-medium">Saved Recipes</a>
+            <button id = "pinned-recipes" class = "bg-pink-500 text-white px-3 py-2 rounded-md text-sm font-medium">Pinned Recipes</button>
             <h1 class="text-3xl font-bold underline">Dinner & Drinks</h1>
-            <a class = "bg-pink-500 text-white px-3 py-2 rounded-md text-sm font-medium">Tried & Tested</a>
           
             </div>  
             </div>
@@ -46,7 +45,6 @@
                     <p id = "meal-category-header">By Category</p>
                     <select id="meal-category-dropdown">
                         <option value="" disabled selected>Select a format...</option>
-                        
                     </select>
                 </div>
                 <div>
@@ -71,13 +69,6 @@
 
     <section class ="container">
         <h2 class=" pt-4 text-2xl" >Choose Cocktail</h2>
-            <div>
-                <input id="cocktail-search-by-name" class="search-by-name" type="text" placeholder="Search By Name"/>
-            </div>
-             <div>
-                <p> OR </p>
-            </div>
-
             <div>
                 <div>
                     <p id = "cocktail-category-header">By Category</p>
@@ -146,16 +137,19 @@
 <!-- start - show recipe -->
 <section>
     <section>
-        <h2 id = "meal-recipe-text"></h2>
-            <div>
-                <p>List Recipe Here</p>
-            </div>
+        <h2 id="meal-name-text">Arrabiata</h2>
+        <ul id="meal-ingredients-list"></ul>
+        <p id="meal-recipe-text"></p>
+        <img  id="meal-image" src="" alt="">
+        <button id = "pin-to-save-meal">Pin Meal</button>
     </section>
     <section>
-        <h2 id = "cocktail-recipe-text"></h2>
-            <div>
-                <p>List Cocktail Here</p>
-            </div>
+        <h2 id="cocktail-name-text">Gin And Tonic</h2>
+        <ul id="cocktail-ingredients-list"></ul>
+        <p id="cocktail-glass-text"></p>
+        <p id="cocktail-recipe-text"></p>
+        <img id="cocktail-image" src="" alt="">
+        <button id = "pin-to-save-cocktail">Pin Cocktail</button>
     </section>
 </section>
 
@@ -166,22 +160,9 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
 <!-- start - show saved recipes -->
-<section id = "all-saved-recipes-section">
-    <ul id = "all-saved-recipes-list">
-        <li class = "all-saved-recipes-list-item">saved recipe 1</li>
-        <li class = "all-saved-recipes-list-item">saved recipe 2</li>
-        <li class = "all-saved-recipes-list-item">saved recipe 3</li>
+<section id = "display-pinned-recipes-section">
+    <ul id = "list-all-pinned-recipes">
     </ul>
 </section>
 <!-- end - show saved recipes -->
@@ -192,18 +173,6 @@
    <p id = "display-saved-recipe">recipe here... likely need to add more elements</p>
 </section>
 <!-- end - show saved recipes -->
-
-<!-- start - show reviews-->
-<section id = "review-section">
-    <h3 id = "review-header">Show Reviews</h3>
-    <ul id = "list reviews">
-        <li class = "review-recipe">review 1 </li>
-        <li class = "review-recipe"> review 2</li>
-        <li class = "review-recipe">review 3</li>
-    </ul>
- </section>
- <!-- end - show saved recipes -->
-
 
 
 <script src="https://cdn.tailwindcss.com"></script>

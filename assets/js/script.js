@@ -74,6 +74,28 @@ var mealCuisineInputEl = document.getElementById("meal-cuisine-dropdown");
 var cocktailCategoryInputEl = document.getElementById("cocktail-category-dropdown");
 var cocktailIngredientInputEl = document.getElementById("cocktail-ingredient-dropdown");
 var cocktailAlcoholInputEl = document.getElementById("cocktail-alcoholic-dropdown");
+var pinnedRecipesEl = document.getElementById("pinned-recipes");
+var pinToSaveRecipeEl = document.getElementById("pin-to-save-meal");
+var pinToSaveCocktailEl = document.getElementById("pin-to-save-cocktail");
+var listPinnedRecipesEl = document.getElementById("list-all-pinned-recipes")
+var recipeNameForArrayStorage = document.querySelector(".name-for-array")
+
+
+//Copying from Zach's work - might have to delete in merge //Rooting into ingredient/recipe/etc elements
+var mealNameText = document.getElementById("meal-name-text");
+var mealIngredientsText = document.getElementById("meal-ingredients-text");
+var mealRecipeText = document.getElementById("meal-recipe-text");
+var mealImageEl = document.getElementById("meal-image");
+var cocktailNameText = document.getElementById("cocktail-name-text");
+var cocktailIngredientsText = document.getElementById("cocktail-ingredients-list");
+var cocktailGlassText = document.getElementById("cocktail-glass-text");
+var cocktailRecipeText = document.getElementById("cocktail-recipe-text");
+var cocktailImageEl = document.getElementById("cocktail-image");
+
+//END copying section - delete redundant code
+
+
+var pinnedRecipeArray = JSON.parse(localStorage.getItem("pinned-recipes"))||[];
 
 var mealsArray = [];
 var cocktailsArray = [];
@@ -90,7 +112,7 @@ function storeMeals() {
         }
       })
   }
-  console.log(mealsArray);
+  //console.log(mealsArray);
 }
 
 function storeCocktails() {
@@ -105,13 +127,18 @@ function storeCocktails() {
         }
       })
   }
-  console.log(cocktailsArray);
+  //console.log(cocktailsArray);
 }
 
 function mealSearch() {
   if (!mealCategoryInputEl.value && !mealCuisineInputEl.value) {
     var randomSearch = Math.floor(Math.random() * mealsArray.length);
-    console.log(mealsArray[randomSearch])
+
+    //Copying from Zach's work - might have to delete in merge
+    var mealResult = (mealsArray[randomSearch]);
+    displayMealResult(mealResult);
+
+    //End Copy
   } else if (mealCategoryInputEl.value && !mealCuisineInputEl.value) {
     var categoryArray = [];
     for (i = 0; i < mealsArray.length; i++) {
@@ -120,7 +147,12 @@ function mealSearch() {
       }
     }
     var categorySearch = Math.floor(Math.random() * categoryArray.length);
-    console.log(categoryArray[categorySearch]);
+
+    //Copying from Zach's work - might have to delete in merge
+    var mealResult = (categoryArray[categorySearch]);
+    displayMealResult(mealResult);
+
+    //END
   } else if (!mealCategoryInputEl.value && mealCuisineInputEl.value) {
     var cuisineArray = [];
     for (i = 0; i < mealsArray.length; i++) {
@@ -128,8 +160,13 @@ function mealSearch() {
         cuisineArray.push(mealsArray[i]);
       }
     }
-    var cuisineSearch = Math.floor(Math.random() * cuisineArray.length);
-    console.log(cuisineArray[cuisineSearch]);
+    var cuisineSearch = Math.floor(Math.random() * cuisineArray.length)
+
+    //Copying from Zach's work - might have to delete in merge
+      var mealResult = (cuisineArray[cuisineSearch]);
+      displayMealResult(mealResult);
+    //END
+
   } else if (mealCategoryInputEl.value && mealCuisineInputEl.value) {
     var categoryCuisineArray = [];
     for (i = 0; i < mealsArray.length; i++) {
@@ -139,7 +176,12 @@ function mealSearch() {
       }
     }
     var categoryCuisineSearch = Math.floor(Math.random() * categoryCuisineArray.length);
-    console.log(categoryCuisineArray[categoryCuisineSearch])
+      //Copying from Zach's work - might have to delete in merge
+      var mealResult = (categoryCuisineArray[categoryCuisineSearch]);
+      displayMealResult(mealResult);
+      //END
+
+    //(categoryCuisineArray[categoryCuisineSearch])
   }
 }
 mealSearchBtnEl.addEventListener("click", mealSearch);
@@ -147,7 +189,11 @@ mealSearchBtnEl.addEventListener("click", mealSearch);
 function cocktailSearch() {
   if (!cocktailCategoryInputEl && !cocktailIngredientInputEl && !cocktailAlcoholInputEl) {
     var randomSearch = Math.floor(Math.random() * cocktailsArray.length);
-    console.log(cocktailsArray[randomSearch])
+     //Copying from Zach's work - might have to delete in merge
+     var cocktailResult = (cocktailsArray[randomSearch])
+     displayCocktailResult(cocktailResult);
+     //END
+
   } else if (cocktailCategoryInputEl && !cocktailIngredientInputEl && !cocktailAlcoholInputEl) {
     var categoryArray = [];
     for (i = 0; i < cocktailsArray.length; i++) {
@@ -156,7 +202,13 @@ function cocktailSearch() {
       }
     }
     var categorySearch = Math.floor(Math.random() * categoryArray.length);
-    console.log(categoryArray[categorySearch]);
+
+    //Copying from Zach's work - might have to delete in merge
+    var cocktailResult = (categoryArray[categorySearch]);
+    displayCocktailResult(cocktailResult);
+
+    //END  
+
   } else if (!cocktailCategoryInputEl && cocktailIngredientInputEl && !cocktailAlcoholInputEl) {
     var ingredientArray = [];
     for (i = 0; i < cocktailsArray.length; i++) {
@@ -165,7 +217,14 @@ function cocktailSearch() {
       }
     }
     var ingredientSearch = Math.floor(Math.random() * ingredientArray.length);
-    console.log(ingredientArray[ingredientSearch]);
+   
+     //Copying from Zach's work - might have to delete in merge
+    var cocktailResult = (ingredientArray[ingredientSearch]);
+    displayCocktailResult(cocktailResult);
+ 
+     //END 
+
+
   } else if (!cocktailCategoryInputEl && !cocktailIngredientInputEl && cocktailAlcoholInputEl) {
     var alcoholArray = [];
     for (i = 0; i < cocktailsArray.length; i++) {
@@ -174,7 +233,14 @@ function cocktailSearch() {
       }
     }
     var alcoholSearch = Math.floor(Math.random() * alcoholArray.length);
-    console.log(alcoholArray[alcoholSearch]);
+
+  //Copying from Zach's work - might have to delete in merge
+  var cocktailResult = (alcoholArray[alcoholSearch]);
+  displayCocktailResult(cocktailResult)
+    //END  
+
+
+    //console.log(alcoholArray[alcoholSearch]);
   } else if (cocktailCategoryInputEl && cocktailIngredientInputEl && !cocktailAlcoholInputEl) {
     var categoryIngredientArray = [];
     for (i = 0; i < cocktailsArray.length; i++) {
@@ -184,7 +250,16 @@ function cocktailSearch() {
       }
     }
     var categoryIngredientSearch = Math.floor(Math.random() * categoryIngredientArray.length);
-    console.log(categoryIngredientArray[categoryIngredientSearch]);
+    
+    
+  //Copying from Zach's work - might have to delete in merge
+  var cocktailResult = (categoryIngredientArray[categoryIngredientSearch]);
+    displayCocktailResult(cocktailResult);
+    //END  
+    
+    
+    
+    //console.log(categoryIngredientArray[categoryIngredientSearch]);
   } else if (cocktailCategoryInputEl && !cocktailIngredientInputEl && cocktailAlcoholInputEl) {
     var categoryAlcoholArray = [];
     for (i = 0; i < cocktailsArray.length; i++) {
@@ -194,7 +269,13 @@ function cocktailSearch() {
       }
     }
     var categoryAlcoholSearch = Math.floor(Math.random() * categoryAlcoholArray.length);
-    console.log(categoryAlcoholArray[categoryAlcoholSearch]);
+    //Copying from Zach's work - might have to delete in merge
+    var cocktailResult = (categoryAlcoholArray[categoryAlcoholSearch]);
+    displayCocktailResult(cocktailResult);
+    //END  
+
+
+
   } else if (!cocktailCategoryInputEl && cocktailIngredientInputEl && cocktailAlcoholInputEl) {
     var ingredientAlcoholArray = [];
     for (i = 0; i < cocktailsArray.length; i++) {
@@ -204,7 +285,14 @@ function cocktailSearch() {
       }
     }
     var ingredientAlcoholSearch = Math.floor(Math.random() * ingredientAlcoholArray.length);
-    console.log(ingredientAlcoholArray[ingredientAlcoholSearch]);
+    
+//Copying from Zach's work - might have to delete in merge
+var cocktailResult = (ingredientAlcoholArray[ingredientAlcoholSearch]);
+displayCocktailResult(cocktailResult);
+//END  
+
+
+
   } else if (cocktailCategoryInputEl && cocktailIngredientInputEl && cocktailAlcoholInputEl) {
     var allFiltersArray = [];
     for (i = 0; i < cocktailsArray.length; i++) {
@@ -215,28 +303,38 @@ function cocktailSearch() {
       }
     }
     var allFiltersSearch = Math.floor(Math.random() * allFiltersArray.length);
-    console.log(allFiltersArray[allFiltersSearch]);
+
+//Copying from Zach's work - might have to delete in merge
+var cocktailResult = (allFiltersArray[allFiltersSearch]);
+displayCocktailResult(cocktailResult);
+//END 
+
+  
   }
 }
 cocktailSearchBtnEl.addEventListener("click", cocktailSearch)
 
+
+
+//Copying from Zach's work - might have to delete in merge
+
+function displayMealResult(ev) {
+  //(ev);
+  // hide the search page, show the search results
+}
+
+function displayCocktailResult(ev) {
+  //console.log(ev);
+  // hide the search page, show the search results
+}
+//END 
+
+
+
+
+
 storeMeals();
 storeCocktails();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 var cocktailCategoryArray = [];
 var cocktailIngredientArray = [];
@@ -251,11 +349,6 @@ var mealCuisineArrayURL = ["https://www.themealdb.com/api/json/v1/1/list.php?a=l
 var cocktailCategoryArrayURL = ["https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list"];
 var cocktailAlcoholicArrayURL = ["https://www.thecocktaildb.com/api/json/v1/1/list.php?a=list"];
 var cocktailIngredientArrayURL = ["https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list"]; 
-
-
-
-
-
 
 categoryOptions();
 cuisineOptions();
@@ -276,7 +369,6 @@ async function categoryOptions (){
     printCategory(categoryArray);
 }
 
-
 async function cuisineOptions (){
   for (var i=0; i < mealCuisineArrayURL.length; i++){
       const res = await fetch(mealCuisineArrayURL[i])
@@ -290,10 +382,8 @@ async function cuisineOptions (){
 }
 
 function printCategory(array){
-  console.log(array)
-  console.log(array.length)
   for(var i = 0; i < categoryArray.length; i++){
-    console.log(categoryArray[i])
+    //console.log(categoryArray[i])
 
     var categoryListEl = document.createElement("option");
     var textnode = document.createTextNode(categoryArray[i].strCategory);
@@ -304,10 +394,8 @@ function printCategory(array){
 }
 
 function printCuisine(array){
-  console.log(array)
-  console.log(array.length)
   for(var i = 0; i < cuisineArray.length; i++){
-    console.log(cuisineArray[i])
+    //console.log(cuisineArray[i])
 
     var cuisineListEl = document.createElement("option");
     //add option value
@@ -328,12 +416,9 @@ async function cocktailAlcoholOptions() {
   printCocktailAlc(cocktailAlcoholArray);
 }
 
-
 function printCocktailAlc(array){
-  console.log(array)
-  console.log(array.length)
   for(var i = 0; i < cocktailAlcoholArray.length; i++){
-    console.log(cocktailAlcoholArray[i])
+    //console.log(cocktailAlcoholArray[i])
 
     var cocktailAlcEl = document.createElement("option");
     //add option value
@@ -342,9 +427,6 @@ function printCocktailAlc(array){
     cocktailAlcoholInputEl.appendChild(cocktailAlcEl)
   }
 }
-
-
-
 
 async function cocktailCategoryOptions (){
   for (var i=0; i < cocktailCategoryArrayURL.length; i++){
@@ -359,10 +441,8 @@ async function cocktailCategoryOptions (){
 }
 
 function printCocktailCategory(array){
-  console.log(array)
-  console.log(array.length)
   for(var i = 0; i < cocktailCategoryArray.length; i++){
-    console.log(cocktailCategoryArray[i])
+    //console.log(cocktailCategoryArray[i])
 
     var cocktailCatEl = document.createElement("option");
     //add option value
@@ -371,10 +451,6 @@ function printCocktailCategory(array){
     cocktailCategoryInputEl.appendChild(cocktailCatEl)
   }
 }
-
-
-
-
 
 async function cocktailIngredientOptions(){
   for (var i=0; i < cocktailIngredientArrayURL.length; i++){
@@ -389,10 +465,8 @@ async function cocktailIngredientOptions(){
 }
 
 function printCocktailIngredient(array){
-  console.log(array)
-  console.log(array.length)
   for(var i = 0; i < cocktailIngredientArray.length; i++){
-    console.log(cocktailIngredientArray[i])
+    //(cocktailIngredientArray[i])
 
     var cocktailIngredEl = document.createElement("option");
     //add option value
@@ -403,4 +477,74 @@ function printCocktailIngredient(array){
 }
 
 
+pinnedRecipesEl.addEventListener("click", function(event){
+  event.preventDefault();
+  printPinnedRecipes();
+  //console.log("clicked on pinned recipes buttons")
+})
 
+
+function printPinnedRecipes(){
+  //hide all other elements
+  //show pinned element
+  //console.log(pinnedRecipeArray.length)
+ // console.log(pinnedRecipeArray)
+  
+  if (pinnedRecipeArray.length >= 1){
+    for (var i=0; i<pinnedRecipeArray.length ; i++){
+     //console.log(pinnedRecipeArray[i]);
+     var singlePinnedEl = document.createElement("li");
+     var textnode = document.createTextNode(pinnedRecipeArray[i])
+     console.log(textnode)
+     singlePinnedEl.appendChild(textnode);
+     listPinnedRecipesEl.appendChild(singlePinnedEl);
+     }
+  }
+  else{
+    //create module to alert no elements 
+    //in meantime...
+    alert("No Saved Recipes");
+  }  
+}
+
+
+//listen for button click when user wants to pin a specific recipe
+pinToSaveRecipeEl.addEventListener("click", function(event){
+  event.preventDefault();
+  //console.log("button press meal")
+  storePinnedMeal();
+})
+
+pinToSaveCocktailEl.addEventListener("click", function(event){
+  event.preventDefault();
+  //console.log("button press cocktail")
+  storePinnedCocktail();
+})
+
+
+function storePinnedMeal(){
+  //jquery setup right now.  need to change to vanilla js
+  var recipeName = mealNameText.textContent;
+  //console.log (recipeName)
+  pinnedRecipeArray.push(recipeName);
+  localStorage.setItem("pinned-recipes",JSON.stringify(pinnedRecipeArray));
+}
+
+
+function storePinnedCocktail(){
+  //jquery setup right now.  need to change to vanilla js
+  var recipeName = cocktailNameText.textContent;
+  //console.log (recipeName)
+  pinnedRecipeArray.push(recipeName);
+  localStorage.setItem("pinned-recipes",JSON.stringify(pinnedRecipeArray));
+}
+
+
+//if we want to add an option for users to remove local storage pins
+//function removeItem(){
+ // for (var i = 0; i < pinnedRecipeArray.length; i++){
+
+   // pinnedRecipeArray.remove(i);
+ // }
+
+//}
