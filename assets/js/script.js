@@ -314,6 +314,8 @@ function displayCocktailResult(ev) {
   } else {
     cocktailErrorText.textContent = "";
   }
+
+  
   // hide the search page, show the search results
   
   
