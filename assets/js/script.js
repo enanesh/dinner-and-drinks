@@ -90,6 +90,7 @@ var cocktailGlassText = document.getElementById("cocktail-glass-text");
 var cocktailRecipeText = document.getElementById("cocktail-recipe-text");
 var cocktailImageEl = document.getElementById("cocktail-image");
 var cocktailErrorText = document.getElementById("cocktail-error-text");
+var startOverButtonEl  = document.getElementById("start-over");
 
 var pinnedRecipeArray = JSON.parse(localStorage.getItem("pinned-recipes"))||[];
 
@@ -256,6 +257,10 @@ function displayMealResult(ev) {
     mealErrorText.textContent = "Sorry, no meals match your filters, please try again.";
   } else {
     mealErrorText.textContent = "";
+    if (startOverButtonEl.classList.contains("invisible")){
+      startOverButtonEl.classList.remove("invisible");
+      startOverButtonEl.classList.add("visible")
+    }
   }
   // hide the search page, show the search results
   mealNameText.textContent = ev.strMeal;
@@ -297,6 +302,10 @@ function displayCocktailResult(ev) {
     cocktailErrorText.textContent = "Sorry, no meals match your filters, please try again.";
   } else {
     cocktailErrorText.textContent = "";
+    if (startOverButtonEl.classList.contains("invisible")){
+      startOverButtonEl.classList.remove("invisible");
+      startOverButtonEl.classList.add("visible")
+    }
   }
   // hide the search page, show the search results
   cocktailNameText.textContent = ev.strDrink;
@@ -476,6 +485,8 @@ function printCocktailIngredient(array) {
 
 pinnedRecipesEl.addEventListener("click", function(event){
   event.preventDefault();
+  startOverButtonEl.classList.remove("invisible");
+  startOverButtonEl.classList.add("visible");
   
   //console.log("clicked on pinned recipes buttons")
 })
@@ -549,8 +560,20 @@ function storePinnedCocktail(){
 
 //}
 
+startOverButtonEl.addEventListener("click", function(event){
+  event.preventDefault();
+  init();
+  //console.log("clicked on pinned recipes buttons")
+})
+
 function init(){
+  if(startOverButtonEl.classList.contains("visible")){
+    startOverButtonEl.classList.remove("visible");
+    startOverButtonEl.classList.add("invisible")
+  }
+  
   printPinnedRecipes();
+  //add a bunch of hide/show logic here
 
 }
 
