@@ -548,3 +548,10 @@ function storePinnedCocktail(){
  // }
 
 //}
+
+function init(){
+  printPinnedRecipes();
+
+}
+
+init();
