@@ -440,8 +440,6 @@ async function cocktailCategoryOptions() {
 
 function printCocktailCategory(array) {
   for (var i = 0; i < cocktailCategoryArray.length; i++) {
-
-
     var cocktailCatEl = document.createElement("option");
     //add option value
     var textnode = document.createTextNode(cocktailCategoryArray[i].strCategory);
@@ -478,7 +476,7 @@ function printCocktailIngredient(array) {
 
 pinnedRecipesEl.addEventListener("click", function(event){
   event.preventDefault();
-  printPinnedRecipes();
+  
   //console.log("clicked on pinned recipes buttons")
 })
 
@@ -488,6 +486,7 @@ function printPinnedRecipes(){
   //show pinned element
   //console.log(pinnedRecipeArray.length)
  // console.log(pinnedRecipeArray)
+  listPinnedRecipesEl.innerHTML = "";
   
   if (pinnedRecipeArray.length >= 1){
     for (var i=0; i<pinnedRecipeArray.length ; i++){
@@ -512,12 +511,14 @@ pinToSaveRecipeEl.addEventListener("click", function(event){
   event.preventDefault();
   //console.log("button press meal")
   storePinnedMeal();
+  printPinnedRecipes();
 })
 
 pinToSaveCocktailEl.addEventListener("click", function(event){
   event.preventDefault();
   //console.log("button press cocktail")
   storePinnedCocktail();
+  printPinnedRecipes();
 })
 
 
