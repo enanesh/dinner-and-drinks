@@ -498,11 +498,11 @@ function printPinnedRecipes(){
      listPinnedRecipesEl.appendChild(singlePinnedEl);
      }
   }
-  else{
-    //create module to alert no elements 
-    //in meantime...
-    alert("No Saved Recipes");
-  }  
+  // else{
+  //   //create module to alert no elements 
+  //   //in meantime...
+  //   alert("No Saved Recipes");
+  // }  
 }
 
 
