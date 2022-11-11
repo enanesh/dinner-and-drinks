@@ -1,5 +1,4 @@
 .container{
-
   border: red solid 4px;
   border-radius: 7px;
   
@@ -24,7 +23,7 @@
 }
 
 .btn{
-  margin-left: 250px;
+  /* margin-left: 250px; */
  
 }
 
