@@ -90,8 +90,13 @@ var cocktailGlassText = document.getElementById("cocktail-glass-text");
 var cocktailRecipeText = document.getElementById("cocktail-recipe-text");
 var cocktailImageEl = document.getElementById("cocktail-image");
 var cocktailErrorText = document.getElementById("cocktail-error-text");
+var savedNameText = document.getElementById("saved-name-text");
+var savedIngredientsList = document.getElementById("saved-ingredients-list");
+var savedGlassText = document.getElementById("saved-glass-text");
+var savedRecipeText = document.getElementById("saved-recipe-text");
+var savedRecipeImage = document.getElementById("saved-recipe-image");
 
-var pinnedRecipeArray = JSON.parse(localStorage.getItem("pinned-recipes"))||[];
+var pinnedRecipeArray = JSON.parse(localStorage.getItem("pinned-recipes")) || [];
 
 var mealsArray = [];
 var cocktailsArray = [];
@@ -275,17 +280,17 @@ function displayMealResult(ev) {
     ev.strMeasure16, ev.strMeasure17, ev.strMeasure18, ev.strMeasure19,
     ev.strMeasure20);
 
-    if (mealRecipeText.textContent !== "") {
-      mealIngredientsText.innerHTML = "";
+  if (mealRecipeText.textContent !== "") {
+    mealIngredientsText.innerHTML = "";
+  }
+  for (i = 0; i < ingredientList.length; i++) {
+    if (![ingredientList[i], measurementList[i]].includes("") &&
+      ![ingredientList[i], measurementList[i]].includes(null)) {
+      var listItem = document.createElement("li");
+      listItem.textContent = ingredientList[i] + ": " + measurementList[i];
+      mealIngredientsText.appendChild(listItem);
     }
-    for (i = 0; i < ingredientList.length; i++) {
-      if (![ingredientList[i], measurementList[i]].includes("") &&
-        ![ingredientList[i], measurementList[i]].includes(null)) {
-        var listItem = document.createElement("li");
-        listItem.textContent = ingredientList[i] + ": " + measurementList[i];
-        mealIngredientsText.appendChild(listItem);
-      }
-    }
+  }
   mealRecipeText.textContent = ev.strInstructions;
   mealImageEl.src = ev.strMealThumb;
   mealImageEl.alt = ev.strMeal;
@@ -474,82 +479,168 @@ function printCocktailIngredient(array) {
 }
 
 
-pinnedRecipesEl.addEventListener("click", function(event){
+pinnedRecipesEl.addEventListener("click", function (event) {
   event.preventDefault();
-  
+
   //console.log("clicked on pinned recipes buttons")
 })
 
 
-function printPinnedRecipes(){
+function printPinnedRecipes() {
   //hide all other elements
   //show pinned element
   //console.log(pinnedRecipeArray.length)
- // console.log(pinnedRecipeArray)
+  // console.log(pinnedRecipeArray)
   listPinnedRecipesEl.innerHTML = "";
-  
-  if (pinnedRecipeArray.length >= 1){
-    for (var i=0; i<pinnedRecipeArray.length ; i++){
-     //console.log(pinnedRecipeArray[i]);
-     var singlePinnedEl = document.createElement("li");
-     var textnode = document.createTextNode(pinnedRecipeArray[i])
-     console.log(textnode)
-     singlePinnedEl.appendChild(textnode);
-     listPinnedRecipesEl.appendChild(singlePinnedEl);
-     }
+
+  if (pinnedRecipeArray.length >= 1) {
+    for (var i = 0; i < pinnedRecipeArray.length; i++) {
+      //console.log(pinnedRecipeArray[i]);
+      var singlePinnedEl = document.createElement("button");
+      var textnode = document.createTextNode(pinnedRecipeArray[i])
+      console.log(textnode)
+      singlePinnedEl.appendChild(textnode);
+      listPinnedRecipesEl.appendChild(singlePinnedEl);
+      singlePinnedEl.addEventListener("click", displayPinnedRecipe)
+    }
   }
-  else{
+  else {
     //create module to alert no elements 
     //in meantime...
     alert("No Saved Recipes");
-  }  
+  }
 }
 
 
 //listen for button click when user wants to pin a specific recipe
-pinToSaveRecipeEl.addEventListener("click", function(event){
+pinToSaveRecipeEl.addEventListener("click", function (event) {
   event.preventDefault();
   //console.log("button press meal")
   storePinnedMeal();
   printPinnedRecipes();
 })
 
-pinToSaveCocktailEl.addEventListener("click", function(event){
+pinToSaveCocktailEl.addEventListener("click", function (event) {
   event.preventDefault();
   //console.log("button press cocktail")
   storePinnedCocktail();
   printPinnedRecipes();
 })
 
-
-function storePinnedMeal(){
+var hashmap = {};
+function storePinnedMeal() {
   //jquery setup right now.  need to change to vanilla js
   var recipeName = mealNameText.textContent;
   //console.log (recipeName)
   pinnedRecipeArray.push(recipeName);
-  localStorage.setItem("pinned-recipes",JSON.stringify(pinnedRecipeArray));
+  localStorage.setItem("pinned-recipes", JSON.stringify(pinnedRecipeArray));
 }
 
 
-function storePinnedCocktail(){
+function storePinnedCocktail() {
   //jquery setup right now.  need to change to vanilla js
   var recipeName = cocktailNameText.textContent;
   //console.log (recipeName)
   pinnedRecipeArray.push(recipeName);
-  localStorage.setItem("pinned-recipes",JSON.stringify(pinnedRecipeArray));
+  localStorage.setItem("pinned-recipes", JSON.stringify(pinnedRecipeArray));
 }
 
+function displayPinnedRecipe(ev) {
+  // hide the pinned recipe page
+  // show the display pinned recipe page
+  var savedMeal = ""
+  var savedCocktail = ""
+  for (i = 0; i < mealsArray.length; i++) {
+    if (ev.target.textContent == mealsArray[i].strMeal) {
+      savedMeal = ev.target.textContent;
+    } else {
+      savedCocktail = ev.target.textContent;
+    }
+  }
+  if (savedMeal === ev.target.textContent) {
+    fetch("https://themealdb.com/api/json/v1/1/search.php?s=" + savedMeal)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        var pinnedRecipe = data.meals[0];
+        savedNameText.textContent = pinnedRecipe.strMeal;
+
+        var ingredientList = [];
+        ingredientList.push(pinnedRecipe.strIngredient1, pinnedRecipe.strIngredient2, pinnedRecipe.strIngredient3,
+          pinnedRecipe.strIngredient4, pinnedRecipe.strIngredient5, pinnedRecipe.strIngredient6, pinnedRecipe.strIngredient7,
+          pinnedRecipe.strIngredient8, pinnedRecipe.strIngredient9, pinnedRecipe.strIngredient10, pinnedRecipe.strIngredient11,
+          pinnedRecipe.strIngredient12, pinnedRecipe.strIngredient13, pinnedRecipe.strIngredient14, pinnedRecipe.strIngredient15,
+          pinnedRecipe.strIngredient16, pinnedRecipe.strIngredient17, pinnedRecipe.strIngredient18, pinnedRecipe.strIngredient19,
+          pinnedRecipe.strIngredient20);
+        var measurementList = [];
+        measurementList.push(pinnedRecipe.strMeasure1, pinnedRecipe.strMeasure2, pinnedRecipe.strMeasure3,
+          pinnedRecipe.strMeasure4, pinnedRecipe.strMeasure5, pinnedRecipe.strMeasure6, pinnedRecipe.strMeasure7,
+          pinnedRecipe.strMeasure8, pinnedRecipe.strMeasure9, pinnedRecipe.strMeasure10, pinnedRecipe.strMeasure11,
+          pinnedRecipe.strMeasure12, pinnedRecipe.strMeasure13, pinnedRecipe.strMeasure14, pinnedRecipe.strMeasure15,
+          pinnedRecipe.strMeasure16, pinnedRecipe.strMeasure17, pinnedRecipe.strMeasure18, pinnedRecipe.strMeasure19,
+          pinnedRecipe.strMeasure20);
+
+        savedIngredientsList.innerHTML = "";
+        for (i = 0; i < ingredientList.length; i++) {
+          if (![ingredientList[i], measurementList[i]].includes("") &&
+            ![ingredientList[i], measurementList[i]].includes(null)) {
+            var listItem = document.createElement("li");
+            listItem.textContent = ingredientList[i] + ": " + measurementList[i];
+            savedIngredientsList.appendChild(listItem);
+          }
+        }
+        savedRecipeText.textContent = pinnedRecipe.strInstructions;
+        savedRecipeImage.src = pinnedRecipe.strMealThumb;
+        savedRecipeImage.alt = pinnedRecipe.strMeal;
+      })
+  } else {
+    fetch("https://thecocktaildb.com/api/json/v1/1/search.php?s=" + savedCocktail)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      var pinnedRecipe = data.drinks[0];
+      savedNameText.textContent = pinnedRecipe.strDrink;
+
+      var ingredientList = [];
+      ingredientList.push(pinnedRecipe.strIngredient1, pinnedRecipe.strIngredient2, pinnedRecipe.strIngredient3,
+        pinnedRecipe.strIngredient4, pinnedRecipe.strIngredient5, pinnedRecipe.strIngredient6, pinnedRecipe.strIngredient7,
+        pinnedRecipe.strIngredient8, pinnedRecipe.strIngredient9, pinnedRecipe.strIngredient10, pinnedRecipe.strIngredient11,
+        pinnedRecipe.strIngredient12, pinnedRecipe.strIngredient13, pinnedRecipe.strIngredient14, pinnedRecipe.strIngredient15);
+      var measurementList = [];
+      measurementList.push(pinnedRecipe.strMeasure1, pinnedRecipe.strMeasure2, pinnedRecipe.strMeasure3,
+        pinnedRecipe.strMeasure4, pinnedRecipe.strMeasure5, pinnedRecipe.strMeasure6, pinnedRecipe.strMeasure7,
+        pinnedRecipe.strMeasure8, pinnedRecipe.strMeasure9, pinnedRecipe.strMeasure10, pinnedRecipe.strMeasure11,
+        pinnedRecipe.strMeasure12, pinnedRecipe.strMeasure13, pinnedRecipe.strMeasure14, pinnedRecipe.strMeasure15);
+
+        savedIngredientsList.innerHTML = "";
+        for (i = 0; i < ingredientList.length; i++) {
+          if (![ingredientList[i], measurementList[i]].includes("") &&
+            ![ingredientList[i], measurementList[i]].includes(null)) {
+            var listItem = document.createElement("li");
+            listItem.textContent = ingredientList[i] + ": " + measurementList[i];
+            savedIngredientsList.appendChild(listItem);
+          }
+        }
+        savedRecipeText.textContent = pinnedRecipe.strInstructions;
+        savedGlassText.textContent = pinnedRecipe.strGlass;
+        savedRecipeImage.src = pinnedRecipe.strDrinkThumb;
+        savedRecipeImage.alt = pinnedRecipe.strDrink;
+    })
+  }
+}
 
 //if we want to add an option for users to remove local storage pins
 //function removeItem(){
- // for (var i = 0; i < pinnedRecipeArray.length; i++){
+// for (var i = 0; i < pinnedRecipeArray.length; i++){
 
-   // pinnedRecipeArray.remove(i);
- // }
+// pinnedRecipeArray.remove(i);
+// }
 
 //}
 
-function init(){
+function init() {
   printPinnedRecipes();
 
 }
