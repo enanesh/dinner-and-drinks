@@ -17,20 +17,22 @@
 
   <!--NAV BAR-->
 
-    <header class="min-h-full">
-         <nav class="bg-amber-500">
-         
-            <div class="flex h-40 items-center ">
-             <!--this space is for the icon-->
-             <img src="./assets/images/Logo.png">
-            <button id = "pinned-recipes" class = "bg-pink-500 text-white px-3 py-2 rounded-md text-sm font-medium">Pinned Recipes</button>
-            <h1 class="text-3xl font-bold underline">Dinner & Drinks</h1>
-            <button id = "start-over" class = "invisible bg-pink-500 text-white px-3 py-2 rounded-md text-sm font-medium">Start Over</button>
-          
-            </div>  
-            </div>
-        </nav>
-      </header>
+  <header class="min-h-full">
+    <nav class="bg-amber-500">
+
+      <div class="flex h-40 items-center ">
+        <!--this space is for the icon-->
+        <img src="./assets/images/Logo.png">
+        <button id="pinned-recipes" class="bg-pink-500 text-white px-3 py-2 rounded-md text-sm font-medium">Pinned
+          Recipes</button>
+        <h1 class="text-3xl font-bold underline">Dinner & Drinks</h1>
+        <button id="start-over" class="invisible bg-pink-500 text-white px-3 py-2 rounded-md text-sm font-medium">Start
+          Over</button>
+
+      </div>
+      </div>
+    </nav>
+  </header>
 
 
   <!-- START CHOICE MEAL  -->
@@ -39,14 +41,14 @@
   <div class="flex flex-start h-screen flex-start">
 
     <!--Left container frame-1-->
-    <section class="container p-6 w-1/2 h-full bg-white border-r-2 shadow-md ">
+    <section class="container p-6 w-1/2 h-full bg-white border-r-2 shadow-md " id="meal-search-page">
       <h2 class="h2">Choose Meal</h2>
       <div>
 
         <!-- Dropdown left container Frame-1 -->
         <div class="container-menu">
 
-          <!--Dropdown left container op-1 Frame-1 -->  
+          <!--Dropdown left container op-1 Frame-1 -->
           <p id="meal-category-header" class=" ">By Category</p>
 
           <select id="meal-category-dropdown" class="relative inline-block text-left ">
@@ -56,7 +58,7 @@
         </div>
 
 
-        <!--Dropdown left container op-1 Frame-1 -->  
+        <!--Dropdown left container op-1 Frame-1 -->
         <div class="container-menu">
           <p id="meal-cuisine-header">By Cuisine</p>
           <select id="meal-cuisine-dropdown">
@@ -66,8 +68,9 @@
         <div>
 
 
-          <!--Button left container Frame-1 -->  
-          <button id="meal-search-button" class="btn text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Search</button>
+          <!--Button left container Frame-1 -->
+          <button id="meal-search-button"
+            class="btn text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Search</button>
         </div>
         <div>
           <p id="meal-error-text"></p>
@@ -84,21 +87,21 @@
 
     <!--Rigth container frame-1-->
 
-    <section class="container p-6 w-1/2 h-full bg-white border-r-2">
+    <section class="container p-6 w-1/2 h-full bg-white border-r-2" id="cocktail-search-page">
       <h2 class="h2">Choose Cocktail</h2>
       <div>
 
-    <!-- Dropdown rigth container Frame-1 -->    
+        <!-- Dropdown rigth container Frame-1 -->
         <div class="container-menu">
-        
-     <!--Dropdown rigth container op-1 Frame-1 -->       
+
+          <!--Dropdown rigth container op-1 Frame-1 -->
           <p id="cocktail-category-header">By Category</p>
           <select id="cocktail-category-dropdown">
             <option value="" disabled selected>Select a format...</option>
           </select>
         </div>
 
-     <!--Dropdown rigth container op-2 Frame-1 --> 
+        <!--Dropdown rigth container op-2 Frame-1 -->
 
         <div class="container-menu">
           <p id="cocktail-ingredient-header">By Main Ingredient</p>
@@ -107,7 +110,7 @@
           </select>
         </div>
 
-    <!--Dropdown rigth container op-2 Frame-1 -->    
+        <!--Dropdown rigth container op-2 Frame-1 -->
         <div class="container-menu">
           <p id="cocktail-alcoholic-header">By Alcohol Content</p>
           <select id="cocktail-alcoholic-dropdown">
@@ -115,9 +118,10 @@
           </select>
         </div>
 
-     <!--Button rigth container Frame-1 -->     
+        <!--Button rigth container Frame-1 -->
         <div>
-          <button id="cocktail-search-button" class="btn text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Search</button>
+          <button id="cocktail-search-button"
+            class="btn text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Search</button>
         </div>
         <div>
           <p id="cocktail-error-text"></p>
@@ -132,15 +136,15 @@
 
   <!-- START - SHOW RECIPE -->
   <section class="grid grid-cols-1 sm:grid-cols-2 gap-9 p-12 justify-content:center">
-    
+
     <!--FOOD-->
-    <section class="container">
+    <section class="container" id="meal-result-page">
       <div class="container-recipe">
-      <h2 id="meal-name-text" class="recipe-tittle"></h2>
-      <ul id="meal-ingredients-list" class="list-disc list-disc list-inside indent-20px" ></ul>
-      <p id="meal-recipe-text" class="recipe-inst"></p>
-      <img id="meal-image" src="" alt=""  class="recipe-img">
-      <button id = "pin-to-save-meal">Pin Meal</button>
+        <h2 id="meal-name-text" class="recipe-tittle"></h2>
+        <ul id="meal-ingredients-list" class="list-disc list-disc list-inside indent-20px"></ul>
+        <p id="meal-recipe-text" class="recipe-inst"></p>
+        <img id="meal-image" src="" alt="" class="recipe-img">
+        <button id="pin-to-save-meal">Pin Meal</button>
       </div>
 
 
@@ -148,44 +152,45 @@
 
 
     <!--DRINKS-->
-    <section class="container">
+    <section class="container" id="cocktail-result-page">
       <div class="container-recipe">
-      <h2 id="cocktail-name-text" class="recipe-tittle"></h2>
-      <ul id="cocktail-ingredients-list" class="list-disc list-disc list-inside indent-20px"></ul>
-      <p id="cocktail-glass-text" class="recipe-inst"></p>
-      <p id="cocktail-recipe-text" class="recipe-glass"></p>
-      <img id="cocktail-image" src="" alt="" class="recipe-img">
-       <button id = "pin-to-save-cocktail">Pin Cocktail</button>
-      </div>    
+        <h2 id="cocktail-name-text" class="recipe-tittle"></h2>
+        <ul id="cocktail-ingredients-list" class="list-disc list-disc list-inside indent-20px"></ul>
+        <p id="cocktail-glass-text" class="recipe-inst"></p>
+        <p id="cocktail-recipe-text" class="recipe-glass"></p>
+        <img id="cocktail-image" src="" alt="" class="recipe-img">
+        <button id="pin-to-save-cocktail">Pin Cocktail</button>
+      </div>
     </section>
   </section>
 
   <!-- END - SHOW RECIPE -->
 
 
+  <section class="container max-w-full" id="pinned-recipes-page">
+    <!-- start - show saved recipes -->
+    <h2 class="text-center text-2xl">Pinned Recipes</h2>
+    <!-- <div class="flex justify-center"> -->
+    <section id="display-pinned-recipes-section"
+      class="container max-w-full grid justify-items-center text-sm font-medium rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 text-gray-900 bg-white dark:text-white">
+      <div id="list-all-pinned-recipes">
+      </div>
+    </section>
+    <!-- </div> -->
+  </section>
+  <!-- end - show saved recipes -->
 
-  <!-- start - show saved recipes -->
-<h2 class="text-center text-2xl">Pinned Recipes</h2>
-  <!-- <div class="flex justify-center"> -->
-<section id = "display-pinned-recipes-section" class = "container max-w-full grid justify-items-center text-sm font-medium rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 text-gray-900 bg-white dark:text-white">
-    <div id = "list-all-pinned-recipes">
+  <!-- start - click into recipe -->
+  <section class="container max-w-full" id="saved-recipe-page">
+    <div class="container-recipe">
+      <h2 id="saved-name-text" class="recipe-tittle"></h2>
+      <ul id="saved-ingredients-list" class="list-disc list-disc list-inside indent-20px"></ul>
+      <p id="saved-glass-text" class="recipe-inst"></p>
+      <p id="saved-recipe-text" class="recipe-glass"></p>
+      <img id="saved-recipe-image" src="" alt="" class="recipe-img">
     </div>
-</section>
-<!-- </div> -->
-
-<!-- end - show saved recipes -->
-
-<!-- start - click into recipe -->
-<section class="container max-w-full">
-  <div class="container-recipe">
-    <h2 id="saved-name-text" class="recipe-tittle"></h2>
-    <ul id="saved-ingredients-list" class="list-disc list-disc list-inside indent-20px"></ul>
-    <p id="saved-glass-text" class="recipe-inst"></p>
-    <p id="saved-recipe-text" class="recipe-glass"></p>
-    <img id="saved-recipe-image" src="" alt="" class="recipe-img">
-  </div>    
-</section>
-<!-- end - show saved recipes -->
+  </section>
+  <!-- end - show saved recipes -->
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="./assets/js/script.js"></script>

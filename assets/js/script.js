@@ -90,12 +90,17 @@ var cocktailGlassText = document.getElementById("cocktail-glass-text");
 var cocktailRecipeText = document.getElementById("cocktail-recipe-text");
 var cocktailImageEl = document.getElementById("cocktail-image");
 var cocktailErrorText = document.getElementById("cocktail-error-text");
-
 var savedNameText = document.getElementById("saved-name-text");
 var savedIngredientsList = document.getElementById("saved-ingredients-list");
 var savedGlassText = document.getElementById("saved-glass-text");
 var savedRecipeText = document.getElementById("saved-recipe-text");
 var savedRecipeImage = document.getElementById("saved-recipe-image");
+var mealSearchPage = document.getElementById("meal-search-page");
+var cocktailSearchPage = document.getElementById("cocktail-search-page");
+var mealResultPage = document.getElementById("meal-result-page");
+var cocktailResultPage = document.getElementById("cocktail-result-page");
+var pinnedRecipesPage = document.getElementById("pinned-recipes-page");
+var savedRecipePage = document.getElementById("saved-recipe-page");
 
 var startOverButtonEl  = document.getElementById("start-over");
 
