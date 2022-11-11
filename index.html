@@ -18,12 +18,14 @@
   <!--NAV BAR-->
 
     <header class="min-h-full">
-         <nav class="bg-blue-800">
-          <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"> 
-            <div class="flex h-16 items-center justify-between">
+         <nav class="bg-amber-500">
+         
+            <div class="flex h-40 items-center ">
              <!--this space is for the icon-->
+             <img src="./assets/images/Logo.png">
             <button id = "pinned-recipes" class = "bg-pink-500 text-white px-3 py-2 rounded-md text-sm font-medium">Pinned Recipes</button>
             <h1 class="text-3xl font-bold underline">Dinner & Drinks</h1>
+            <button id = "start-over" class = "invisible bg-pink-500 text-white px-3 py-2 rounded-md text-sm font-medium">Start Over</button>
           
             </div>  
             </div>
@@ -34,10 +36,10 @@
   <!-- START CHOICE MEAL  -->
 
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-9 p-12 justify-content:center ">
+  <div class="flex flex-start h-screen flex-start">
 
     <!--Left container frame-1-->
-    <section class="container ">
+    <section class="container p-6 w-1/2 h-full bg-white border-r-2 shadow-md ">
       <h2 class="h2">Choose Meal</h2>
       <div>
 
@@ -82,7 +84,7 @@
 
     <!--Rigth container frame-1-->
 
-    <section class="container">
+    <section class="container p-6 w-1/2 h-full bg-white border-r-2">
       <h2 class="h2">Choose Cocktail</h2>
       <div>
 
@@ -163,14 +165,18 @@
 
 
   <!-- start - show saved recipes -->
-<section id = "display-pinned-recipes-section">
-    <ul id = "list-all-pinned-recipes">
-    </ul>
+<h2 class="text-center text-2xl">Pinned Recipes</h2>
+  <div class="flex justify-center">
+<section id = "display-pinned-recipes-section" class = "container flex justify-center max-w-full text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+    <div id = "list-all-pinned-recipes">
+    </div>
 </section>
+</div>
+
 <!-- end - show saved recipes -->
 
 <!-- start - click into recipe -->
-<section class="container">
+<section class="container max-w-full">
   <div class="container-recipe">
     <h2 id="saved-name-text" class="recipe-tittle"></h2>
     <ul id="saved-ingredients-list" class="list-disc list-disc list-inside indent-20px"></ul>

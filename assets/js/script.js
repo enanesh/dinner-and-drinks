@@ -90,11 +90,15 @@ var cocktailGlassText = document.getElementById("cocktail-glass-text");
 var cocktailRecipeText = document.getElementById("cocktail-recipe-text");
 var cocktailImageEl = document.getElementById("cocktail-image");
 var cocktailErrorText = document.getElementById("cocktail-error-text");
+
 var savedNameText = document.getElementById("saved-name-text");
 var savedIngredientsList = document.getElementById("saved-ingredients-list");
 var savedGlassText = document.getElementById("saved-glass-text");
 var savedRecipeText = document.getElementById("saved-recipe-text");
 var savedRecipeImage = document.getElementById("saved-recipe-image");
+
+var startOverButtonEl  = document.getElementById("start-over");
+
 
 var pinnedRecipeArray = JSON.parse(localStorage.getItem("pinned-recipes")) || [];
 
@@ -261,6 +265,10 @@ function displayMealResult(ev) {
     mealErrorText.textContent = "Sorry, no meals match your filters, please try again.";
   } else {
     mealErrorText.textContent = "";
+    if (startOverButtonEl.classList.contains("invisible")){
+      startOverButtonEl.classList.remove("invisible");
+      startOverButtonEl.classList.add("visible")
+    }
   }
   // hide the search page, show the search results
   mealNameText.textContent = ev.strMeal;
@@ -302,6 +310,10 @@ function displayCocktailResult(ev) {
     cocktailErrorText.textContent = "Sorry, no meals match your filters, please try again.";
   } else {
     cocktailErrorText.textContent = "";
+    if (startOverButtonEl.classList.contains("invisible")){
+      startOverButtonEl.classList.remove("invisible");
+      startOverButtonEl.classList.add("visible")
+    }
   }
   // hide the search page, show the search results
   cocktailNameText.textContent = ev.strDrink;
@@ -482,6 +494,10 @@ function printCocktailIngredient(array) {
 pinnedRecipesEl.addEventListener("click", function (event) {
   event.preventDefault();
 
+  startOverButtonEl.classList.remove("invisible");
+  startOverButtonEl.classList.add("visible");
+  
+
   //console.log("clicked on pinned recipes buttons")
 })
 
@@ -493,22 +509,27 @@ function printPinnedRecipes() {
   // console.log(pinnedRecipeArray)
   listPinnedRecipesEl.innerHTML = "";
 
-  if (pinnedRecipeArray.length >= 1) {
-    for (var i = 0; i < pinnedRecipeArray.length; i++) {
-      //console.log(pinnedRecipeArray[i]);
-      var singlePinnedEl = document.createElement("button");
-      var textnode = document.createTextNode(pinnedRecipeArray[i])
-      console.log(textnode)
-      singlePinnedEl.appendChild(textnode);
-      listPinnedRecipesEl.appendChild(singlePinnedEl);
-      singlePinnedEl.addEventListener("click", displayPinnedRecipe)
-    }
+  
+  if (pinnedRecipeArray.length >= 1){
+    for (var i=0; i<pinnedRecipeArray.length ; i++){
+     //console.log(pinnedRecipeArray[i]);
+     var singlePinnedEl = document.createElement("button")
+       
+     //hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800
+     //"w-full bg-blue-700 rounded-t-lg border-b border-gray-200 cursor-pointer dark:bg-gray-800 dark:border-gray-600"
+     singlePinnedEl.classList.add("btn","text-white","bg-gradient-to-br","from-pink-500","to-orange-400","hover:bg-gradient-to-bl","focus:ring-4","focus:outline-none","focus:ring-pink-200", "dark:focus:ring-pink-800", "font-medium","rounded-lg","text-sm","px-5","py-2.5","text-center","mr-2","mb-2");
+     var textnode = document.createTextNode(pinnedRecipeArray[i])
+     console.log(textnode)
+     singlePinnedEl.appendChild(textnode);
+     listPinnedRecipesEl.appendChild(singlePinnedEl);
+     singlePinnedEl.addEventListener("click", displayPinnedRecipe)
+     }
   }
-  else {
-    //create module to alert no elements 
-    //in meantime...
-    alert("No Saved Recipes");
-  }
+  // else{
+  //   //create module to alert no elements 
+  //   //in meantime...
+  //   alert("No Saved Recipes");
+  // }  
 }
 
 
@@ -640,8 +661,20 @@ function displayPinnedRecipe(ev) {
 
 //}
 
-function init() {
+startOverButtonEl.addEventListener("click", function(event){
+  event.preventDefault();
+  init();
+  //console.log("clicked on pinned recipes buttons")
+})
+
+function init(){
+  if(startOverButtonEl.classList.contains("visible")){
+    startOverButtonEl.classList.remove("visible");
+    startOverButtonEl.classList.add("invisible")
+  }
+  
   printPinnedRecipes();
+  //add a bunch of hide/show logic here
 
 }
 
