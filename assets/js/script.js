@@ -548,7 +548,6 @@ pinToSaveCocktailEl.addEventListener("click", function (event) {
   printPinnedRecipes();
 })
 
-var hashmap = {};
 function storePinnedMeal() {
   //jquery setup right now.  need to change to vanilla js
   var recipeName = mealNameText.textContent;
