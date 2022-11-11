@@ -502,7 +502,11 @@ function printPinnedRecipes(){
   if (pinnedRecipeArray.length >= 1){
     for (var i=0; i<pinnedRecipeArray.length ; i++){
      //console.log(pinnedRecipeArray[i]);
-     var singlePinnedEl = document.createElement("li");
+     var singlePinnedEl = document.createElement("button")
+       
+     //hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800
+     //"w-full bg-blue-700 rounded-t-lg border-b border-gray-200 cursor-pointer dark:bg-gray-800 dark:border-gray-600"
+     singlePinnedEl.classList.add("btn","text-white","bg-gradient-to-br","from-pink-500","to-orange-400","hover:bg-gradient-to-bl","focus:ring-4","focus:outline-none","focus:ring-pink-200", "dark:focus:ring-pink-800", "font-medium","rounded-lg","text-sm","px-5","py-2.5","text-center","mr-2","mb-2");
      var textnode = document.createTextNode(pinnedRecipeArray[i])
      console.log(textnode)
      singlePinnedEl.appendChild(textnode);
