@@ -103,7 +103,7 @@ var pinnedRecipesPage = document.getElementById("pinned-recipes-page");
 var savedRecipePage = document.getElementById("saved-recipe-page");
 
 var homeLogoEl  = document.getElementById("start-logo");
-
+var mainContainerEl = document.querySelector(".main-container")
 
 var pinnedRecipeArray = JSON.parse(localStorage.getItem("pinned-recipes")) || [];
 
@@ -511,6 +511,7 @@ pinnedRecipesEl.addEventListener("click", function (event) {
   savedRecipePage.classList.add("hidden");
   pinnedRecipesPage.classList.remove("hidden");
   pinnedRecipesPage.classList.add("block");
+  mainContainerEl.classList.add("hidden")
 
   //console.log("clicked on pinned recipes buttons")
 })

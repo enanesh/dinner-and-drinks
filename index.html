@@ -44,8 +44,8 @@
 
   <!-- START MEAL SECTION   -->
 
-
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 p-12 grid-auto-fit-xs">
+  <div>
+  <div class="main-container grid grid-cols-1 sm:grid-cols-2 gap-6 p-12 grid-auto-fit-xs">
 
     <!--Left container frame-1-->
     <section class="container-frame " id="meal-search-page">
@@ -179,7 +179,7 @@
       </div>
     </section>
 
-
+  </div>
   <!-- END -  COCKTAIL SECTION -->
 
 
@@ -191,13 +191,12 @@
 
 
 
-  <section class="container max-w-full" id="pinned-recipes-page">
+  <section id="pinned-recipes-page">
     <!-- start - show saved recipes -->
-    <h2 class="text-center text-2xl">Pinned Recipes</h2>
+    <h2 class="text-2xl text-center p-5">Pinned Recipes</h2>
     <!-- <div class="flex justify-center"> -->
-    <section id="display-pinned-recipes-section"
-      class="container max-w-full grid justify-items-center text-sm font-medium rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 text-gray-900 bg-white dark:text-white">
-      <div id="list-all-pinned-recipes">
+    <section id="display-pinned-recipes-section" class="flex justify-center flex-col w-1/2">
+      <div id="list-all-pinned-recipes" class="text-sm font-medium border dark:bg-zinc-800 border-gray-200 dark:border-gray-600 text-gray-900 bg-white dark:text-white">
       </div>
     </section>
     <!-- </div> -->
@@ -205,8 +204,8 @@
   <!-- end - show saved recipes -->
 
   <!-- start - click into recipe -->
-  <section class="container max-w-full" id="saved-recipe-page">
-    <div class="container-recipe">
+  <section class="max-w-full" id="saved-recipe-page">
+    <div class="container-recipe border border-gray-200 dark:bg-zinc-800">
       <h2 id="saved-name-text" class="recipe-tittle"></h2>
       <ul id="saved-ingredients-list" class="list-disc list-disc list-inside indent-20px"></ul>
       <p id="saved-glass-text" class="recipe-inst"></p>
