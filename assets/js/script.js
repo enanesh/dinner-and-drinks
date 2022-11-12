@@ -102,7 +102,7 @@ var cocktailResultPage = document.getElementById("cocktail-result-page");
 var pinnedRecipesPage = document.getElementById("pinned-recipes-page");
 var savedRecipePage = document.getElementById("saved-recipe-page");
 
-var startOverButtonEl  = document.getElementById("start-over");
+var homeLogoEl  = document.getElementById("start-logo");
 
 
 var pinnedRecipeArray = JSON.parse(localStorage.getItem("pinned-recipes")) || [];
@@ -272,10 +272,6 @@ function displayMealResult(ev) {
     mealCuisineInputEl.value = "";
   } else {
     mealErrorText.textContent = "";
-    if (startOverButtonEl.classList.contains("hidden")){
-      startOverButtonEl.classList.remove("hidden");
-      startOverButtonEl.classList.add("block")
-    }
     mealSearchPage.classList.add("hidden");
     mealResultPage.classList.remove("hidden");
     mealResultPage.classList.add("block");
@@ -322,10 +318,6 @@ function displayCocktailResult(ev) {
     cocktailAlcoholInputEl.value = "";
   } else {
     cocktailErrorText.textContent = "";
-    if (startOverButtonEl.classList.contains("hidden")){
-      startOverButtonEl.classList.remove("hidden");
-      startOverButtonEl.classList.add("block")
-    }
     cocktailSearchPage.classList.add("hidden");
     cocktailResultPage.classList.remove("hidden");
     cocktailResultPage.classList.add("block");
@@ -507,9 +499,6 @@ function printCocktailIngredient(array) {
 
 pinnedRecipesEl.addEventListener("click", function (event) {
   event.preventDefault();
-
-  startOverButtonEl.classList.remove("hidden");
-  startOverButtonEl.classList.add("block");
   mealSearchPage.classList.remove("block");
   mealSearchPage.classList.add("hidden");
   cocktailSearchPage.classList.remove("block");
@@ -690,17 +679,13 @@ function displayPinnedRecipe(ev) {
 
 //}
 
-startOverButtonEl.addEventListener("click", function(event){
+homeLogoEl.addEventListener("click", function(event){
   event.preventDefault();
   init();
   //console.log("clicked on pinned recipes buttons")
 })
 
 function init(){
-  if(startOverButtonEl.classList.contains("block")){
-    startOverButtonEl.classList.remove("block");
-    startOverButtonEl.classList.add("hidden")
-  }
   mealCategoryInputEl.value = "";
   mealCuisineInputEl.value = "";
   cocktailCategoryInputEl.value = "";
