@@ -1,9 +1,26 @@
+body{
+
+  background-color: rgb(40, 39, 39);
+
+}
+
 .container{
-  border: red solid 4px;
+  color:white;
+  background-color: rgb(36, 33, 33);
   border-radius: 7px;
+  box-shadow:  2px 2px rgb(12 74 110);
+  height: 850px;
+  
   
   
 }
+
+
+.hide{
+
+      display:none;
+}
+
 
 .h2{
   font-size: 30px;
@@ -13,6 +30,7 @@
 
 .container-menu{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     border: green solid 4px;
     border-radius: 7px;
@@ -22,9 +40,22 @@
 
 }
 
+.btn-container{
+ display: flex;
+  justify-content: space-around;
+  border-radius: 7px;
+  margin: 30px;
+  padding: 20px;
+  align-items: flex-end;
+
+}
+
 .btn{
-  /* margin-left: 250px; */
- 
+  margin: 0px;
+   display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 
 .dropdown{
