@@ -93,11 +93,14 @@
   <section class="container-frame" id="meal-result-page">
       <div class="container-recipe">
         <h2 id="meal-name-text" class="recipe-tittle"></h2>
-        <div class="recipe-ing-list">
+        
+        <div class="flex recipe-ing-list">
         <img id="meal-image" src="" alt="" class="recipe-img">
-        <p class="">INGREDIENTS:</p>
-         <ul id="meal-ingredients-list" class="list-disc list-inside indent-20px object-right-top"></ul>
-         </div>
+        <div class="w-1/2 flex-col self-center">
+        <p class="text-center">INGREDIENTS:</p>
+        <ul id="meal-ingredients-list" class="text-center list-inside indent-20px object-right-top"></ul>
+        </div>
+        </div>
          <p class="">INSTRUCTIONS:</p>
         <p id="meal-recipe-text" class="recipe-inst"></p>
         <button id="pin-to-save-meal">Pin Meal</button>
@@ -161,10 +164,13 @@
       <section class="container-frame" id="cocktail-result-page">
          <div class="container-recipe">
         <h2 id="cocktail-name-text" class="recipe-tittle"></h2>
-        
+        <div class="flex">
         <img id="cocktail-image" src="" alt="" class="recipe-img">
-        <p class="">INGREDIENTS:</p>
-        <ul id="cocktail-ingredients-list" class=" recipe-ing-list "></ul>
+        <div class="w-1/2 flex-col self-center">
+        <p class="text-center">INGREDIENTS:</p>
+        <ul id="cocktail-ingredients-list" class="text-center recipe-ing-list "></ul>
+        </div>
+        </div>
         <p class="">INSTRUCTIONS:</p>
         <p id="cocktail-glass-text" class="recipe-inst"></p>
         <p id="cocktail-recipe-text" class="recipe-glass"></p>
