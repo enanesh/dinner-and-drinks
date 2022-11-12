@@ -272,13 +272,13 @@ function displayMealResult(ev) {
     mealCuisineInputEl.value = "";
   } else {
     mealErrorText.textContent = "";
-    if (startOverButtonEl.classList.contains("invisible")){
-      startOverButtonEl.classList.remove("invisible");
-      startOverButtonEl.classList.add("visible")
+    if (startOverButtonEl.classList.contains("hidden")){
+      startOverButtonEl.classList.remove("hidden");
+      startOverButtonEl.classList.add("block")
     }
-    mealSearchPage.classList.add("invisible");
-    mealResultPage.classList.remove("invisible");
-    mealResultPage.classList.add("visible");
+    mealSearchPage.classList.add("hidden");
+    mealResultPage.classList.remove("hidden");
+    mealResultPage.classList.add("block");
   }
   mealNameText.textContent = ev.strMeal;
 
@@ -322,13 +322,13 @@ function displayCocktailResult(ev) {
     cocktailAlcoholInputEl.value = "";
   } else {
     cocktailErrorText.textContent = "";
-    if (startOverButtonEl.classList.contains("invisible")){
-      startOverButtonEl.classList.remove("invisible");
-      startOverButtonEl.classList.add("visible")
+    if (startOverButtonEl.classList.contains("hidden")){
+      startOverButtonEl.classList.remove("hidden");
+      startOverButtonEl.classList.add("block")
     }
-    cocktailSearchPage.classList.add("invisible");
-    cocktailResultPage.classList.remove("invisible");
-    cocktailResultPage.classList.add("visible");
+    cocktailSearchPage.classList.add("hidden");
+    cocktailResultPage.classList.remove("hidden");
+    cocktailResultPage.classList.add("block");
   }
   cocktailNameText.textContent = ev.strDrink;
 
@@ -508,20 +508,20 @@ function printCocktailIngredient(array) {
 pinnedRecipesEl.addEventListener("click", function (event) {
   event.preventDefault();
 
-  startOverButtonEl.classList.remove("invisible");
-  startOverButtonEl.classList.add("visible");
-  mealSearchPage.classList.remove("visible");
-  mealSearchPage.classList.add("invisible");
-  cocktailSearchPage.classList.remove("visible");
-  cocktailSearchPage.classList.add("invisible");
-  mealResultPage.classList.remove("visible");
-  mealResultPage.classList.add("invisible");
-  cocktailResultPage.classList.remove("visible");
-  cocktailResultPage.classList.add("invisible");
-  savedRecipePage.classList.remove("visible");
-  savedRecipePage.classList.add("invisible");
-  pinnedRecipesPage.classList.remove("invisible");
-  pinnedRecipesPage.classList.add("visible");
+  startOverButtonEl.classList.remove("hidden");
+  startOverButtonEl.classList.add("block");
+  mealSearchPage.classList.remove("block");
+  mealSearchPage.classList.add("hidden");
+  cocktailSearchPage.classList.remove("block");
+  cocktailSearchPage.classList.add("hidden");
+  mealResultPage.classList.remove("block");
+  mealResultPage.classList.add("hidden");
+  cocktailResultPage.classList.remove("block");
+  cocktailResultPage.classList.add("hidden");
+  savedRecipePage.classList.remove("block");
+  savedRecipePage.classList.add("hidden");
+  pinnedRecipesPage.classList.remove("hidden");
+  pinnedRecipesPage.classList.add("block");
 
   //console.log("clicked on pinned recipes buttons")
 })
@@ -591,10 +591,10 @@ function storePinnedCocktail() {
 }
 
 function displayPinnedRecipe(ev) {
-  pinnedRecipesPage.classList.remove("visible");
-  pinnedRecipesPage.classList.add("invisible");
-  savedRecipePage.classList.remove("invisible");
-  savedRecipePage.classList.add("visible");
+  pinnedRecipesPage.classList.remove("block");
+  pinnedRecipesPage.classList.add("hidden");
+  savedRecipePage.classList.remove("hidden");
+  savedRecipePage.classList.add("block");
   var savedMeal = ""
   var savedCocktail = ""
   for (i = 0; i < mealsArray.length; i++) {
@@ -694,23 +694,23 @@ startOverButtonEl.addEventListener("click", function(event){
 })
 
 function init(){
-  if(startOverButtonEl.classList.contains("visible")){
-    startOverButtonEl.classList.remove("visible");
-    startOverButtonEl.classList.add("invisible")
+  if(startOverButtonEl.classList.contains("block")){
+    startOverButtonEl.classList.remove("block");
+    startOverButtonEl.classList.add("hidden")
   }
   mealCategoryInputEl.value = "";
   mealCuisineInputEl.value = "";
   cocktailCategoryInputEl.value = "";
   cocktailIngredientInputEl.value = "";
   cocktailAlcoholInputEl.value = "";
-  mealSearchPage.classList.remove("invisible");
-  mealSearchPage.classList.add("visible");
-  cocktailSearchPage.classList.remove("invisible");
-  cocktailSearchPage.classList.add("visible");
-  mealResultPage.classList.add("invisible");
-  cocktailResultPage.classList.add("invisible");
-  pinnedRecipesPage.classList.add("invisible");
-  savedRecipePage.classList.add("invisible");
+  mealSearchPage.classList.remove("hidden");
+  mealSearchPage.classList.add("block");
+  cocktailSearchPage.classList.remove("hidden");
+  cocktailSearchPage.classList.add("block");
+  mealResultPage.classList.add("hidden");
+  cocktailResultPage.classList.add("hidden");
+  pinnedRecipesPage.classList.add("hidden");
+  savedRecipePage.classList.add("hidden");
   printPinnedRecipes();
 }
 
