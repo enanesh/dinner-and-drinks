@@ -18,15 +18,15 @@
   <!--NAV BAR-->
 
   <header class="min-h-full">
-    <nav class="bg-amber-500">
+    <nav class="bg-black">
 
       <div class="flex h-40 items-center ">
         <!--this space is for the icon-->
-        <img src="./assets/images/Logo.png">
-        <button id="pinned-recipes" class="bg-pink-500 text-white px-3 py-2 rounded-md text-sm font-medium">Pinned
+        <img src="./assets/images/Logo1.png">
+        <button id="pinned-recipes" class="btn bg-pink-500 text-white px-3 py-2 rounded-md text-sm font-medium">Pinned
           Recipes</button>
-        <h1 class="text-3xl font-bold underline">Dinner & Drinks</h1>
-        <button id="start-over" class="invisible bg-pink-500 text-white px-3 py-2 rounded-md text-sm font-medium">Start
+     
+        <button id="start-over" class=" bg-pink-500 text-white px-3 py-2 rounded-md text-sm font-medium">Start
           Over</button>
 
       </div>
@@ -38,10 +38,10 @@
   <!-- START CHOICE MEAL  -->
 
 
-  <div class="flex flex-start h-screen flex-start">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-9 p-12 grid-auto-fit-xs">
 
     <!--Left container frame-1-->
-    <section class="container p-6 w-1/2 h-full bg-white border-r-2 shadow-md " id="meal-search-page">
+    <section class="container " id="meal-search-page">
       <h2 class="h2">Choose Meal</h2>
       <div>
 
@@ -69,8 +69,10 @@
 
 
           <!--Button left container Frame-1 -->
+          <div class="btn-container">
           <button id="meal-search-button"
-            class="btn text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Search</button>
+            class="btn text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-10 py-5 text-center text-2xl mr-6 mb-6 border-blue-dark">Search</button>
+            </div>
         </div>
         <div>
           <p id="meal-error-text"></p>
@@ -87,7 +89,7 @@
 
     <!--Rigth container frame-1-->
 
-    <section class="container p-6 w-1/2 h-full bg-white border-r-2" id="cocktail-search-page">
+    <section class="container" id="cocktail-search-page">
       <h2 class="h2">Choose Cocktail</h2>
       <div>
 
