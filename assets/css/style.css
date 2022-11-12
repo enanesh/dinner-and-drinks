@@ -1,38 +1,41 @@
 body{
 
-  background-color: rgb(40, 39, 39);
-
+  background-color:white;
+font-family: 'Playfair Display', serif;
 }
 
-.container{
+
+/*Class Container Frame 6-7*/
+.container-frame{
   color:white;
   background-color: rgb(36, 33, 33);
+  border-color: red solid 6px;
   border-radius: 7px;
-  box-shadow:  2px 2px rgb(12 74 110);
-  height: 850px;
-  
+  box-shadow:  2px 2px rgb(131, 130, 127);
   
   
 }
 
-
-.hide{
-
-      display:none;
-}
+/* Class container Border frame 8-9*/
 
 
+
+
+/*Tittle from frame 6*/
 .h2{
-  font-size: 30px;
+  font-size: 50px;
   text-align: center;
-  padding-top:15px ;
+  padding:45px ;
+  color:whitesmoke;
 }
 
 .container-menu{
     display: flex;
     flex-wrap: wrap;
+    color:black;
+    background-color:#e7e5e4;
     justify-content: space-around;
-    border: green solid 4px;
+    border: blue solid 2px;
     border-radius: 7px;
     margin: 30px;
     padding:20px;  
@@ -40,8 +43,10 @@ body{
 
 }
 
+
+
 .btn-container{
- display: flex;
+  display: flex;
   justify-content: space-around;
   border-radius: 7px;
   margin: 30px;
@@ -58,16 +63,13 @@ body{
 
 }
 
-.dropdown{
-  
-  justify-items: end;
 
-}
 
 
 .container-recipe {
 
   /* border: green solid 4px; */
+  
   border-radius: 7px;
   margin: 30px;
   padding: 20px;
@@ -85,8 +87,8 @@ body{
 } 
 
 .recipe-ing-list{
-  text-align: center;
-  margin-left: 30px;
+ justify-items: right ;
+ 
   
 }
 
@@ -99,13 +101,28 @@ body{
 
 
 .recipe-img{
-  padding:40px;
 
+ 
+  height: 300px;
+  width: 300px;
+  
 
 }
 
 .recipe-glass{
   padding: 25px;
   text-align: justify;
+
+}
+
+/*Text inside dropdowns */
+
+.text-dropdowns{
+
+color:black;
+font-family: 'Times New Roman', Times, serif;  
+font-size: 20px;
+width: 170px;
+height: 35px;
 
 }
