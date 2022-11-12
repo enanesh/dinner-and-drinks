@@ -1,19 +1,23 @@
 body{
 
-  background-color: rgb(40, 39, 39);
+  background-color:white;
 font-family: 'Playfair Display', serif;
 }
 
 
-/*Class Container Frame 6*/
+/*Class Container Frame 6-7*/
 .container-frame{
   color:white;
   background-color: rgb(36, 33, 33);
+  border-color: red solid 6px;
   border-radius: 7px;
-  box-shadow:  2px 2px rgb(12 74 110);
-  height: 850px;
+  box-shadow:  2px 2px rgb(131, 130, 127);
+  
   
 }
+
+/* Class container Border frame 8-9*/
+
 
 
 
@@ -28,14 +32,18 @@ font-family: 'Playfair Display', serif;
 .container-menu{
     display: flex;
     flex-wrap: wrap;
+    color:black;
+    background-color:#e7e5e4;
     justify-content: space-around;
-    border: green solid 4px;
+    border: blue solid 2px;
     border-radius: 7px;
     margin: 30px;
     padding:20px;  
     align-items: flex-end;
 
 }
+
+
 
 .btn-container{
   display: flex;
@@ -79,8 +87,7 @@ font-family: 'Playfair Display', serif;
 } 
 
 .recipe-ing-list{
- 
-vertical-align: middle;
+ justify-items: right ;
  
   
 }
@@ -95,8 +102,9 @@ vertical-align: middle;
 
 .recipe-img{
 
-  height: 450px;
-  width: 450px;
+ 
+  height: 300px;
+  width: 300px;
   
 
 }
@@ -107,6 +115,8 @@ vertical-align: middle;
 
 }
 
+/*Text inside dropdowns */
+
 .text-dropdowns{
 
 color:black;
@@ -114,4 +124,5 @@ font-family: 'Times New Roman', Times, serif;
 font-size: 20px;
 width: 170px;
 height: 35px;
+
 }
