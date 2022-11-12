@@ -39,7 +39,7 @@
   <!-- START CHOICE MEAL  -->
 
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-9 p-12 grid-auto-fit-xs">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 p-12 grid-auto-fit-xs">
 
     <!--Left container frame-1-->
     <section class="container " id="meal-search-page">
@@ -144,9 +144,11 @@
     <section class="container" id="meal-result-page">
       <div class="container-recipe">
         <h2 id="meal-name-text" class="recipe-tittle"></h2>
-        <ul id="meal-ingredients-list" class="list-disc list-disc list-inside indent-20px"></ul>
-        <p id="meal-recipe-text" class="recipe-inst"></p>
         <img id="meal-image" src="" alt="" class="recipe-img">
+        <p class="">INGREDIENTS:</p>
+         <ul id="meal-ingredients-list" class="list-disc list-inside indent-20px object-right-top"></ul>
+         <p class="">INSTRUCTIONS:</p>
+        <p id="meal-recipe-text" class="recipe-inst"></p>
         <button id="pin-to-save-meal">Pin Meal</button>
       </div>
 
@@ -158,10 +160,12 @@
     <section class="container" id="cocktail-result-page">
       <div class="container-recipe">
         <h2 id="cocktail-name-text" class="recipe-tittle"></h2>
-        <ul id="cocktail-ingredients-list" class="list-disc list-disc list-inside indent-20px"></ul>
+        <img id="cocktail-image" src="" alt="" class="recipe-img">
+
+        <ul id="cocktail-ingredients-list" class=" recipe-ing-list "></ul>
         <p id="cocktail-glass-text" class="recipe-inst"></p>
         <p id="cocktail-recipe-text" class="recipe-glass"></p>
-        <img id="cocktail-image" src="" alt="" class="recipe-img">
+        
         <button id="pin-to-save-cocktail">Pin Cocktail</button>
       </div>
     </section>
