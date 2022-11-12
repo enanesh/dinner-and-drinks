@@ -550,11 +550,7 @@ function printPinnedRecipes() {
      singlePinnedEl.addEventListener("click", displayPinnedRecipe)
      }
   }
-  // else{
-  //   //create module to alert no elements 
-  //   //in meantime...
-  //   alert("No Saved Recipes");
-  // }  
+  
 }
 
 
@@ -576,18 +572,25 @@ pinToSaveCocktailEl.addEventListener("click", function (event) {
 function storePinnedMeal() {
   //jquery setup right now.  need to change to vanilla js
   var recipeName = mealNameText.textContent;
+  var inArray = (pinnedRecipeArray.includes(recipeName))
+  if (inArray == false){
+    pinnedRecipeArray.push(recipeName);
+    localStorage.setItem("pinned-recipes", JSON.stringify(pinnedRecipeArray))
+  };
   //console.log (recipeName)
-  pinnedRecipeArray.push(recipeName);
-  localStorage.setItem("pinned-recipes", JSON.stringify(pinnedRecipeArray));
 }
 
 
 function storePinnedCocktail() {
   //jquery setup right now.  need to change to vanilla js
   var recipeName = cocktailNameText.textContent;
-  //console.log (recipeName)
+  var inArray = (pinnedRecipeArray.includes(recipeName))
+  //console.log (inArray)
+
+  if (inArray == false){
   pinnedRecipeArray.push(recipeName);
-  localStorage.setItem("pinned-recipes", JSON.stringify(pinnedRecipeArray));
+  localStorage.setItem("pinned-recipes", JSON.stringify(pinnedRecipeArray))
+};
 }
 
 function displayPinnedRecipe(ev) {
