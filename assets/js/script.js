@@ -103,7 +103,7 @@ var pinnedRecipesPage = document.getElementById("pinned-recipes-page");
 var savedRecipePage = document.getElementById("saved-recipe-page");
 
 var homeLogoEl  = document.getElementById("start-logo");
-
+var mainContainerEl = document.querySelector(".main-container")
 
 var pinnedRecipeArray = JSON.parse(localStorage.getItem("pinned-recipes")) || [];
 
@@ -511,6 +511,7 @@ pinnedRecipesEl.addEventListener("click", function (event) {
   savedRecipePage.classList.add("hidden");
   pinnedRecipesPage.classList.remove("hidden");
   pinnedRecipesPage.classList.add("block");
+  mainContainerEl.classList.add("hidden")
 
   //console.log("clicked on pinned recipes buttons")
 })
@@ -531,7 +532,7 @@ function printPinnedRecipes() {
        
      //hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800
      //"w-full bg-blue-700 rounded-t-lg border-b border-gray-200 cursor-pointer dark:bg-gray-800 dark:border-gray-600"
-     singlePinnedEl.classList.add("btn", "py-2", "px-4", "flex", "flex-col", "w-full", "border-gray-200", "cursor-pointer", "hover:bg-gray-100", "hover:text-blue-700", "focus:outline-none", "focus:ring-2", "focus:ring-blue-700", "focus:text-blue-700", "dark:border-gray-600", "dark:hover:bg-gray-600", "dark:hover:text-white", "dark:focus:ring-gray-500", "dark:focus:text-white");
+     singlePinnedEl.classList.add("btn", "py-4", "px-4", "flex", "flex-col", "w-full", "border-gray-200", "cursor-pointer", "hover:bg-gray-100", "hover:text-blue-700", "focus:outline-none", "focus:ring-2", "focus:ring-blue-700", "focus:text-blue-700", "dark:border-gray-600", "dark:hover:bg-gray-600", "dark:hover:text-white", "dark:focus:ring-gray-500", "dark:focus:text-white");
      var textnode = document.createTextNode(pinnedRecipeArray[i])
      console.log(textnode)
      singlePinnedEl.appendChild(textnode);
@@ -699,6 +700,8 @@ function init(){
   cocktailResultPage.classList.add("hidden");
   pinnedRecipesPage.classList.add("hidden");
   savedRecipePage.classList.add("hidden");
+  mainContainerEl.classList.remove("hidden")
+  mainContainerEl.classList.add("block")
   printPinnedRecipes();
 }
 
