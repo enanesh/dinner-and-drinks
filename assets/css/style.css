@@ -1,6 +1,6 @@
 body{
 
-  background-color:white;
+background-color:white;
 font-family: 'Playfair Display', serif;
 }
 
@@ -14,9 +14,6 @@ font-family: 'Playfair Display', serif;
   box-shadow:  2px 2px rgb(131, 130, 127);
 }
 
-/* Class container Border frame 8-9*/
-
-
 
 
 /*Tittle from frame 6*/
@@ -27,13 +24,15 @@ font-family: 'Playfair Display', serif;
   color:whitesmoke;
 }
 
+/*container for the fame 6 display(right and left) */
 .container-menu{
     display: flex;
     flex-wrap: wrap;
     color:black;
-    background-color:#e7e5e4;
+    background-color:#e7e6e4;
     justify-content: space-around;
-    border: blue solid 2px;
+    border: rgb(241, 217, 94) solid 2px;
+    box-shadow: 2px 2PX 4px 4px rgb(234, 189, 111);
     border-radius: 7px;
     margin: 30px;
     padding:20px;  
@@ -41,8 +40,7 @@ font-family: 'Playfair Display', serif;
 
 }
 
-
-
+/*button container for aligment*/
 .btn-container{
   display: flex;
   justify-content: space-around;
@@ -52,15 +50,6 @@ font-family: 'Playfair Display', serif;
   align-items: flex-end;
 
 }
-
-.btn{
-  margin: 0px;
-   display: flex;
-  justify-content: center;
-  align-items: center;
-
-}
-
 
 
 
@@ -74,7 +63,6 @@ font-family: 'Playfair Display', serif;
   
 
 }
-
 
 
 .recipe-tittle{
@@ -94,29 +82,21 @@ font-family: 'Playfair Display', serif;
 
   padding-top: 25px;
   text-align: justify;
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
 
 }
 
-
+/* IMG size*/
 .recipe-img{
-
- 
-  height: 300px;
+  height: 375px;
   width: 300px;
-  
-
-}
-
-.recipe-glass{
-  padding: 25px;
-  text-align: justify;
 
 }
 
 /*Text inside dropdowns */
 
 .text-dropdowns{
-
 color:black;
 font-family: 'Times New Roman', Times, serif;  
 font-size: 20px;
@@ -124,3 +104,37 @@ width: 170px;
 height: 35px;
 
 }
+
+
+.text-instructions{
+   margin-top: 20px;
+   font-size: 20px;
+   font-weight: 200;
+   
+}
+/*fontsize for the meal recipe*/
+.font-content{
+  font-family: 'Oswald', sans-serif;
+  font-size: 17px;
+}
+
+/*fontsize for the cocktail recipe*/
+.font-instructionsDrink {
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+}
+
+/*Classes for the footer tag*/
+.footer {
+  
+  padding-top: 200px;
+  padding-bottom: 40px;
+  clear: both;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-align: center;
+}
+
+.footer h2 {
+  font-size: 20px;
+}
+
