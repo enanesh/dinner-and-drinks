@@ -84,12 +84,14 @@ var mealIngredientsText = document.getElementById("meal-ingredients-list");
 var mealRecipeText = document.getElementById("meal-recipe-text");
 var mealImageEl = document.getElementById("meal-image");
 var mealErrorText = document.getElementById("meal-error-text");
+var mealPinnedText = document.getElementById("meal-pinned-text");
 var cocktailNameText = document.getElementById("cocktail-name-text");
 var cocktailIngredientsText = document.getElementById("cocktail-ingredients-list");
 var cocktailGlassText = document.getElementById("cocktail-glass-text");
 var cocktailRecipeText = document.getElementById("cocktail-recipe-text");
 var cocktailImageEl = document.getElementById("cocktail-image");
 var cocktailErrorText = document.getElementById("cocktail-error-text");
+var cocktailPinnedText = document.getElementById("cocktail-pinned-text");
 var savedNameText = document.getElementById("saved-name-text");
 var savedIngredientsList = document.getElementById("saved-ingredients-list");
 var savedGlassText = document.getElementById("saved-glass-text");
@@ -568,6 +570,7 @@ function storePinnedMeal() {
     localStorage.setItem("pinned-recipes", JSON.stringify(pinnedRecipeArray))
   };
   //console.log (recipeName)
+  mealPinnedText.textContent = "Meal pinned!";
 }
 
 
@@ -581,6 +584,7 @@ function storePinnedCocktail() {
   pinnedRecipeArray.push(recipeName);
   localStorage.setItem("pinned-recipes", JSON.stringify(pinnedRecipeArray))
 };
+cocktailPinnedText.textContent = "Cocktail pinned!";
 }
 
 function displayPinnedRecipe(ev) {
@@ -692,6 +696,8 @@ function init(){
   cocktailCategoryInputEl.value = "";
   cocktailIngredientInputEl.value = "";
   cocktailAlcoholInputEl.value = "";
+  mealPinnedText.textContent = "";
+  cocktailPinnedText.textContent = "";
   mealSearchPage.classList.remove("hidden");
   mealSearchPage.classList.add("block");
   cocktailSearchPage.classList.remove("hidden");
