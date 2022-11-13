@@ -12,6 +12,10 @@
     <style>
           @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&display=swap');
     </style>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+</style>
+    
 </head>
 
 <body>
@@ -29,8 +33,7 @@
       
         
        <!-- <a href="" class="text-white">HOME</a> -->
-        <button id="pinned-recipes" class="justify-around py-8 pr-7 pl-3 bg-pink-500 text-white px-3 py-2 rounded-md text-sm font-medium">Pinned
-          Recipes</button>
+        <button id="pinned-recipes" class=" text-l border-2 border-yellow-400 rounded-lg px-3 py-2 text-yellow-200 cursor-pointer hover:bg-yellow-500 hover:text-yellow-200">   Pinned Recipes</button>
       
         <!--<button id="start-over" class="justify-around py-2 pr-7 pl-3 bg-pink-500 text-white px-3 py-2 rounded-md text-sm font-medium">Start Over</button>-->
 
@@ -56,34 +59,35 @@
         <div class="container-menu">
 
           <!--Dropdown left container op-1 Frame-1 -->
-          <p id="meal-category-header" class=" ">By Category</p>
+          <p id="meal-category-header" class=" text-xl">By Category</p>
 
           <select id="meal-category-dropdown" class="relative inline-block text-left text-dropdowns">
-            <option value="" disabled selected> Select option...</option>
+            <option value="" disabled selected> Select Option...</option>
           </select>
         </div>
 
 
         <!--Dropdown left container op-1 Frame-1 -->
         <div class="container-menu">
-          <p id="meal-cuisine-header">By Cuisine</p>
+          <p id="meal-cuisine-header" class="text-xl">By Cuisine</p>
           <select id="meal-cuisine-dropdown" class="text-dropdowns relative inline-block text-left ">
-            <option value="" disabled selected>Select option...</option>
+            <option value="" disabled selected>Select Option...</option>
           </select>
         </div>
         <div>
 
+           <div>
+          <p id="meal-error-text" class="text-white text-center "></p>
+        </div>
+      </div>
 
           <!--Button left container Frame-1 -->
           <div class="btn-container">
           <button id="meal-search-button"
-            class="btn text-white bg-gradient-to-br from-cyan-500 to-blue-500  hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-10 py-5 text-center text-2xl mr-6 mb-6 border-blue-dark">Search</button>
+            class="text-black bg-gradient-to-br from-yellow-100 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-3xl px-5 py-2.5 text-center mr-2 mb-2">Search</button>
             </div>
         </div>
-        <div>
-          <p id="meal-error-text"></p>
-        </div>
-      </div>
+       
 
     </section>
 
@@ -97,13 +101,15 @@
         <div class="flex recipe-ing-list">
         <img id="meal-image" src="" alt="" class="recipe-img">
         <div class="w-1/2 flex-col self-center">
-        <p class="text-center">INGREDIENTS:</p>
-        <ul id="meal-ingredients-list" class="text-center list-inside indent-20px object-right-top"></ul>
+        <p class="text-center text-xl">INGREDIENTS:</p>
+        <ul id="meal-ingredients-list" class="font-content text-left p-8 list-disc list-inside indent-20px object-right-top "></ul>
         </div>
         </div>
-         <p class="">INSTRUCTIONS:</p>
+         <p class="text-instructions ">INSTRUCTIONS:</p>
         <p id="meal-recipe-text" class="recipe-inst"></p>
-        <button id="pin-to-save-meal">Pin Meal</button>
+        <div class="btn-container">
+        <button id="pin-to-save-meal" class="text-2xl border-2 border-yellow-300 rounded-lg px-3 py-2 text-yellow-100 cursor-pointer hover:bg-yellow-400 hover:text-yellow-200"> Pin Meal</button>
+        </div>
       </div>
   </section>    
 
@@ -124,7 +130,7 @@
         <div class="container-menu">
 
           <!--Dropdown rigth container op-1 Frame-1 -->
-          <p id="cocktail-category-header">By Category</p>
+          <p id="cocktail-category-header" class="text-xl">By Category</p>
           <select id="cocktail-category-dropdown" class="text-dropdowns ">
             <option value="" disabled selected>Select Option...</option>
           </select>
@@ -133,7 +139,7 @@
         <!--Dropdown rigth container op-2 Frame-1 -->
 
         <div class="container-menu">
-          <p id="cocktail-ingredient-header">By Main Ingredient</p>
+          <p id="cocktail-ingredient-header" class="text-xl">By Main Ingredient</p>
           <select id="cocktail-ingredient-dropdown" class="text-dropdowns  ">
             <option class="text-black" value="" disabled selected>Select Option...</option>
           </select>
@@ -141,20 +147,22 @@
 
         <!--Dropdown rigth container op-2 Frame-1 -->
         <div class="container-menu">
-          <p id="cocktail-alcoholic-header" class="">By Alcohol Content</p>
+          <p id="cocktail-alcoholic-header" class="text-xl">By Alcohol Content</p>
           <select id="cocktail-alcoholic-dropdown" class="text-dropdowns ">
-            <option value="" disabled selected>Select option...</option>
+            <option value="" disabled selected >Select Option...</option>
           </select>
+        </div>
+
+         <div>
+          <p id="cocktail-error-text" class="text-white text-center"></p>
         </div>
 
         <!--Button rigth container Frame-1 -->
         <div class="btn-container">
           <button id="cocktail-search-button"
-            class="btn text-white bg-gradient-to-br from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-10 py-5 text-center text-2xl mr-6 mb-6 border-blue-dark">Search</button>
+            class="text-black bg-gradient-to-br from-yellow-100 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-3xl px-5 py-2.5 text-center mr-2 mb-2">Search</button>
         </div>
-        <div>
-          <p id="cocktail-error-text"></p>
-        </div>
+       
     
       </section>
 
@@ -167,23 +175,23 @@
         <div class="flex">
         <img id="cocktail-image" src="" alt="" class="recipe-img">
         <div class="w-1/2 flex-col self-center">
-        <p class="text-center">INGREDIENTS:</p>
-        <ul id="cocktail-ingredients-list" class="text-center recipe-ing-list "></ul>
+        <p class="text-center text-xl">INGREDIENTS:</p>
+        <ul id="cocktail-ingredients-list" class="text-left p-8 list-disc list-inside indent-20px object-right-top font-content"></ul>
         </div>
         </div>
-        <p class="">INSTRUCTIONS:</p>
-        <p id="cocktail-glass-text" class="recipe-inst"></p>
-        <p id="cocktail-recipe-text" class="recipe-glass"></p>
         
-        <button id="pin-to-save-cocktail">Pin Cocktail</button>
+        
+        <p class="text-instructions ">INSTRUCTIONS:</p>
+        <p id="cocktail-glass-text" class="recipe-inst font-instructionsDrink"></p>
+         <p id="cocktail-recipe-text" class="recipe-glass font-instructionsDrink"></p>
+        <div class="btn-container">
+        <button id="pin-to-save-cocktail" class="text-2xl border-2 border-yellow-300 rounded-lg px-3 py-2 text-yellow-100 cursor-pointer hover:bg-yellow-400 hover:text-yellow-200 ">Pin Cocktail</button>
+        </div>
       </div>
     </section>
 
   </div>
   <!-- END -  COCKTAIL SECTION -->
-
-
-
 
 
 
@@ -209,11 +217,17 @@
       <h2 id="saved-name-text" class="recipe-tittle text-white"></h2>
       <ul id="saved-ingredients-list" class="list-disc list-disc list-inside indent-20px text-white"></ul>
       <p id="saved-glass-text" class="recipe-inst text-white"></p>
-      <p id="saved-recipe-text" class="recipe-glass text-white"></p>
+      <p id="saved-recipe-text" class=" text-white"></p>
       <img id="saved-recipe-image" src="" alt="" class="recipe-img">
     </div>
   </section>
   <!-- end - show saved recipes -->
+
+
+   <!--FOOTER -->
+    <footer class="footer">
+      <h2>Made with ❤️️ by Dinner & Drinks</h2>
+      <p>&copy; 2022 Dinner & Drinks, Inc.</p>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="./assets/js/script.js"></script>
