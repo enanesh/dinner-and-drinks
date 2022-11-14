@@ -262,7 +262,6 @@ cocktailSearchBtnEl.addEventListener("click", cocktailSearch)
 
 // Function, when called, takes randomly selected meal and displays the data to the screen
 function displayMealResult(ev) {
-  console.log(ev);
   if (ev === undefined) {
     mealErrorText.textContent = "Sorry, no meals match your filters, please try again.";
     mealCategoryInputEl.value = "";
@@ -308,7 +307,6 @@ function displayMealResult(ev) {
 
 // Function, when called, takes randomly selected cocktail and displays the data to the screen
 function displayCocktailResult(ev) {
-  console.log(ev);
   if (ev === undefined) {
     cocktailErrorText.textContent = "Sorry, no cocktails match your filters, please try again.";
     cocktailCategoryInputEl.value = "";
@@ -523,7 +521,6 @@ function printPinnedRecipes() {
       var singlePinnedEl = document.createElement("button")
       singlePinnedEl.classList.add("btn", "w-full", "items-center", "py-4", "px-4", "flex", "flex-col", "border-gray-200", "cursor-pointer", "hover:bg-gray-100", "hover:text-blue-700", "focus:outline-none", "focus:ring-2", "focus:ring-blue-700", "focus:text-blue-700", "dark:border-gray-600", "dark:hover:bg-gray-600", "dark:hover:text-white", "dark:focus:ring-gray-500", "dark:focus:text-white");
       var textnode = document.createTextNode(pinnedRecipeArray[i])
-      console.log(textnode)
       singlePinnedEl.appendChild(textnode);
       listPinnedRecipesEl.appendChild(singlePinnedEl);
       singlePinnedEl.addEventListener("click", displayPinnedRecipe)
@@ -624,6 +621,7 @@ function displayPinnedRecipe(ev) {
           }
         }
         savedRecipeText.textContent = pinnedRecipe.strInstructions;
+        savedGlassText.textContent = "";
         savedRecipeImage.src = pinnedRecipe.strMealThumb;
         savedRecipeImage.alt = pinnedRecipe.strMeal;
       })
