@@ -655,7 +655,7 @@ function displayPinnedRecipe(ev) {
           }
         }
         savedRecipeText.textContent = pinnedRecipe.strInstructions;
-        savedGlassText.textContent = pinnedRecipe.strGlass;
+        savedGlassText.textContent = "Glass: " + pinnedRecipe.strGlass;
         savedRecipeImage.src = pinnedRecipe.strDrinkThumb;
         savedRecipeImage.alt = pinnedRecipe.strDrink;
       })
@@ -677,6 +677,8 @@ function init() {
   cocktailAlcoholInputEl.value = "";
   mealPinnedText.textContent = "";
   cocktailPinnedText.textContent = "";
+  mealErrorText.textContent = "";
+  cocktailErrorText.textContent = "";
   mealSearchPage.classList.remove("hidden");
   mealSearchPage.classList.add("block");
   cocktailSearchPage.classList.remove("hidden");
