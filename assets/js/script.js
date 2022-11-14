@@ -510,7 +510,7 @@ function printPinnedRecipes() {
   if (pinnedRecipeArray.length >= 1){
     for (var i=0; i<pinnedRecipeArray.length ; i++){
      var singlePinnedEl = document.createElement("button")
-     singlePinnedEl.classList.add("btn", "py-4", "px-4", "flex", "flex-col", "w-full", "border-gray-200", "cursor-pointer", "hover:bg-gray-100", "hover:text-blue-700", "focus:outline-none", "focus:ring-2", "focus:ring-blue-700", "focus:text-blue-700", "dark:border-gray-600", "dark:hover:bg-gray-600", "dark:hover:text-white", "dark:focus:ring-gray-500", "dark:focus:text-white");
+     singlePinnedEl.classList.add("btn", "w-full", "items-center", "py-4", "px-4", "flex", "flex-col", "border-gray-200", "cursor-pointer", "hover:bg-gray-100", "hover:text-blue-700", "focus:outline-none", "focus:ring-2", "focus:ring-blue-700", "focus:text-blue-700", "dark:border-gray-600", "dark:hover:bg-gray-600", "dark:hover:text-white", "dark:focus:ring-gray-500", "dark:focus:text-white");
      var textnode = document.createTextNode(pinnedRecipeArray[i])
      console.log(textnode)
      singlePinnedEl.appendChild(textnode);
