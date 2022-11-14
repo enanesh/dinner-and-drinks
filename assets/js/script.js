@@ -1,20 +1,4 @@
 
-/*
-Logic: 
-
-1. User opens page.  On initial page load, user will see header, pinned recipes, as well as their reviewed recipes. 
-2. User will also see two boxes.  One where they will choose the cuisine they'd like to eat, and the other where they will choose ingredient of cocktail.
-   They don't have to choose both.  They can choose one or the other if they want.  
-3. The application will be listening for <li> clicks on both search buttons.
-4. When the application hears a click a function will be called that takes in the user entered filters, only pulls recipes from the array that have those filters, then randomizes to choose three recipes.
-5. Those three recipes are then displayed to users.  To do this, we must hide the initial "selection elements" and show the "option elements".
-6. User can click on one meal and one cocktail.  When they do, the "option elements" are hidden and the "recipe element" is shown.
-7. If user is interested in recipe, but doesn't want to make it, the user can "pin it" for later and click a button to randomize recipes again?
-8. If user chooses to make it, they can press a review button where they'll be able to add in a rating/input (likely using a form).  That element is saved in local storage.
-9. When user clicks on "pin element", whatever current page they're on! (tricky??? ) is hidden and the pinned page is shown.  User can click on recipe they want to make and recipe is shown.  
-10. When user clicks on "ratings element", whatever current page they're on! (tricky??? ) is hidden and the rßatings page is shown.  User can click on recipe they want to make and recipe is shown.  
-*/
-
 var mealApiUrlArray = [
   "https://themealdb.com/api/json/v1/1/search.php?f=a",
   "https://themealdb.com/api/json/v1/1/search.php?f=b",
@@ -67,6 +51,7 @@ var cocktailApiUrlArray = [
   "https://thecocktaildb.com/api/json/v1/1/search.php?f=z"
 ]
 
+//root into HTML elements
 var mealSearchBtnEl = document.getElementById("meal-search-button");
 var cocktailSearchBtnEl = document.getElementById("cocktail-search-button");
 var mealCategoryInputEl = document.getElementById("meal-category-dropdown");
@@ -103,10 +88,11 @@ var mealResultPage = document.getElementById("meal-result-page");
 var cocktailResultPage = document.getElementById("cocktail-result-page");
 var pinnedRecipesPage = document.getElementById("pinned-recipes-page");
 var savedRecipePage = document.getElementById("saved-recipe-page");
-
 var homeLogoEl  = document.getElementById("start-logo");
 var mainContainerEl = document.querySelector(".main-container")
 
+//create array to store pinned recipes
+//upon page refresh, local storage "pinned-recipes" are loaded into pinnedRecipeArray
 var pinnedRecipeArray = JSON.parse(localStorage.getItem("pinned-recipes")) || [];
 
 var mealsArray = [];
@@ -357,27 +343,31 @@ function displayCocktailResult(ev) {
 storeMeals();
 storeCocktails();
 
+//creating empty arrays that will each hold certain filters (e.g. the first ingredient of a cocktails)
 var cocktailCategoryArray = [];
 var cocktailIngredientArray = [];
 var cocktailAlcoholArray = [];
-
 var categoryArray = [];
 var cuisineArray = [];
 
+//connecting to API lists of category types, cuisine types, ingredients, etc.  This will allow users to filter recipes later on.
 var mealCategoryArrayURL = ["https://www.themealdb.com/api/json/v1/1/list.php?c=list"];
 var mealCuisineArrayURL = ["https://www.themealdb.com/api/json/v1/1/list.php?a=list"];
-
 var cocktailCategoryArrayURL = ["https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list"];
 var cocktailAlcoholicArrayURL = ["https://www.thecocktaildb.com/api/json/v1/1/list.php?a=list"];
 var cocktailIngredientArrayURL = ["https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list"];
 
+//calling functions below that connect to a specific meal or cocktail API (e.g. ingredients/category/alcohol options)
+//the function called then parses through API array, and for each index, stores the item in a new local array
+//lastly, function calls a printCategory function and passes it the local array.  
+//with this information, the list of indexes will be printed out as a specific type of filter option for users.
 categoryOptions();
 cuisineOptions();
-
 cocktailCategoryOptions();
 cocktailIngredientOptions();
 cocktailAlcoholOptions();
 
+//meal's category array function
 async function categoryOptions() {
   for (var i = 0; i < mealCategoryArrayURL.length; i++) {
     const res = await fetch(mealCategoryArrayURL[i])
@@ -390,8 +380,7 @@ async function categoryOptions() {
   printCategory(categoryArray);
 }
 
-
-
+//meal's cuisine type array function
 async function cuisineOptions() {
   for (var i = 0; i < mealCuisineArrayURL.length; i++) {
     const res = await fetch(mealCuisineArrayURL[i])
@@ -405,28 +394,7 @@ async function cuisineOptions() {
   printCuisine(cuisineArray);
 }
 
-
-function printCategory(array) {
-  for (var i = 0; i < categoryArray.length; i++) {
-    var categoryListEl = document.createElement("option");
-    var textnode = document.createTextNode(categoryArray[i].strCategory);
-    categoryListEl.appendChild(textnode)
-    mealCategoryInputEl.appendChild(categoryListEl)
-  }
-
-}
-
-function printCuisine(array) {
-  for (var i = 0; i < cuisineArray.length; i++) {
-
-    var cuisineListEl = document.createElement("option");
-    //add option value
-    var textnode = document.createTextNode(cuisineArray[i].strArea);
-    cuisineListEl.appendChild(textnode)
-    mealCuisineInputEl.appendChild(cuisineListEl)
-  }
-}
-
+//cocktail alcohol type array function
 async function cocktailAlcoholOptions() {
   for (var i = 0; i < cocktailAlcoholicArrayURL.length; i++) {
     const res = await fetch(cocktailAlcoholicArrayURL[i])
@@ -438,67 +406,85 @@ async function cocktailAlcoholOptions() {
   printCocktailAlc(cocktailAlcoholArray);
 }
 
-function printCocktailAlc(array) {
-  for (var i = 0; i < cocktailAlcoholArray.length; i++) {
-
-
-    var cocktailAlcEl = document.createElement("option");
-    //add option value
-    var textnode = document.createTextNode(cocktailAlcoholArray[i].strAlcoholic);
-    cocktailAlcEl.appendChild(textnode)
-    cocktailAlcoholInputEl.appendChild(cocktailAlcEl)
-  }
-}
-
+//cocktail category array function
 async function cocktailCategoryOptions() {
   for (var i = 0; i < cocktailCategoryArrayURL.length; i++) {
     const res = await fetch(cocktailCategoryArrayURL[i])
     const data = await res.json();
     for (var n = 0; n < data.drinks.length; n++) {
       cocktailCategoryArray.push(data.drinks[n]);
-
-    }
-
+     }
   }
   printCocktailCategory(cocktailCategoryArray);
 }
 
-function printCocktailCategory(array) {
-  for (var i = 0; i < cocktailCategoryArray.length; i++) {
-    var cocktailCatEl = document.createElement("option");
-    //add option value
-    var textnode = document.createTextNode(cocktailCategoryArray[i].strCategory);
-    cocktailCatEl.appendChild(textnode)
-    cocktailCategoryInputEl.appendChild(cocktailCatEl)
-  }
-}
-
+//cocktail ingredient function
 async function cocktailIngredientOptions() {
   for (var i = 0; i < cocktailIngredientArrayURL.length; i++) {
     const res = await fetch(cocktailIngredientArrayURL[i])
     const data = await res.json();
     for (var n = 0; n < data.drinks.length; n++) {
       cocktailIngredientArray.push(data.drinks[n]);
-
     }
-
   }
   printCocktailIngredient(cocktailIngredientArray);
 }
 
 
+
+//this function will print the meal category array items to user's HTML for filtering
+function printCategory(array) {
+  for (var i = 0; i < categoryArray.length; i++) {
+    var categoryListEl = document.createElement("option");
+    var textnode = document.createTextNode(categoryArray[i].strCategory);
+    categoryListEl.appendChild(textnode)
+    mealCategoryInputEl.appendChild(categoryListEl)
+  }
+
+}
+
+//this function will print the cuisine type array items to user's HTML for filtering
+function printCuisine(array) {
+  for (var i = 0; i < cuisineArray.length; i++) {
+    var cuisineListEl = document.createElement("option");
+    var textnode = document.createTextNode(cuisineArray[i].strArea);
+    cuisineListEl.appendChild(textnode)
+    mealCuisineInputEl.appendChild(cuisineListEl)
+  }
+}
+
+//this function will print out cocktail alcohol type to user's HTML for filtering
+function printCocktailAlc(array) {
+  for (var i = 0; i < cocktailAlcoholArray.length; i++) {
+    var cocktailAlcEl = document.createElement("option");
+    var textnode = document.createTextNode(cocktailAlcoholArray[i].strAlcoholic);
+    cocktailAlcEl.appendChild(textnode)
+    cocktailAlcoholInputEl.appendChild(cocktailAlcEl)
+  }
+}
+
+//this function will print out cocktail category type to user's HTML for filtering
+function printCocktailCategory(array) {
+  for (var i = 0; i < cocktailCategoryArray.length; i++) {
+    var cocktailCatEl = document.createElement("option");
+    var textnode = document.createTextNode(cocktailCategoryArray[i].strCategory);
+    cocktailCatEl.appendChild(textnode)
+    cocktailCategoryInputEl.appendChild(cocktailCatEl)
+  }
+}
+
+//this function will print out cocktail ingredient type to user's HTML for filtering
 function printCocktailIngredient(array) {
   for (var i = 0; i < cocktailIngredientArray.length; i++) {
-
     var cocktailIngredEl = document.createElement("option");
-    //add option value
     var textnode = document.createTextNode(cocktailIngredientArray[i].strIngredient1);
     cocktailIngredEl.appendChild(textnode)
     cocktailIngredientInputEl.appendChild(cocktailIngredEl)
   }
 }
 
-
+//event listener - listens for click on "pinned recipes" button
+//when clicked various elements of HTML are hidden while the list of pinned recipes is shown
 pinnedRecipesEl.addEventListener("click", function (event) {
   event.preventDefault();
   mealSearchPage.classList.remove("block");
@@ -514,26 +500,16 @@ pinnedRecipesEl.addEventListener("click", function (event) {
   pinnedRecipesPage.classList.remove("hidden");
   pinnedRecipesPage.classList.add("block");
   mainContainerEl.classList.add("hidden")
-
-  //console.log("clicked on pinned recipes buttons")
 })
 
-
+//function below parses through the pinned recipes array and prints out all items in the array.
 function printPinnedRecipes() {
-  //hide all other elements
-  //show pinned element
-  //console.log(pinnedRecipeArray.length)
-  // console.log(pinnedRecipeArray)
+  //first we have to clear current list of printed items so we print out list that includes new items
   listPinnedRecipesEl.innerHTML = "";
-
-  
+  //if statement - logic only runs if pinned recipe array has an item currently in it
   if (pinnedRecipeArray.length >= 1){
     for (var i=0; i<pinnedRecipeArray.length ; i++){
-     //console.log(pinnedRecipeArray[i]);
      var singlePinnedEl = document.createElement("button")
-       
-     //hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800
-     //"w-full bg-blue-700 rounded-t-lg border-b border-gray-200 cursor-pointer dark:bg-gray-800 dark:border-gray-600"
      singlePinnedEl.classList.add("btn", "py-4", "px-4", "flex", "flex-col", "w-full", "border-gray-200", "cursor-pointer", "hover:bg-gray-100", "hover:text-blue-700", "focus:outline-none", "focus:ring-2", "focus:ring-blue-700", "focus:text-blue-700", "dark:border-gray-600", "dark:hover:bg-gray-600", "dark:hover:text-white", "dark:focus:ring-gray-500", "dark:focus:text-white");
      var textnode = document.createTextNode(pinnedRecipeArray[i])
      console.log(textnode)
@@ -542,44 +518,44 @@ function printPinnedRecipes() {
      singlePinnedEl.addEventListener("click", displayPinnedRecipe)
      }
   }
-  
 }
 
-
-//listen for button click when user wants to pin a specific recipe
+//listen for button click when user wants to pin a specific meal
 pinToSaveRecipeEl.addEventListener("click", function (event) {
   event.preventDefault();
-  //console.log("button press meal")
+  //call function to store specific meal pin to array
   storePinnedMeal();
+  //call function to print out a new list of recipes that includes new addition
   printPinnedRecipes();
 })
 
+
+//listen for button click when user wants to pin a specific cocktail
 pinToSaveCocktailEl.addEventListener("click", function (event) {
   event.preventDefault();
-  //console.log("button press cocktail")
+   //call function to store specific cocktail pin to array
   storePinnedCocktail();
+  //call function to print out a new list of recipes that includes new addition
   printPinnedRecipes();
 })
 
+//function, when called, stores newest pinned meal item to the recipe array in local storage.
 function storePinnedMeal() {
-  //jquery setup right now.  need to change to vanilla js
   var recipeName = mealNameText.textContent;
+  //runs a check to see if meal is already included in array.  if not it adds it.
   var inArray = (pinnedRecipeArray.includes(recipeName))
   if (inArray == false){
     pinnedRecipeArray.push(recipeName);
     localStorage.setItem("pinned-recipes", JSON.stringify(pinnedRecipeArray))
   };
-  //console.log (recipeName)
   mealPinnedText.textContent = "Meal pinned!";
 }
 
-
+//function, when called, stores newest pinned cocktail item to the recipe array in local storage.
 function storePinnedCocktail() {
-  //jquery setup right now.  need to change to vanilla js
   var recipeName = cocktailNameText.textContent;
+  //runs a check to see if cocktail is already included in array.  if not it adds it.
   var inArray = (pinnedRecipeArray.includes(recipeName))
-  //console.log (inArray)
-
   if (inArray == false){
   pinnedRecipeArray.push(recipeName);
   localStorage.setItem("pinned-recipes", JSON.stringify(pinnedRecipeArray))
@@ -675,21 +651,13 @@ function displayPinnedRecipe(ev) {
   }
 }
 
-//if we want to add an option for users to remove local storage pins
-//function removeItem(){
-// for (var i = 0; i < pinnedRecipeArray.length; i++){
-
-// pinnedRecipeArray.remove(i);
-// }
-
-//}
-
+//if user clicks on logo, it acts like a "home" button and will take users to initial home page
 homeLogoEl.addEventListener("click", function(event){
   event.preventDefault();
   init();
-  //console.log("clicked on pinned recipes buttons")
 })
 
+//loads initial home page with filter options for user
 function init(){
   mealCategoryInputEl.value = "";
   mealCuisineInputEl.value = "";
@@ -711,4 +679,5 @@ function init(){
   printPinnedRecipes();
 }
 
+//initial home page is called with page load
 init();
