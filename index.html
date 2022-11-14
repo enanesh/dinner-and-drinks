@@ -71,7 +71,7 @@
           <div class="w-1/2 flex-col self-center">
             <p class="text-center text-xl">INGREDIENTS:</p>
             <ul id="meal-ingredients-list"
-              class="font-content text-left p-8 list-disc list-inside indent-20px object-right-top "></ul>
+              class="font-content text-left p-8 list-disc list-inside indent-20px object-right-top text-xl"></ul>
           </div>
         </div>
         <p class="text-instructions ">INSTRUCTIONS:</p>
@@ -133,12 +133,12 @@
           <div class="w-1/2 flex-col self-center">
             <p class="text-center text-xl">INGREDIENTS:</p>
             <ul id="cocktail-ingredients-list"
-              class="text-left p-8 list-disc list-inside indent-20px object-right-top font-content"></ul>
+              class="text-left p-8 list-disc list-inside indent-20px object-right-top font-content text-xl"></ul>
           </div>
         </div>
-        <p class="text-instructions ">INSTRUCTIONS:</p>
         <p id="cocktail-glass-text" class="recipe-inst font-instructionsDrink"></p>
-        <p id="cocktail-recipe-text" class="recipe-glass font-instructionsDrink"></p>
+        <p class="text-instructions ">INSTRUCTIONS:</p>
+        <p id="cocktail-recipe-text" class="recipe-inst font-instructionsDrink"></p>
         <div class="btn-container">
           <button id="pin-to-save-cocktail"
             class="text-2xl border-2 border-yellow-300 rounded-lg px-3 py-2 text-yellow-100 cursor-pointer hover:bg-yellow-400 hover:text-yellow-200 ">Pin
@@ -169,9 +169,11 @@
   <section class="max-w-full" id="saved-recipe-page">
     <div class="container-recipe border border-gray-200 bg-zinc-800">
       <h2 id="saved-name-text" class="recipe-tittle text-white"></h2>
-      <ul id="saved-ingredients-list" class="list-disc list-disc list-inside indent-20px text-white"></ul>
-      <p id="saved-glass-text" class="recipe-inst text-white"></p>
-      <p id="saved-recipe-text" class=" text-white"></p>
+      <p class="text-white text-xl">INGREDIENTS:</p>
+      <ul id="saved-ingredients-list" class="list-disc list-inside indent-20px text-white text-xl"></ul>
+      <p id="saved-glass-text" class="recipe-inst text-white text-xl"></p>
+      <p class="text-instructions text-white">INSTRUCTIONS:</p>
+      <p id="saved-recipe-text" class="text-white text-xl"></p>
       <img id="saved-recipe-image" src="" alt="" class="recipe-img">
     </div>
   </section>
