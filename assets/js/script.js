@@ -1,4 +1,5 @@
-
+// These URLs return each meal in the database beginning with the specified letter.
+// We iterate through these in the storeMeals function to store all of the meal data.
 var mealApiUrlArray = [
   "https://themealdb.com/api/json/v1/1/search.php?f=a",
   "https://themealdb.com/api/json/v1/1/search.php?f=b",
@@ -24,6 +25,8 @@ var mealApiUrlArray = [
   "https://themealdb.com/api/json/v1/1/search.php?f=y"
 ]
 
+// These URLs return each cocktail in the database beginning with the specified letter.
+// We iterate through these in the storeCocktails function to store all of the cocktail data.
 var cocktailApiUrlArray = [
   "https://thecocktaildb.com/api/json/v1/1/search.php?f=a",
   "https://thecocktaildb.com/api/json/v1/1/search.php?f=b",
@@ -88,16 +91,18 @@ var mealResultPage = document.getElementById("meal-result-page");
 var cocktailResultPage = document.getElementById("cocktail-result-page");
 var pinnedRecipesPage = document.getElementById("pinned-recipes-page");
 var savedRecipePage = document.getElementById("saved-recipe-page");
-var homeLogoEl  = document.getElementById("start-logo");
+var homeLogoEl = document.getElementById("start-logo");
 var mainContainerEl = document.querySelector(".main-container")
 
 //create array to store pinned recipes
 //upon page refresh, local storage "pinned-recipes" are loaded into pinnedRecipeArray
 var pinnedRecipeArray = JSON.parse(localStorage.getItem("pinned-recipes")) || [];
 
+// Empty arrays for the recipes to be stored into
 var mealsArray = [];
 var cocktailsArray = [];
 
+// Function, when called, stores all meal recipes from the database to a global array.
 function storeMeals() {
   for (i = 0; i < mealApiUrlArray.length; i++) {
     fetch(mealApiUrlArray[i])
@@ -110,9 +115,9 @@ function storeMeals() {
         }
       })
   }
-  //console.log(mealsArray);
 }
 
+// Function, when called, stores all cocktail recipes from the database to a global array.
 function storeCocktails() {
   for (i = 0; i < cocktailApiUrlArray.length; i++) {
     fetch(cocktailApiUrlArray[i])
@@ -125,9 +130,10 @@ function storeCocktails() {
         }
       })
   }
-  //console.log(cocktailsArray);
 }
 
+// Function, when called, checks which filters have been applied to the search. It then randomly selects
+// a meal from the array that matches the filters and passes it to the displayMealResult function.
 function mealSearch() {
   if (!mealCategoryInputEl.value && !mealCuisineInputEl.value) {
     var randomSearch = Math.floor(Math.random() * mealsArray.length);
@@ -168,6 +174,8 @@ function mealSearch() {
 }
 mealSearchBtnEl.addEventListener("click", mealSearch);
 
+// Function, when called, checks which filters have been applied to the search. It then randomly selects
+// a cocktail from the array that matches the filters and passes it to the displayCocktailResult function.
 function cocktailSearch() {
   if (!cocktailCategoryInputEl && !cocktailIngredientInputEl && !cocktailAlcoholInputEl) {
     var randomSearch = Math.floor(Math.random() * cocktailsArray.length);
@@ -252,6 +260,7 @@ function cocktailSearch() {
 }
 cocktailSearchBtnEl.addEventListener("click", cocktailSearch)
 
+// Function, when called, takes randomly selected meal and displays the data to the screen
 function displayMealResult(ev) {
   console.log(ev);
   if (ev === undefined) {
@@ -297,6 +306,7 @@ function displayMealResult(ev) {
   mealImageEl.alt = ev.strMeal;
 }
 
+// Function, when called, takes randomly selected cocktail and displays the data to the screen
 function displayCocktailResult(ev) {
   console.log(ev);
   if (ev === undefined) {
@@ -340,6 +350,7 @@ function displayCocktailResult(ev) {
   cocktailImageEl.alt = ev.strDrink;
 }
 
+// On page load, stores all meals/cocktails from database into global arrays
 storeMeals();
 storeCocktails();
 
@@ -413,7 +424,7 @@ async function cocktailCategoryOptions() {
     const data = await res.json();
     for (var n = 0; n < data.drinks.length; n++) {
       cocktailCategoryArray.push(data.drinks[n]);
-     }
+    }
   }
   printCocktailCategory(cocktailCategoryArray);
 }
@@ -507,16 +518,16 @@ function printPinnedRecipes() {
   //first we have to clear current list of printed items so we print out list that includes new items
   listPinnedRecipesEl.innerHTML = "";
   //if statement - logic only runs if pinned recipe array has an item currently in it
-  if (pinnedRecipeArray.length >= 1){
-    for (var i=0; i<pinnedRecipeArray.length ; i++){
-     var singlePinnedEl = document.createElement("button")
-     singlePinnedEl.classList.add("btn", "w-full", "items-center", "py-4", "px-4", "flex", "flex-col", "border-gray-200", "cursor-pointer", "hover:bg-gray-100", "hover:text-blue-700", "focus:outline-none", "focus:ring-2", "focus:ring-blue-700", "focus:text-blue-700", "dark:border-gray-600", "dark:hover:bg-gray-600", "dark:hover:text-white", "dark:focus:ring-gray-500", "dark:focus:text-white");
-     var textnode = document.createTextNode(pinnedRecipeArray[i])
-     console.log(textnode)
-     singlePinnedEl.appendChild(textnode);
-     listPinnedRecipesEl.appendChild(singlePinnedEl);
-     singlePinnedEl.addEventListener("click", displayPinnedRecipe)
-     }
+  if (pinnedRecipeArray.length >= 1) {
+    for (var i = 0; i < pinnedRecipeArray.length; i++) {
+      var singlePinnedEl = document.createElement("button")
+      singlePinnedEl.classList.add("btn", "w-full", "items-center", "py-4", "px-4", "flex", "flex-col", "border-gray-200", "cursor-pointer", "hover:bg-gray-100", "hover:text-blue-700", "focus:outline-none", "focus:ring-2", "focus:ring-blue-700", "focus:text-blue-700", "dark:border-gray-600", "dark:hover:bg-gray-600", "dark:hover:text-white", "dark:focus:ring-gray-500", "dark:focus:text-white");
+      var textnode = document.createTextNode(pinnedRecipeArray[i])
+      console.log(textnode)
+      singlePinnedEl.appendChild(textnode);
+      listPinnedRecipesEl.appendChild(singlePinnedEl);
+      singlePinnedEl.addEventListener("click", displayPinnedRecipe)
+    }
   }
 }
 
@@ -533,7 +544,7 @@ pinToSaveRecipeEl.addEventListener("click", function (event) {
 //listen for button click when user wants to pin a specific cocktail
 pinToSaveCocktailEl.addEventListener("click", function (event) {
   event.preventDefault();
-   //call function to store specific cocktail pin to array
+  //call function to store specific cocktail pin to array
   storePinnedCocktail();
   //call function to print out a new list of recipes that includes new addition
   printPinnedRecipes();
@@ -544,7 +555,7 @@ function storePinnedMeal() {
   var recipeName = mealNameText.textContent;
   //runs a check to see if meal is already included in array.  if not it adds it.
   var inArray = (pinnedRecipeArray.includes(recipeName))
-  if (inArray == false){
+  if (inArray == false) {
     pinnedRecipeArray.push(recipeName);
     localStorage.setItem("pinned-recipes", JSON.stringify(pinnedRecipeArray))
   };
@@ -556,13 +567,15 @@ function storePinnedCocktail() {
   var recipeName = cocktailNameText.textContent;
   //runs a check to see if cocktail is already included in array.  if not it adds it.
   var inArray = (pinnedRecipeArray.includes(recipeName))
-  if (inArray == false){
-  pinnedRecipeArray.push(recipeName);
-  localStorage.setItem("pinned-recipes", JSON.stringify(pinnedRecipeArray))
-};
-cocktailPinnedText.textContent = "Cocktail pinned!";
+  if (inArray == false) {
+    pinnedRecipeArray.push(recipeName);
+    localStorage.setItem("pinned-recipes", JSON.stringify(pinnedRecipeArray))
+  };
+  cocktailPinnedText.textContent = "Cocktail pinned!";
 }
 
+// function, when called, takes name of the saved recipe, checks if it's a meal or cocktail, then passes
+// it into the appropriate "search meal/cocktail by name" API URL and displays the results
 function displayPinnedRecipe(ev) {
   pinnedRecipesPage.classList.remove("block");
   pinnedRecipesPage.classList.add("hidden");
@@ -616,23 +629,23 @@ function displayPinnedRecipe(ev) {
       })
   } else {
     fetch("https://thecocktaildb.com/api/json/v1/1/search.php?s=" + savedCocktail)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      var pinnedRecipe = data.drinks[0];
-      savedNameText.textContent = pinnedRecipe.strDrink;
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        var pinnedRecipe = data.drinks[0];
+        savedNameText.textContent = pinnedRecipe.strDrink;
 
-      var ingredientList = [];
-      ingredientList.push(pinnedRecipe.strIngredient1, pinnedRecipe.strIngredient2, pinnedRecipe.strIngredient3,
-        pinnedRecipe.strIngredient4, pinnedRecipe.strIngredient5, pinnedRecipe.strIngredient6, pinnedRecipe.strIngredient7,
-        pinnedRecipe.strIngredient8, pinnedRecipe.strIngredient9, pinnedRecipe.strIngredient10, pinnedRecipe.strIngredient11,
-        pinnedRecipe.strIngredient12, pinnedRecipe.strIngredient13, pinnedRecipe.strIngredient14, pinnedRecipe.strIngredient15);
-      var measurementList = [];
-      measurementList.push(pinnedRecipe.strMeasure1, pinnedRecipe.strMeasure2, pinnedRecipe.strMeasure3,
-        pinnedRecipe.strMeasure4, pinnedRecipe.strMeasure5, pinnedRecipe.strMeasure6, pinnedRecipe.strMeasure7,
-        pinnedRecipe.strMeasure8, pinnedRecipe.strMeasure9, pinnedRecipe.strMeasure10, pinnedRecipe.strMeasure11,
-        pinnedRecipe.strMeasure12, pinnedRecipe.strMeasure13, pinnedRecipe.strMeasure14, pinnedRecipe.strMeasure15);
+        var ingredientList = [];
+        ingredientList.push(pinnedRecipe.strIngredient1, pinnedRecipe.strIngredient2, pinnedRecipe.strIngredient3,
+          pinnedRecipe.strIngredient4, pinnedRecipe.strIngredient5, pinnedRecipe.strIngredient6, pinnedRecipe.strIngredient7,
+          pinnedRecipe.strIngredient8, pinnedRecipe.strIngredient9, pinnedRecipe.strIngredient10, pinnedRecipe.strIngredient11,
+          pinnedRecipe.strIngredient12, pinnedRecipe.strIngredient13, pinnedRecipe.strIngredient14, pinnedRecipe.strIngredient15);
+        var measurementList = [];
+        measurementList.push(pinnedRecipe.strMeasure1, pinnedRecipe.strMeasure2, pinnedRecipe.strMeasure3,
+          pinnedRecipe.strMeasure4, pinnedRecipe.strMeasure5, pinnedRecipe.strMeasure6, pinnedRecipe.strMeasure7,
+          pinnedRecipe.strMeasure8, pinnedRecipe.strMeasure9, pinnedRecipe.strMeasure10, pinnedRecipe.strMeasure11,
+          pinnedRecipe.strMeasure12, pinnedRecipe.strMeasure13, pinnedRecipe.strMeasure14, pinnedRecipe.strMeasure15);
 
         savedIngredientsList.innerHTML = "";
         for (i = 0; i < ingredientList.length; i++) {
@@ -647,18 +660,18 @@ function displayPinnedRecipe(ev) {
         savedGlassText.textContent = pinnedRecipe.strGlass;
         savedRecipeImage.src = pinnedRecipe.strDrinkThumb;
         savedRecipeImage.alt = pinnedRecipe.strDrink;
-    })
+      })
   }
 }
 
 //if user clicks on logo, it acts like a "home" button and will take users to initial home page
-homeLogoEl.addEventListener("click", function(event){
+homeLogoEl.addEventListener("click", function (event) {
   event.preventDefault();
   init();
 })
 
 //loads initial home page with filter options for user
-function init(){
+function init() {
   mealCategoryInputEl.value = "";
   mealCuisineInputEl.value = "";
   cocktailCategoryInputEl.value = "";
