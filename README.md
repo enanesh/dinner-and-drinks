@@ -19,11 +19,11 @@ So that I can enjoy cooking new meals and trying new drink recipes
 ```
 GIVEN a meal and cocktail recommendation application
 WHEN I search a meal by category and/or by cuisine
-THEN I am presented with a recommend meal recipe that includes an image of the meal
+THEN I am presented with a recommended meal recipe that includes an image of the meal
 WHEN I search a drink by category and/or by main ingredient and/or by alocohol content
-THEN I am presented with a recommend drink recipe that includes an image of the drink
+THEN I am presented with a recommended drink recipe that includes an image of the drink
 WHEN I click on Pin Cocktail or Pin Meal
-THEN I recipe is saved in my pinned recipes page
+THEN that recipe is saved in my pinned recipes page
 WHEN I click on pinned recipes on the nav bar
 THEN I am presented with all of my saved recipes (if any)
 WHEN I click on one of the saved recipe buttons
