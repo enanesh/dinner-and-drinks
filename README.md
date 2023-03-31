@@ -39,7 +39,7 @@ THEN I am presented again with the recipe's intructions, ingredients and image
 **Step 3:** To view saved recipes, click on the Pinned Recipes button on the nav bar <br>
 **Step 4:** To view the saved recipe's full instructions again, click on the saved recipe button <br>
 
-[Here is the link to the dinner & drinks application.](https://sely1724.github.io/dinner-and-drinks/)
+
 
 Below is an image of the landing page of the application.
 ![dinner & drinks landing page screenshot](assets/images/landing-page.png)
