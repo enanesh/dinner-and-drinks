@@ -6,6 +6,8 @@ Our group found a common interest in cooking, and so as a result, we decided to 
 
 For this project, we used the following 2 server-side API's: The Meal DB and the Cocktail DB. 
 
+[Here is the link to the dinner & drinks application.](https://enanesh.github.io/dinner-and-drinks/)
+
 ## User Story
 
 ```
